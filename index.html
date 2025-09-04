@@ -244,6 +244,10 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hero {
+                padding-top: 80px; /* Add space for fixed header */
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
@@ -251,6 +255,7 @@
 
             .hero-text h1 {
                 font-size: 2.5rem;
+                margin-top: 2rem; /* Extra spacing from header */
             }
 
             .nav-links {
