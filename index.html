@@ -127,6 +127,19 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             border: 1px solid #333;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
         }
 
         .placeholder-text {
@@ -193,28 +206,59 @@
             line-height: 1.7;
         }
 
-        /* Problem Section */
-        .problem {
+        /* Problem Sections */
+        .problem-lost, .problem-solution {
             padding: 6rem 0;
+        }
+
+        .problem-lost {
             background: #0a0a0a;
         }
 
-        .problem-content {
-            text-align: center;
-            max-width: 800px;
+        .problem-solution {
+            background: #111;
+        }
+
+        .problem-content-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
-        .problem h2 {
+        .problem-text h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: #ffffff;
         }
 
-        .problem p {
+        .problem-text p {
             font-size: 1.2rem;
             color: #888;
             margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .problem-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350px;
+        }
+
+        .section-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .section-image:hover {
+            transform: scale(1.02);
         }
 
         /* Footer */
@@ -258,6 +302,24 @@
                 margin-top: 2rem; /* Extra spacing from header */
             }
 
+            .problem-content-split {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .problem-text h2 {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .problem-text p {
+                text-align: center;
+            }
+
+            .problem-image {
+                height: 250px;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -289,18 +351,38 @@
                     <a href="#contact" class="cta-button">Get Straight Answers</a>
                 </div>
                 <div class="hero-visual">
-                    <p class="placeholder-text">Your nature photography will go here</p>
+                    <img src="images/sunset-0.5x-crop.jpg" alt="Sunset landscape" class="hero-image" />
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="problem">
+    <section class="problem-lost">
         <div class="container">
-            <div class="problem-content">
-                <h2>Everyone's Talking About AI, But What Should YOU Actually Do?</h2>
-                <p>Your competitors claim they're "AI-powered." Your employees are asking about ChatGPT. Tech salespeople are calling every week.</p>
-                <p>Cut through the noise. Get practical advice on what's worth your investment and what's just expensive marketing fluff.</p>
+            <div class="problem-content-split">
+                <div class="problem-image left">
+                    <img src="images/trees-no-path.jpg" alt="Feeling lost in the woods of AI?" title="Feeling lost in the woods of AI?" class="section-image" />
+                </div>
+                <div class="problem-text right">
+                    <h2>Everyone's Talking About AI, But What Should YOU Actually Do?</h2>
+                    <p>Your competitors claim they're "AI-powered." Your employees are asking about ChatGPT. Tech salespeople are calling every week.</p>
+                    <p>It feels like everyone else has figured it out, but you're still searching for answers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-solution">
+        <div class="container">
+            <div class="problem-content-split">
+                <div class="problem-text left">
+                    <h2>Let Us Help You Find Your Way</h2>
+                    <p>Cut through the noise. Get practical advice on what's worth your investment and what's just expensive marketing fluff.</p>
+                    <p>We'll guide you step-by-step toward AI solutions that actually make sense for your business.</p>
+                </div>
+                <div class="problem-image right">
+                    <img src="images/path-through-woods.jpg" alt="Finding your path through AI complexity" title="We'll help you find your path through AI complexity" class="section-image" />
+                </div>
             </div>
         </div>
     </section>
