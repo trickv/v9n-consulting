@@ -261,29 +261,106 @@
             transform: scale(1.02);
         }
 
+        /* Contact Box */
+        .contact-section {
+            background: #000;
+            padding: 4rem 0;
+            border-top: 1px solid #222;
+        }
+
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid #333;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .contact-photo-placeholder {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #444;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #666;
+        }
+
+        .contact-name {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        .contact-email {
+            background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            font-size: 1.3rem;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-email:hover {
+            border-color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-phone {
+            color: #b8b8b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-phone:hover {
+            color: #ffffff;
+        }
+
         /* Footer */
         footer {
             background: #000;
-            padding: 3rem 0;
+            padding: 2rem 0;
             text-align: center;
-            border-top: 1px solid #222;
         }
 
         .footer-content {
             color: #666;
-        }
-
-        .contact-info {
-            margin-bottom: 1rem;
-        }
-
-        .contact-info a {
-            color: #b8b8b8;
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            color: #ffffff;
         }
 
         /* Responsive Design */
@@ -326,6 +403,31 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .contact-box {
+                margin: 0 20px;
+                padding: 2rem;
+            }
+
+            .contact-photo-placeholder {
+                width: 100px;
+                height: 100px;
+                font-size: 2.5rem;
+            }
+
+            .contact-name {
+                font-size: 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .contact-email {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -431,12 +533,32 @@
         </div>
     </section>
 
-    <footer id="contact">
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div class="contact-photo-placeholder">
+                    👤
+                </div>
+                <div class="contact-name">
+                    Trick VanStaveren
+                </div>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <a href="mailto:trick@vanstaveren.us" class="contact-email">trick@vanstaveren.us</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <a href="tel:312-469-0036" class="contact-phone">312-469-0036</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="contact-info">
-                    <p>Ready to get started? <a href="mailto:trick@vanstaveren.us">trick@vanstaveren.us</a></p>
-                </div>
                 <p>&copy; 2025 Just Do AI. All rights reserved.</p>
             </div>
         </div>
