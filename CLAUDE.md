@@ -61,12 +61,23 @@ python3 business_card_printer.py --front front.svg
 python3 business_card_printer.py --front front.svg --back back.svg
 ```
 
+### HTML Alternative (Recommended)
+For cleaner, more reliable printing use the HTML templates:
+- `business_cards_front.html` - References `example_front.svg`
+- `business_cards_back.html` - References `example_back.svg`
+
+**Print Settings for Perfect Alignment:**
+- When printing from Chrome, set print margins to **0.25" left margin only**, all other margins set to 0
+- This centers the card grid properly for double-sided printing alignment
+- Print front page first, then flip paper and print back page
+
 ### Features
 - Prints 10 cards per letter-size sheet (2×5 grid)
 - Professional crop marks for accurate cutting
 - Double-sided printing with proper alignment
 - High-quality PDF output via Ghostscript
 - SVG input support with 252pt × 144pt dimensions
+- HTML templates with external SVG references for easier editing
 
 ## 3. QR Code Generator
 
