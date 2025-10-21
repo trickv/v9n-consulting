@@ -160,11 +160,56 @@
             margin-right: auto;
         }
 
+        .services-category {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .services-category:first-of-type {
+            margin-top: 0;
+        }
+
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
+        }
+
+        .capabilities-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .capabilities-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .capabilities-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .capabilities-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #1a1a1a;
+            font-weight: bold;
         }
 
         .service-card {
@@ -438,50 +483,52 @@
     <section class="services-overview" id="services">
         <div class="container">
             <h2 class="section-title">How I Can Help</h2>
-            <p class="section-subtitle">Direct, practical consulting to help your business leverage technology effectively</p>
-            
+            <p class="section-subtitle">Strategic consulting and hands-on implementation to help your business leverage technology effectively</p>
+
+            <h3 class="services-category">Strategic Services</h3>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3>AI Strategy & Implementation</h3>
-                    <p>Cut through the AI hype. Get practical advice on ChatGPT, Microsoft Copilot, and other AI tools that actually make sense for your business.</p>
+                    <p>Cut through the AI hype. Get practical advice on ChatGPT, Microsoft Copilot, and other AI tools that actually make sense for your business. Includes team training and implementation support.</p>
                     <a href="/just-do-ai/" class="service-link">Learn more →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">💻</div>
                     <h3>Technology Consulting</h3>
-                    <p>Strategic guidance on software selection, system integration, and technology roadmaps tailored to small business realities.</p>
+                    <p>Strategic guidance on software selection, system integration, and technology roadmaps. Honest buy vs. build evaluations and vendor assessments with no conflicts of interest.</p>
                     <a href="#contact" class="service-link">Get started →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">📊</div>
                     <h3>Digital Transformation</h3>
-                    <p>Modernize your operations without the enterprise overhead. Practical improvements that deliver real ROI.</p>
+                    <p>Modernize your operations without the enterprise overhead. Practical improvements that deliver real ROI, from strategy through implementation.</p>
                     <a href="#contact" class="service-link">Discover how →</a>
                 </div>
+            </div>
 
-                <div class="service-card">
-                    <div class="service-icon">🎓</div>
-                    <h3>Team Training & Education</h3>
-                    <p>Upskill your team on modern tools and technologies. Hands-on training that your employees can apply immediately.</p>
-                    <a href="#contact" class="service-link">Build skills →</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🔍</div>
-                    <h3>Technology Evaluation</h3>
-                    <p>Honest assessments of vendors, tools, and platforms. No commissions, no conflicts – just straight answers.</p>
-                    <a href="#contact" class="service-link">Get evaluation →</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Process Automation</h3>
-                    <p>Identify and automate repetitive tasks. Free up your team to focus on what actually matters.</p>
-                    <a href="#contact" class="service-link">Automate now →</a>
-                </div>
+            <h3 class="services-category">Implementation Capabilities</h3>
+            <div class="capabilities-list">
+                <ul>
+                    <li>AWS, Azure, and GCP cloud architecture & migration</li>
+                    <li>Network design, deployment, and administration</li>
+                    <li>Linux and Windows server setup & management</li>
+                    <li>Docker and Kubernetes containerization</li>
+                </ul>
+                <ul>
+                    <li>CI/CD pipeline design & implementation</li>
+                    <li>Database architecture and optimization</li>
+                    <li>Infrastructure as Code (Terraform, CloudFormation)</li>
+                    <li>System monitoring and performance tuning</li>
+                </ul>
+                <ul>
+                    <li>Automation scripting (Python, Bash, PowerShell)</li>
+                    <li>Load balancing and high availability systems</li>
+                    <li>Security hardening and compliance</li>
+                    <li>Backup and disaster recovery solutions</li>
+                </ul>
             </div>
         </div>
     </section>
