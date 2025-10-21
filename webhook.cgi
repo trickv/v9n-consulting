@@ -7,9 +7,9 @@
 # in the deployment directory.
 
 # Configuration
-DEPLOY_DIR="/var/www/html"
+DEPLOY_DIR="/var/www/v9n.us"
 LOG_FILE="/tmp/v9n-webhook.log"
-PULL_SCRIPT="/home/trick/src/github.com/trickv/v9n-consulting/pull"
+PULL_SCRIPT="/var/www/v9n.us/pull"
 
 # Function to log messages
 log_message() {
