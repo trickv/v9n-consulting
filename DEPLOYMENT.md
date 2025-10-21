@@ -2,6 +2,8 @@
 
 This repository uses a simple webhook-based deployment system that automatically updates the production site when changes are pushed to the `main` branch.
 
+**Status**: Active and deployed at https://vanstaveren.us/~trick/v9n-webhook/webhook.cgi
+
 ## Architecture
 
 - **GitHub Actions** - Triggers on push to `main` branch
