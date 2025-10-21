@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ "$USER" != "www-data" ]; then
+if [ "$(whoami)" != "www-data" ]; then
     echo "must run this as www-data"
     echo "current user: $USER (uid=$(id -u), gid=$(id -g))"
     echo "whoami: $(whoami)"
