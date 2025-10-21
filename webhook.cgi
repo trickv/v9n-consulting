@@ -16,18 +16,33 @@ log_message() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" >> "$LOG_FILE"
 }
 
-# Send HTTP headers
-echo "Content-Type: text/plain"
-echo ""
+# Function to send error response and exit
+send_error() {
+    local message="$1"
+    local exit_code="${2:-1}"
+    echo "Status: 500 Internal Server Error"
+    echo "Content-Type: text/plain"
+    echo ""
+    echo "ERROR: $message"
+    log_message "ERROR: $message (exit code: $exit_code)"
+    exit 1
+}
+
+# Function to send success response
+send_success() {
+    local message="$1"
+    echo "Status: 200 OK"
+    echo "Content-Type: text/plain"
+    echo ""
+    echo "SUCCESS: $message"
+}
 
 # Log the webhook call
 log_message "Webhook triggered from ${REMOTE_ADDR:-unknown}"
 
 # Check if pull script exists
 if [ ! -f "$PULL_SCRIPT" ]; then
-    echo "ERROR: Pull script not found at $PULL_SCRIPT"
-    log_message "ERROR: Pull script not found at $PULL_SCRIPT"
-    exit 1
+    send_error "Pull script not found at $PULL_SCRIPT"
 fi
 
 # Make sure pull script is executable
@@ -35,9 +50,7 @@ chmod +x "$PULL_SCRIPT" 2>> "$LOG_FILE"
 
 # Change to deployment directory before running pull script
 cd "$(dirname "$PULL_SCRIPT")" || {
-    echo "ERROR: Failed to change to deployment directory"
-    log_message "ERROR: Failed to cd to $(dirname "$PULL_SCRIPT")"
-    exit 1
+    send_error "Failed to change to deployment directory $(dirname "$PULL_SCRIPT")"
 }
 
 # Execute the pull script
@@ -49,15 +62,12 @@ EXIT_CODE=$?
 log_message "Pull script output: $OUTPUT"
 log_message "Pull script exit code: $EXIT_CODE"
 
-# Return response
+# Return response based on exit code
 if [ $EXIT_CODE -eq 0 ]; then
-    echo "SUCCESS: Deployment completed"
+    send_success "Deployment completed"
     echo "$OUTPUT"
     log_message "Deployment successful"
+    exit 0
 else
-    echo "ERROR: Deployment failed with exit code $EXIT_CODE"
-    echo "$OUTPUT"
-    log_message "ERROR: Deployment failed with exit code $EXIT_CODE"
+    send_error "Deployment failed with exit code $EXIT_CODE: $OUTPUT" "$EXIT_CODE"
 fi
-
-exit $EXIT_CODE
