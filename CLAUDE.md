@@ -1,43 +1,74 @@
 # Claude Code Knowledge Base
 
-This repository contains multiple projects and tools for the "Just Do AI" business and various utility applications.
+This repository contains a multi-site consulting business structure with V9N Consulting as the parent company and Just Do AI as a specialized service offering.
 
-## 1. Main Website - Just Do AI Business Site
+## Site Architecture
 
-**File**: `index.html`
+The repository hosts two related but distinct consulting sites:
 
-A complete single-page website for "Just Do AI" - a small business AI consulting company.
+### Root Site: V9N Consulting (`/index.html`)
+**Parent Company** - Independent technology consulting for small businesses
 
-### Features
-- **Modern Dark Theme**: Professional dark design with gradients and smooth animations
-- **Responsive Design**: Mobile-friendly layout that adapts to all screen sizes
-- **Contact Box**: Custom contact section with photo placeholder, phone (312-469-0036), and highlighted email (trick@vanstaveren.us)
-- **Services Section**: Six main service offerings for AI consulting
-- **Hero Section**: Compelling value proposition with call-to-action
-- **Problem/Solution Flow**: Visual storytelling with paired images and text
-- **Smooth Navigation**: Fixed header with scroll effects and smooth scrolling
+**Design**: Clean, professional light theme with subtle gradients
+- Light background (#ffffff, #f8f9fa)
+- Dark text (#1a1a1a, #666)
+- Minimalist aesthetic targeting broader business audience
 
-### Content Areas
-- AI Training & Education
-- Productivity Tool Evaluation (Microsoft Copilot, ChatGPT Pro, Claude Pro)
-- Marketing & Lead Generation Strategy (GEO - Generative Engine Optimization)
-- Custom AI Strategy Development
-- Implementation Support
-- AI Risk Assessment
+**Services Offered**:
+1. AI Strategy & Implementation (links to `/just-do-ai/`)
+2. Technology Consulting
+3. Digital Transformation
+4. Team Training & Education
+5. Technology Evaluation
+6. Process Automation
 
-### Images Used
-- `images/sunset-0.5x-crop.jpg` - Hero section (126KB, optimized)
-- `images/trees-no-path.jpg` - "Feeling lost" section (2.09MB)
-- `images/path-through-woods.jpg` - "Finding your way" section (1.95MB)
+**Key Sections**:
+- Hero with value proposition for small business technology
+- Services overview grid (6 cards)
+- About section emphasizing independent consulting approach
+- Contact box with professional styling
+- Smooth scrolling navigation
 
-### Technical Details
-- Single HTML file with embedded CSS and JavaScript
-- Uses modern CSS Grid and Flexbox for layouts
-- Progressive JPEG images for better loading
+### Sub-Site: Just Do AI (`/just-do-ai/index.html`)
+**Specialized AI Consulting** - Focused AI services for small businesses
+
+**Design**: Modern dark theme with high contrast
+- Dark backgrounds (#0a0a0a, #111)
+- Light text (#e8e8e8, #b8b8b8)
+- Emotional storytelling with imagery
+
+**AI-Specific Services**:
+1. AI Training & Education
+2. Productivity Tool Evaluation (Microsoft Copilot, ChatGPT Pro, Claude Pro)
+3. Marketing & Lead Generation Strategy (GEO - Generative Engine Optimization)
+4. Custom AI Strategy Development
+5. Implementation Support
+6. AI Risk Assessment
+
+**Key Sections**:
+- Hero: "Feeling Lost in the AI Revolution?"
+- Problem section with "trees-no-path" image
+- Solution section with "path-through-woods" image
+- Services grid (6 AI-focused cards)
+- Contact box matching V9N style but dark themed
+
+**Images Used**:
+- `just-do-ai/images/sunset-0.5x-crop.jpg` - Hero section (126KB, optimized)
+- `just-do-ai/images/trees-no-path.jpg` - Problem section (2.09MB)
+- `just-do-ai/images/path-through-woods.jpg` - Solution section (1.95MB)
+
+**Technical Details** (both sites):
+- Single HTML files with embedded CSS and JavaScript
+- Modern CSS Grid and Flexbox layouts
+- Progressive JPEG images
 - No external dependencies
 - SEO optimized with meta descriptions
+- Smooth scrolling navigation
+- Responsive mobile design
 
-## 2. Business Card Printing System
+## 1. Business Card Printing System
+
+**Location**: `/just-do-ai/b-cards/`
 
 Complete system for converting SVG business card designs to print-ready PDFs.
 
@@ -79,9 +110,9 @@ For cleaner, more reliable printing use the HTML templates:
 - SVG input support with 252pt × 144pt dimensions
 - HTML templates with external SVG references for easier editing
 
-## 3. QR Code Generator
+## 2. QR Code Generator
 
-**File**: `qr-generator.html`
+**Location**: `/just-do-ai/b-cards/qr-generator.html`
 
 Web-based QR code generator with customization options.
 
@@ -92,45 +123,49 @@ Web-based QR code generator with customization options.
 - Clean, responsive interface
 - No server dependencies - runs entirely in browser
 
-## 4. Deployment & Infrastructure
+## 3. Image Assets
 
-### GitHub Actions Workflow
-**File**: `.github/workflows/deploy.yml`
-- Triggers on push to main/master branches
-- Simple webhook-based deployment system
-- No SSH access required
+### V9N Consulting Images (`/images/`)
+- Currently uses placeholder visual in About section
+- Future: Professional consulting imagery
 
-### Webhook Server
-**File**: `webhook-server.py`
-- Python webhook server for GitHub deployment
-- Runs on port 8080
-- Handles GitHub webhook events
-- Includes HMAC signature verification
-- Auto-deployment to `/var/www/html/just-do-ai`
+### Just Do AI Images (`/just-do-ai/images/`)
+- `sunset-0.5x-crop.jpg` - 126KB, 1066×828px, progressive JPEG (well optimized) - Hero section
+- `trees-no-path.jpg` - 2.09MB, 2000×1500px, progressive JPEG - "Feeling lost" section
+- `path-through-woods.jpg` - 1.95MB, 2000×1500px, progressive JPEG - "Finding your way" section
 
-### Configuration
-- Repository path: `/var/www/html/just-do-ai`
-- Secret-based authentication for webhooks
-- Logging and error handling
-
-## 5. Image Assets
-
-### Web-Optimized Images (`/images/`)
-- `path-through-woods.jpg` - 1.95MB, 2000×1500px, progressive JPEG
-- `trees-no-path.jpg` - 2.09MB, 2000×1500px, progressive JPEG
-- `sunset-0.5x-crop.jpg` - 126KB, 1066×828px, progressive JPEG (well optimized)
-
-### Source Images (`/input-images/`)
+### Source Images (`/just-do-ai/input-images/`)
 - Contains original iPhone photos (IMG_*.jpg files)
-- Python HEIC converter utility (`convert_heic.py`)
+- Python HEIC converter utilities (`convert_heic.py`, `convert_heic_portable.py`)
 - Virtual environment for HEIC processing (`heic_converter/`)
 
-## 6. Development Tools
+## 4. Deployment & Infrastructure
+
+**Note**: Deployment configuration may need updating to reflect new two-site structure
+
+### Deployment Path
+- Repository deploys to: `/var/www/html/just-do-ai`
+- V9N Consulting accessible at root (`/`)
+- Just Do AI accessible at (`/just-do-ai/`)
+
+### GitHub Actions Workflow
+**File**: `.github/workflows/deploy.yml` (if exists)
+- Triggers on push to main branch
+- Webhook-based deployment system
+
+### Webhook Server
+**File**: `webhook-server.py` (if exists)
+- Python webhook server for GitHub deployment
+- Port 8080
+- HMAC signature verification
+- Auto-deployment capability
+
+## 5. Development Tools
 
 ### Dependencies
-- **Python 3.6+** - For business card printing and webhook server
+- **Python 3.6+** - For business card printing and HEIC conversion
 - **Ghostscript** - For PDF generation from PostScript
-- **Virtual Environment** - For HEIC image conversion
+- **Virtual Environment** - For HEIC image processing (`just-do-ai/input-images/heic_converter/`)
 
 ### Installation (Ubuntu/Debian)
 ```bash
@@ -138,45 +173,93 @@ sudo apt update
 sudo apt install python3 ghostscript
 ```
 
-## 7. Contact Information
+## 6. Contact Information
 
-**Business Owner**: Trick VanStaveren
-- **Email**: trick@vanstaveren.us (highlighted on website)
+**Business Owner**: Patrick "Trick" VanStaveren
+- **Email**: trick@vanstaveren.us (highlighted on both websites)
 - **Phone**: 312-469-0036
-- **Business**: Just Do AI - Small Business AI Consulting
+- **Businesses**:
+  - V9N Consulting - Independent Technology Consulting
+  - Just Do AI - Small Business AI Consulting (specialized service)
 
-## 8. Recent Development History
+## 7. Recent Development History
 
-- ✅ Added comprehensive contact box with photo placeholder
-- ✅ Image optimization analysis and recommendations
-- ✅ Website styling improvements
-- ✅ Deployment pipeline setup
-- ✅ Business card printing system development
+- ✅ **Oct 2024**: Restructured into parent/sub-site architecture
+  - Created V9N Consulting as parent site (light theme, broad tech consulting)
+  - Moved Just Do AI to `/just-do-ai/` subdirectory (dark theme, AI-focused)
+  - Established clear brand hierarchy and service differentiation
+- ✅ **Sep 2024**: Just Do AI initial development
+  - Comprehensive contact box with photo placeholder
+  - Image optimization and selection
+  - Business card printing system
+  - Dark theme styling
+  - Problem/solution narrative flow
 
-## 9. Technical Architecture
+## 8. Technical Architecture
 
 ### Frontend
-- **Main Site**: Pure HTML/CSS/JavaScript (no frameworks)
+- **V9N Consulting Site**: Pure HTML/CSS/JavaScript (no frameworks, light theme)
+- **Just Do AI Site**: Pure HTML/CSS/JavaScript (no frameworks, dark theme)
 - **Business Cards**: HTML/CSS print layouts
 - **QR Generator**: Client-side JavaScript application
 
 ### Backend
-- **Deployment**: Python webhook server
+- **Deployment**: Python webhook server (if configured)
 - **Processing**: PostScript/Ghostscript pipeline for PDF generation
-- **CI/CD**: GitHub Actions with webhook triggers
+- **CI/CD**: GitHub Actions with webhook triggers (if configured)
 
 ### File Organization
 ```
-just-do-ai/
-├── index.html                    # Main website
-├── business_card_printer.py      # PDF generation
-├── business_card_template.ps     # PostScript template  
-├── svg_to_ps.py                 # SVG converter
-├── business-cards.html          # Card layout templates
-├── qr-generator.html            # QR code tool
-├── webhook-server.py            # Deployment server
-├── images/                      # Web assets
-├── input-images/                # Source photos
-├── .github/workflows/           # CI/CD
-└── *.svg                       # Design examples
+just-do-ai/                       # Repository root
+├── index.html                    # V9N Consulting (parent site)
+├── images/                       # V9N Consulting images (placeholder)
+├── just-do-ai/                   # Just Do AI sub-site
+│   ├── index.html                # Just Do AI main page
+│   ├── images/                   # Just Do AI website images
+│   │   ├── sunset-0.5x-crop.jpg
+│   │   ├── trees-no-path.jpg
+│   │   └── path-through-woods.jpg
+│   ├── b-cards/                  # Business card printing system
+│   │   ├── business_card_printer.py
+│   │   ├── business_card_template.ps
+│   │   ├── svg_to_ps.py
+│   │   ├── example_front.svg
+│   │   ├── example_back.svg
+│   │   ├── business-cards.html
+│   │   ├── business_cardsv5.html
+│   │   ├── business_cards_front.html
+│   │   ├── business_cards_back.html
+│   │   └── qr-generator.html
+│   └── input-images/             # Source photos
+│       ├── IMG_*.jpg             # iPhone photos
+│       ├── convert_heic.py
+│       ├── convert_heic_portable.py
+│       └── heic_converter/       # Virtual environment
+├── .github/                      # Git configuration
+│   └── workflows/                # CI/CD (if exists)
+├── .claude/                      # Claude Code config
+├── CLAUDE.md                     # This knowledge base
+└── README-website.md             # Website documentation
 ```
+
+## 9. Brand Strategy & Positioning
+
+### V9N Consulting (Parent Brand)
+- **Target Audience**: Small businesses needing general technology guidance
+- **Positioning**: Independent consultant alternative to enterprise consulting firms
+- **Tone**: Professional, direct, no-nonsense
+- **Visual Identity**: Clean, light, minimalist, approachable
+- **Key Message**: "Technology strategies without enterprise complexity"
+
+### Just Do AI (Specialized Service)
+- **Target Audience**: Small businesses overwhelmed by AI hype
+- **Positioning**: Practical AI guide cutting through marketing noise
+- **Tone**: Empathetic, problem-solving, reassuring
+- **Visual Identity**: Modern, dark, high-tech, emotional storytelling
+- **Key Message**: "Navigate AI confidently with practical guidance"
+
+### Cross-Linking Strategy
+- V9N site links to Just Do AI for AI-specific needs
+- Both sites share same contact information
+- Consistent voice but different visual branding
+- Clear service differentiation while maintaining brand relationship
