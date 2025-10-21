@@ -245,10 +245,11 @@ just-do-ai/                       # Repository root
 ## 9. Brand Strategy & Positioning
 
 ### v9n consulting (Parent Brand)
+- **Brand Name Origin**: "v9n" is a numeronym for "van Staveren" (9 letters between 'v' and 'n'), similar to how i18n = internationalization or k8s = Kubernetes. The domain v9n.us has been owned for ~20 years and finally put to use for this consulting business.
 - **Target Audience**: Small businesses needing general technology guidance
 - **Positioning**: Independent consultant alternative to enterprise consulting firms
 - **Tone**: Professional, direct, no-nonsense
-- **Visual Identity**: Clean, light, minimalist, approachable
+- **Visual Identity**: Clean, light, minimalist, approachable, lowercase branding for modern aesthetic
 - **Key Message**: "Technology strategies without enterprise complexity"
 
 ### Just Do AI (Specialized Service)
