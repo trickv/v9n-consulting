@@ -2,6 +2,8 @@
 
 if [ "$USER" != "www-data" ]; then
     echo "must run this as www-data"
+    echo "current user: $USER (uid=$(id -u), gid=$(id -g))"
+    echo "whoami: $(whoami)"
     exit 42
 fi
 
