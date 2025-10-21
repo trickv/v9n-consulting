@@ -6,6 +6,8 @@ This repository uses a simple webhook-based deployment system that automatically
 
 ## Architecture
 
+The deployment system has three components:
+
 - **GitHub Actions** - Triggers on push to `main` branch
 - **Webhook CGI Script** - Receives deployment requests and executes pull script
 - **Pull Script** - Updates production files from git repository
