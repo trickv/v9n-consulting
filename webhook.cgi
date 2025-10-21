@@ -33,8 +33,15 @@ fi
 # Make sure pull script is executable
 chmod +x "$PULL_SCRIPT" 2>> "$LOG_FILE"
 
+# Change to deployment directory before running pull script
+cd "$(dirname "$PULL_SCRIPT")" || {
+    echo "ERROR: Failed to change to deployment directory"
+    log_message "ERROR: Failed to cd to $(dirname "$PULL_SCRIPT")"
+    exit 1
+}
+
 # Execute the pull script
-log_message "Executing pull script: $PULL_SCRIPT"
+log_message "Executing pull script: $PULL_SCRIPT from directory $(pwd)"
 OUTPUT=$("$PULL_SCRIPT" 2>&1)
 EXIT_CODE=$?
 
