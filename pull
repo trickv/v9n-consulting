@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ "$USER" != "trick" ]; then
+    echo "must run this as trick"
+    exit 42
+fi
+
+cd /var/www/v9n.us
+find . -type f -exec chmod a+r {} +
+find . -type d -exec chmod a+rx {} +
