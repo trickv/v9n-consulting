@@ -6,5 +6,6 @@ if [ "$USER" != "trick" ]; then
 fi
 
 cd /var/www/v9n.us
+git pull
 find . -type f -exec chmod a+r {} +
 find . -type d -exec chmod a+rx {} +
