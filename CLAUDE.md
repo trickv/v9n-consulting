@@ -1,12 +1,12 @@
 # Claude Code Knowledge Base
 
-This repository contains a multi-site consulting business structure with V9N Consulting as the parent company and Just Do AI as a specialized service offering.
+This repository contains a multi-site consulting business structure with v9n consulting as the parent company and Just Do AI as a specialized service offering.
 
 ## Site Architecture
 
 The repository hosts two related but distinct consulting sites:
 
-### Root Site: V9N Consulting (`/index.html`)
+### Root Site: v9n consulting (`/index.html`)
 **Parent Company** - Independent technology consulting for small businesses
 
 **Design**: Clean, professional light theme with subtle gradients
@@ -125,7 +125,7 @@ Web-based QR code generator with customization options.
 
 ## 3. Image Assets
 
-### V9N Consulting Images (`/images/`)
+### v9n consulting Images (`/images/`)
 - Currently uses placeholder visual in About section
 - Future: Professional consulting imagery
 
@@ -145,7 +145,7 @@ Web-based QR code generator with customization options.
 
 ### Deployment Path
 - Repository deploys to: `/var/www/html/just-do-ai`
-- V9N Consulting accessible at root (`/`)
+- v9n consulting accessible at root (`/`)
 - Just Do AI accessible at (`/just-do-ai/`)
 
 ### GitHub Actions Workflow
@@ -179,13 +179,13 @@ sudo apt install python3 ghostscript
 - **Email**: trick@vanstaveren.us (highlighted on both websites)
 - **Phone**: 312-469-0036
 - **Businesses**:
-  - V9N Consulting - Independent Technology Consulting
+  - v9n consulting - Independent Technology Consulting
   - Just Do AI - Small Business AI Consulting (specialized service)
 
 ## 7. Recent Development History
 
 - ✅ **Oct 2024**: Restructured into parent/sub-site architecture
-  - Created V9N Consulting as parent site (light theme, broad tech consulting)
+  - Created v9n consulting as parent site (light theme, broad tech consulting)
   - Moved Just Do AI to `/just-do-ai/` subdirectory (dark theme, AI-focused)
   - Established clear brand hierarchy and service differentiation
 - ✅ **Sep 2024**: Just Do AI initial development
@@ -198,7 +198,7 @@ sudo apt install python3 ghostscript
 ## 8. Technical Architecture
 
 ### Frontend
-- **V9N Consulting Site**: Pure HTML/CSS/JavaScript (no frameworks, light theme)
+- **v9n consulting Site**: Pure HTML/CSS/JavaScript (no frameworks, light theme)
 - **Just Do AI Site**: Pure HTML/CSS/JavaScript (no frameworks, dark theme)
 - **Business Cards**: HTML/CSS print layouts
 - **QR Generator**: Client-side JavaScript application
@@ -211,8 +211,8 @@ sudo apt install python3 ghostscript
 ### File Organization
 ```
 just-do-ai/                       # Repository root
-├── index.html                    # V9N Consulting (parent site)
-├── images/                       # V9N Consulting images (placeholder)
+├── index.html                    # v9n consulting (parent site)
+├── images/                       # v9n consulting images (placeholder)
 ├── just-do-ai/                   # Just Do AI sub-site
 │   ├── index.html                # Just Do AI main page
 │   ├── images/                   # Just Do AI website images
@@ -244,7 +244,7 @@ just-do-ai/                       # Repository root
 
 ## 9. Brand Strategy & Positioning
 
-### V9N Consulting (Parent Brand)
+### v9n consulting (Parent Brand)
 - **Target Audience**: Small businesses needing general technology guidance
 - **Positioning**: Independent consultant alternative to enterprise consulting firms
 - **Tone**: Professional, direct, no-nonsense
