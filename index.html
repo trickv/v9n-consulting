@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just Do AI - Small Business AI Consulting</title>
-    <meta name="description" content="Expert AI consulting for small businesses. From ChatGPT training to Microsoft Copilot evaluation and GEO strategy - we make AI work for your business.">
+    <title>V9N Consulting - Technology & AI Strategy for Small Business</title>
+    <meta name="description" content="V9N Consulting provides expert technology strategy, AI consulting, and digital transformation services for small businesses.">
     <style>
         * {
             margin: 0;
@@ -74,17 +74,17 @@
             align-items: center;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
             position: relative;
+            padding-top: 80px;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
+        .hero-content h1 {
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
@@ -93,11 +93,18 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-text .subtitle {
-            font-size: 1.3rem;
+        .hero-content .subtitle {
+            font-size: 1.5rem;
             color: #888;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             font-weight: 300;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
@@ -119,37 +126,18 @@
             transform: translateY(-2px);
         }
 
-        .hero-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            border: 1px solid #333;
-            overflow: hidden;
+        .cta-button.secondary {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #444;
         }
 
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
+        .cta-button.secondary:hover {
+            border-color: #ffffff;
         }
 
-        .hero-image:hover {
-            transform: scale(1.02);
-        }
-
-        .placeholder-text {
-            color: #666;
-            font-size: 1.1rem;
-            text-align: center;
-        }
-
-        /* Services Section */
-        .services {
+        /* Services Overview */
+        .services-overview {
             padding: 6rem 0;
             background: #111;
         }
@@ -158,8 +146,18 @@
             text-align: center;
             font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             color: #ffffff;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .services-grid {
@@ -204,22 +202,30 @@
         .service-card p {
             color: #b8b8b8;
             line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
-        /* Problem Sections */
-        .problem-lost, .problem-solution {
+        .service-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 1rem;
+        }
+
+        /* About Section */
+        .about {
             padding: 6rem 0;
-        }
-
-        .problem-lost {
             background: #0a0a0a;
         }
 
-        .problem-solution {
-            background: #111;
-        }
-
-        .problem-content-split {
+        .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
@@ -228,44 +234,33 @@
             margin: 0 auto;
         }
 
-        .problem-text h2 {
+        .about-text h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: #ffffff;
         }
 
-        .problem-text p {
-            font-size: 1.2rem;
+        .about-text p {
+            font-size: 1.1rem;
             color: #888;
-            margin-bottom: 2rem;
-            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
         }
 
-        .problem-image {
+        .about-visual {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 350px;
-        }
-
-        .section-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 12px;
             border: 1px solid #333;
-            transition: transform 0.3s ease;
         }
 
-        .section-image:hover {
-            transform: scale(1.02);
-        }
-
-        /* Contact Box */
+        /* Contact Section */
         .contact-section {
-            background: #000;
-            padding: 4rem 0;
-            border-top: 1px solid #222;
+            background: #111;
+            padding: 6rem 0;
         }
 
         .contact-box {
@@ -296,6 +291,12 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-title {
+            font-size: 1.1rem;
+            color: #888;
             margin-bottom: 2rem;
         }
 
@@ -365,36 +366,30 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero {
-                padding-top: 80px; /* Add space for fixed header */
-            }
-
-            .hero-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
+            .hero-content h1 {
                 font-size: 2.5rem;
-                margin-top: 2rem; /* Extra spacing from header */
             }
 
-            .problem-content-split {
+            .hero-content .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
             }
 
-            .problem-text h2 {
+            .about-text h2 {
                 font-size: 2rem;
                 text-align: center;
             }
 
-            .problem-text p {
+            .about-text p {
                 text-align: center;
-            }
-
-            .problem-image {
-                height: 250px;
             }
 
             .nav-links {
@@ -409,33 +404,13 @@
                 margin: 0 20px;
                 padding: 2rem;
             }
-
-            .contact-photo-placeholder {
-                width: 100px;
-                height: 100px;
-                font-size: 2.5rem;
-            }
-
-            .contact-name {
-                font-size: 1.5rem;
-            }
-
-            .contact-item {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: center;
-            }
-
-            .contact-email {
-                font-size: 1.1rem;
-            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <a href="#" class="logo">Just Do AI</a>
+            <a href="/" class="logo">V9N Consulting</a>
             <ul class="nav-links">
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
@@ -447,87 +422,80 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Feeling Lost in the AI Revolution?</h1>
-                    <p class="subtitle">You're not alone. Most small business owners are drowning in AI hype without knowing what's actually worth their time and money.</p>
-                    <a href="#contact" class="cta-button">Get Straight Answers</a>
-                </div>
-                <div class="hero-visual">
-                    <img src="images/sunset-0.5x-crop.jpg" alt="Sunset landscape" class="hero-image" />
+                <h1>Technology Strategy for Small Business</h1>
+                <p class="subtitle">Clear-headed consulting on AI, technology, and digital transformation – without the enterprise complexity or consultant-speak.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-button">Get in Touch</a>
+                    <a href="#services" class="cta-button secondary">Explore Services</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="problem-lost">
+    <section class="services-overview" id="services">
         <div class="container">
-            <div class="problem-content-split">
-                <div class="problem-image left">
-                    <img src="images/trees-no-path.jpg" alt="Feeling lost in the woods of AI?" title="Feeling lost in the woods of AI?" class="section-image" />
-                </div>
-                <div class="problem-text right">
-                    <h2>Everyone's Talking About AI, But What Should YOU Actually Do?</h2>
-                    <p>Your competitors claim they're "AI-powered." Your employees are asking about ChatGPT. Tech salespeople are calling every week.</p>
-                    <p>It feels like everyone else has figured it out, but you're still searching for answers.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="problem-solution">
-        <div class="container">
-            <div class="problem-content-split">
-                <div class="problem-text left">
-                    <h2>Let Us Help You Find Your Way</h2>
-                    <p>Cut through the noise. Get practical advice on what's worth your investment and what's just expensive marketing fluff.</p>
-                    <p>We'll guide you step-by-step toward AI solutions that actually make sense for your business.</p>
-                </div>
-                <div class="problem-image right">
-                    <img src="images/path-through-woods.jpg" alt="Finding your path through AI complexity" title="We'll help you find your path through AI complexity" class="section-image" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <h2 class="section-title">How We Help Your Business</h2>
+            <h2 class="section-title">What We Do</h2>
+            <p class="section-subtitle">Practical consulting services to help your business leverage technology effectively</p>
             
             <div class="services-grid">
                 <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>AI Strategy & Implementation</h3>
+                    <p>Cut through the AI hype. Get practical advice on ChatGPT, Microsoft Copilot, and other AI tools that actually make sense for your business.</p>
+                    <a href="/just-do-ai/" class="service-link">Learn more →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Technology Consulting</h3>
+                    <p>Strategic guidance on software selection, system integration, and technology roadmaps tailored to small business realities.</p>
+                    <a href="#contact" class="service-link">Get started →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Digital Transformation</h3>
+                    <p>Modernize your operations without the enterprise overhead. Practical improvements that deliver real ROI.</p>
+                    <a href="#contact" class="service-link">Discover how →</a>
+                </div>
+
+                <div class="service-card">
                     <div class="service-icon">🎓</div>
-                    <h3>AI Training & Education</h3>
-                    <p>Get your team up to speed with ChatGPT, effective prompting techniques, and AI best practices. No technical jargon – just practical skills your employees can use immediately.</p>
+                    <h3>Team Training & Education</h3>
+                    <p>Upskill your team on modern tools and technologies. Hands-on training that your employees can apply immediately.</p>
+                    <a href="#contact" class="service-link">Build skills →</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Technology Evaluation</h3>
+                    <p>Honest assessments of vendors, tools, and platforms. No commissions, no conflicts – just straight answers.</p>
+                    <a href="#contact" class="service-link">Get evaluation →</a>
                 </div>
 
                 <div class="service-card">
                     <div class="service-icon">⚙️</div>
-                    <h3>Productivity Tool Evaluation</h3>
-                    <p>Microsoft Copilot, ChatGPT Pro, Claude Pro – which tools actually make sense for your business? We'll evaluate and recommend the right AI productivity stack for your needs.</p>
+                    <h3>Process Automation</h3>
+                    <p>Identify and automate repetitive tasks. Free up your team to focus on what actually matters.</p>
+                    <a href="#contact" class="service-link">Automate now →</a>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Marketing & Lead Generation Strategy</h3>
-                    <p>The shift from SEO to GEO (Generative Engine Optimization) is changing online marketing forever. Stay ahead with strategies that work in an AI-first world.</p>
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Consulting Built for Small Business</h2>
+                    <p>Most technology consulting is designed for Fortune 500 companies with unlimited budgets and dedicated IT departments. That's not you.</p>
+                    <p>V9N Consulting brings enterprise-level expertise to small business realities. We understand limited budgets, wearing multiple hats, and the need for solutions that work <em>right now</em>.</p>
+                    <p>No unnecessary complexity. No vendor lock-in. Just practical advice that helps your business move forward.</p>
                 </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🎯</div>
-                    <h3>Custom AI Strategy Development</h3>
-                    <p>Every business is unique. We'll work with you to identify specific AI opportunities in your industry and create a roadmap that fits your budget and goals.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Implementation Support</h3>
-                    <p>Ideas without execution are worthless. We'll help you implement AI solutions step-by-step, ensuring your team adopts new tools successfully.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🛡️</div>
-                    <h3>AI Risk Assessment</h3>
-                    <p>Navigate AI safely with proper data security, compliance considerations, and risk management strategies tailored to your business.</p>
+                <div class="about-visual">
+                    <div style="color: #666; font-size: 1.1rem; text-align: center; padding: 2rem;">
+                        [Visual placeholder - could be a photo, diagram, or infographic]
+                    </div>
                 </div>
             </div>
         </div>
@@ -535,12 +503,18 @@
 
     <section class="contact-section" id="contact">
         <div class="container">
+            <h2 class="section-title">Let's Talk</h2>
+            <p class="section-subtitle">Ready to make technology work better for your business?</p>
+            
             <div class="contact-box">
                 <div class="contact-photo-placeholder">
                     👤
                 </div>
                 <div class="contact-name">
                     Trick VanStaveren
+                </div>
+                <div class="contact-title">
+                    Principal Consultant
                 </div>
                 <div class="contact-details">
                     <div class="contact-item">
@@ -559,7 +533,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Just Do AI. All rights reserved.</p>
+                <p>&copy; 2025 V9N Consulting. All rights reserved.</p>
             </div>
         </div>
     </footer>

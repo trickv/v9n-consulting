@@ -1,0 +1,166 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 0 0 612 792
+%%Title: Business Card N-up Template
+%%Creator: Business Card Print System
+%%EndComments
+
+% Business card dimensions (3.5" x 2" = 252pt x 144pt at 72 DPI)
+/cardwidth 252 def
+/cardheight 144 def
+
+% Letter size paper (8.5" x 11" = 612pt x 792pt)
+/pagewidth 612 def
+/pageheight 792 def
+
+% Margins and spacing
+/margin 36 def  % 0.5 inch margin
+/spacing 18 def % 0.25 inch spacing between cards
+
+% Calculate how many cards fit (typically 2x5 = 10 cards)
+/cardsperrow pagewidth margin 2 mul sub cardwidth sub spacing add cardwidth spacing add div floor def
+/cardrows pageheight margin 2 mul sub cardheight sub spacing add cardheight spacing add div floor def
+/totalcards cardsperrow cardrows mul def
+
+% Crop mark settings
+/cropmarklen 12 def
+/cropmarkoffset 6 def
+
+% Draw crop marks around a card at given position
+/drawcropmarks {
+    /y exch def
+    /x exch def
+    
+    gsave
+    0.5 setlinewidth
+    0 setgray
+    
+    % Top-left corner
+    newpath
+    x cropmarkoffset sub y cardheight add cropmarkoffset add moveto
+    x cropmarklen sub y cardheight add cropmarkoffset add lineto
+    stroke
+    
+    newpath
+    x cropmarkoffset sub y cardheight add cropmarkoffset add moveto
+    x cropmarkoffset sub y cardheight add cropmarklen add lineto
+    stroke
+    
+    % Top-right corner
+    newpath
+    x cardwidth add cropmarkoffset add y cardheight add cropmarkoffset add moveto
+    x cardwidth add cropmarklen add y cardheight add cropmarkoffset add lineto
+    stroke
+    
+    newpath
+    x cardwidth add cropmarkoffset add y cardheight add cropmarkoffset add moveto
+    x cardwidth add cropmarkoffset add y cardheight add cropmarklen add lineto
+    stroke
+    
+    % Bottom-left corner
+    newpath
+    x cropmarkoffset sub y cropmarkoffset sub moveto
+    x cropmarklen sub y cropmarkoffset sub lineto
+    stroke
+    
+    newpath
+    x cropmarkoffset sub y cropmarkoffset sub moveto
+    x cropmarkoffset sub y cropmarklen sub lineto
+    stroke
+    
+    % Bottom-right corner
+    newpath
+    x cardwidth add cropmarkoffset add y cropmarkoffset sub moveto
+    x cardwidth add cropmarklen add y cropmarkoffset sub lineto
+    stroke
+    
+    newpath
+    x cardwidth add cropmarkoffset add y cropmarkoffset sub moveto
+    x cardwidth add cropmarkoffset add y cropmarklen sub lineto
+    stroke
+    
+    grestore
+} def
+
+% Place a card at given position (expects card content to be defined elsewhere)
+/placecard {
+    /y exch def
+    /x exch def
+    /cardtype exch def
+    
+    gsave
+    x y translate
+    
+    % Draw card outline (optional, for preview)
+    0.25 setlinewidth
+    0.7 setgray
+    newpath
+    0 0 moveto
+    cardwidth 0 lineto
+    cardwidth cardheight lineto
+    0 cardheight lineto
+    closepath
+    stroke
+    
+    % Execute the card content
+    cardtype (front) eq {
+        frontcard
+    } {
+        backcard
+    } ifelse
+    
+    grestore
+    
+    % Draw crop marks
+    x y drawcropmarks
+} def
+
+% Calculate starting positions to center the card grid
+/gridwidth cardsperrow cardwidth mul cardsperrow 1 sub spacing mul add def
+/gridheight cardrows cardheight mul cardrows 1 sub spacing mul add def
+/startx pagewidth gridwidth sub 2 div def
+/starty pageheight gridheight sub 2 div def
+
+% Main layout procedure
+/layoutcards {
+    /cardtype exch def
+    
+    0 1 cardrows 1 sub {
+        /row exch def
+        0 1 cardsperrow 1 sub {
+            /col exch def
+            
+            /x startx col cardwidth spacing add mul add def
+            /y starty row cardheight spacing add mul add def
+            
+            cardtype x y placecard
+        } for
+    } for
+} def
+
+% Placeholder card content procedures (to be overridden)
+/frontcard {
+    % Default front card content
+    /Helvetica-Bold findfont 12 scalefont setfont
+    0 setgray
+    cardwidth 2 div cardheight 2 div moveto
+    (FRONT) dup stringwidth pop 2 div neg 0 rmoveto show
+} def
+
+/backcard {
+    % Default back card content  
+    /Helvetica-Bold findfont 12 scalefont setfont
+    0 setgray
+    cardwidth 2 div cardheight 2 div moveto
+    (BACK) dup stringwidth pop 2 div neg 0 rmoveto show
+} def
+
+% Print information
+/printinfo {
+    /Helvetica findfont 8 scalefont setfont
+    0.3 setgray
+    margin 2 div margin 4 div moveto
+    (Cards per page: ) show totalcards 10 string cvs show
+    ( | Card size: 3.5" x 2" | ) show
+    (Grid: ) show cardsperrow 10 string cvs show
+    ( x ) show cardrows 10 string cvs show
+} def
