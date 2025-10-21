@@ -1,0 +1,31 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  deploy:
+    name: Trigger Deployment Webhook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call Webhook
+        run: |
+          curl -f -X POST \
+            -H "User-Agent: GitHub-Actions" \
+            -H "X-GitHub-Event: push" \
+            -H "X-GitHub-Delivery: ${{ github.run_id }}" \
+            https://vanstaveren.us/~trick/v9n-webhook/webhook.cgi
+
+      - name: Deployment Status
+        if: success()
+        run: echo "Deployment webhook triggered successfully"
+
+      - name: Deployment Failed
+        if: failure()
+        run: |
+          echo "Deployment webhook failed"
+          exit 1
