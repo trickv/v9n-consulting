@@ -93,6 +93,28 @@
             -webkit-text-fill-color: transparent;
         }
 
+        .hero-content h1:last-of-type {
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .byline {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .hero-content .byline a {
+            color: #1a1a1a;
+            text-decoration: none;
+            border-bottom: 2px solid rgba(26, 26, 26, 0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        .hero-content .byline a:hover {
+            border-color: #1a1a1a;
+        }
+
         .hero-content .subtitle {
             font-size: 1.5rem;
             color: #666;
@@ -321,6 +343,14 @@
             background: #ffffff;
             border-radius: 12px;
             border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
         /* Contact Section */
@@ -491,6 +521,7 @@
             <div class="hero-content">
                 <h1>Technology Strategies</h1>
                 <h1>for Small Business</h1>
+                <p class="byline">by <a href="https://trick.vanstaveren.us/" target="_blank" rel="noopener noreferrer">Patrick van Staveren</a></p>
                 <p class="subtitle">Independent consulting on AI, technology, and digital transformation – without the enterprise complexity or consultant-speak.</p>
                 <div class="cta-buttons">
                     <a href="#contact" class="cta-button">Get in Touch</a>
@@ -561,9 +592,7 @@
                     <p>No unnecessary complexity. No vendor lock-in. No team of junior consultants learning on your dime. Just direct advice from someone who's been building and implementing technology solutions for over two decades.</p>
                 </div>
                 <div class="about-visual">
-                    <div style="color: #999; font-size: 1.1rem; text-align: center; padding: 2rem;">
-                        [Visual placeholder - could be a photo, diagram, or infographic]
-                    </div>
+                    <img src="images/magnatiles-sunshine.png" alt="Magnatiles in sunshine" class="about-image" />
                 </div>
             </div>
         </div>
