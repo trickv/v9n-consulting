@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-if [ "$USER" != "trick" ]; then
-    echo "must run this as trick"
+if [ "$USER" != "www-data" ]; then
+    echo "must run this as www-data"
     exit 42
 fi
 
