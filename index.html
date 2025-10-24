@@ -168,101 +168,11 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content h1:last-of-type {
-            margin-bottom: 1rem;
-        }
-
-        .hero-content .byline {
-            font-size: 1.2rem;
-            color: #888;
-            margin-bottom: 2rem;
-            font-weight: 400;
-        }
-
-        .hero-content .byline a {
-            color: #1a1a1a;
-            text-decoration: none;
-            border-bottom: 2px solid rgba(26, 26, 26, 0.3);
-            transition: border-color 0.3s ease;
-        }
-
-        .hero-content .byline a:hover {
-            border-color: #1a1a1a;
-        }
-
-        .hero-content .subtitle {
-            font-size: 1.5rem;
-            color: #666;
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: #1a1a1a;
-            color: #ffffff;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            border: 2px solid #1a1a1a;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: #1a1a1a;
-            transform: translateY(-2px);
-        }
-
-        .cta-button.secondary {
-            background: transparent;
-            color: #1a1a1a;
-            border: 2px solid #d0d0d0;
-        }
-
-        .cta-button.secondary:hover {
-            border-color: #1a1a1a;
-        }
-
         /* Services Overview */
         .services-overview {
-            padding: 6rem 0;
+            padding: 8rem 0 6rem;
             background: #ffffff;
+            margin-top: 60px; /* Account for fixed header */
         }
 
         .section-title {
@@ -564,16 +474,9 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
+            .services-overview {
+                padding: 6rem 0 4rem;
+                margin-top: 70px;
             }
 
             .about-content {
@@ -666,21 +569,6 @@
             </ul>
         </nav>
     </header>
-
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Technology Strategies</h1>
-                <h1>for Small Business</h1>
-                <p class="byline">by <a href="https://trick.vanstaveren.us/" target="_blank" rel="noopener noreferrer">Patrick van Staveren</a></p>
-                <p class="subtitle">Independent consulting on AI, technology, and digital transformation – without the enterprise complexity or consultant-speak.</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button">Get in Touch</a>
-                    <a href="#services" class="cta-button secondary">Explore Services</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section class="services-overview" id="services">
         <div class="container">
