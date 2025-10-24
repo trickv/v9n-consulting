@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Preview Generator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .canvas {
+            width: 1200px;
+            height: 630px;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        /* V9N Consulting Preview */
+        #v9n-preview {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #v9n-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(26,26,26,0.03) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        #v9n-preview h1 {
+            font-size: 90px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        #v9n-preview .subtitle {
+            font-size: 36px;
+            color: #666;
+            margin: 0 0 40px 0;
+            text-align: center;
+            max-width: 900px;
+            font-weight: 300;
+        }
+
+        #v9n-preview .brand {
+            font-size: 32px;
+            color: #1a1a1a;
+            font-weight: 600;
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+        }
+
+        /* Just Do AI Preview */
+        #justdoai-preview {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #justdoai-preview::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        #justdoai-preview h1 {
+            font-size: 80px;
+            font-weight: 800;
+            margin: 0 0 30px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #b8b8b8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 1000px;
+        }
+
+        #justdoai-preview .subtitle {
+            font-size: 32px;
+            color: #888;
+            margin: 0 0 40px 0;
+            text-align: center;
+            max-width: 900px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        #justdoai-preview .brand {
+            font-size: 32px;
+            color: #ffffff;
+            font-weight: 700;
+            position: absolute;
+            bottom: 40px;
+            left: 60px;
+        }
+
+        .instructions {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .instructions h2 {
+            margin-top: 0;
+        }
+
+        .instructions code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="instructions">
+        <h2>Social Preview Image Generator</h2>
+        <p><strong>Instructions:</strong> Open this page in a browser and take screenshots of each preview below at exactly 1200x630px.</p>
+        <p><strong>Method 1 - Browser DevTools:</strong></p>
+        <ol>
+            <li>Right-click on each canvas → Inspect Element</li>
+            <li>In DevTools, right-click on the div with the canvas class → Capture node screenshot</li>
+            <li>Save as <code>v9n-social-preview.jpg</code> and <code>justdoai-social-preview.jpg</code></li>
+        </ol>
+        <p><strong>Method 2 - Screenshot Tool:</strong> Use a screenshot tool and crop to exactly 1200x630px</p>
+    </div>
+
+    <div id="v9n-preview" class="canvas">
+        <h1>Technology Strategies<br>for Small Business</h1>
+        <div class="subtitle">Independent consulting without the enterprise complexity</div>
+        <div class="brand">v9n consulting</div>
+    </div>
+
+    <div id="justdoai-preview" class="canvas">
+        <h1>Navigate the AI Revolution<br>with Confidence</h1>
+        <div class="subtitle">Practical AI guidance for small businesses cutting through the hype</div>
+        <div class="brand">Just Do AI</div>
+    </div>
+</body>
+</html>
