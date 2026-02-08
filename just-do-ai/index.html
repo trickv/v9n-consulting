@@ -458,13 +458,22 @@
         }
 
         .contact-phone {
-            color: #b8b8b8;
+            background: linear-gradient(135deg, #ffffff 0%, #e8e8e8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+            font-size: 1.3rem;
             text-decoration: none;
-            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
         .contact-phone:hover {
-            color: #ffffff;
+            border-color: #ffffff;
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -584,7 +593,7 @@
                 text-align: center;
             }
 
-            .contact-email {
+            .contact-email, .contact-phone {
                 font-size: 1.1rem;
             }
         }
@@ -712,7 +721,7 @@
                     </div>
                     <div class="contact-item">
                         <span class="contact-icon">📞</span>
-                        <a href="tel:+18157149105" class="contact-phone">(815) 714-9105</a>
+                        <a href="tel:+18157149105" class="contact-email">(815) 714-9105</a>
                     </div>
                 </div>
             </div>
