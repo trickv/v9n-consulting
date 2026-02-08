@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-WXEF9TG8WK');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Engineer Bootcamp - Just Do AI</title>
+    <meta name="description" content="Intensive AI Engineering bootcamp for software teams. Hands-on training with Claude Code, AI-first workflows, and team-wide skill leveling.">
+    <meta name="author" content="Patrick van Staveren">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background-color: #0a0a0a;
+            color: #e8e8e8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header - matching main site */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #b8b8b8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 2px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        /* Particle Canvas */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Hero */
+        .bootcamp-hero {
+            padding: 10rem 0 6rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .bootcamp-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #4a9eff 0%, #a855f7 50%, #ec4899 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bootcamp-hero .subtitle {
+            font-size: 1.4rem;
+            color: #b8b8b8;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .bootcamp-hero .tagline {
+            font-size: 1.1rem;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            padding: 4rem 0;
+        }
+
+        .timeline-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .timeline-section .section-subtitle {
+            color: #888;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(74, 158, 255, 0.3);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.55rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #4a9eff;
+            box-shadow: 0 0 10px rgba(74, 158, 255, 0.5);
+        }
+
+        .timeline-item .date {
+            font-size: 0.85rem;
+            color: #4a9eff;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-item .event {
+            font-size: 1.1rem;
+            color: #e8e8e8;
+            margin-top: 0.25rem;
+        }
+
+        .timeline-item.highlight::before {
+            background: #a855f7;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+            width: 16px;
+            height: 16px;
+            left: -2.65rem;
+        }
+
+        .timeline-item.highlight .event {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Why Now section */
+        .why-now {
+            padding: 4rem 0;
+        }
+
+        .why-now h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #fff;
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .challenge-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(74, 158, 255, 0.3);
+        }
+
+        .challenge-card .icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-card h3 {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 0.75rem;
+        }
+
+        .challenge-card p {
+            color: #b8b8b8;
+            line-height: 1.7;
+        }
+
+        /* Outcomes */
+        .outcomes-section {
+            padding: 4rem 0;
+        }
+
+        .outcomes-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: #fff;
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .outcomes-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(74, 158, 255, 0.3);
+        }
+
+        .outcomes-column h3.team {
+            color: #4a9eff;
+        }
+
+        .outcomes-column h3.exec {
+            color: #a855f7;
+        }
+
+        .outcomes-list {
+            list-style: none;
+        }
+
+        .outcomes-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #b8b8b8;
+            line-height: 1.7;
+        }
+
+        .outcomes-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #4a9eff;
+            font-weight: bold;
+        }
+
+        .exec .outcomes-list li::before {
+            color: #a855f7;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .cta-section p {
+            color: #888;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #4a9eff, #a855f7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74, 158, 255, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #888;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 10, 10, 0.98);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .bootcamp-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .bootcamp-hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .challenge-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">Just Do AI</a>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">v9n consulting</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="https://www.linkedin.com/in/patrick-van-staveren/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                <li><a href="https://trick.vanstaveren.us/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="bootcamp-hero">
+        <div class="container">
+            <h1>⌨️ AI Engineer Bootcamp</h1>
+            <p class="subtitle">
+                Immerse your engineering team in the new way of building software.
+                Level set across your organization and embrace the change AI has brought to writing code.
+            </p>
+            <p class="tagline">AI Engineering is here to stay.</p>
+        </div>
+    </section>
+
+    <section class="timeline-section">
+        <div class="container">
+            <h2>Why Now?</h2>
+            <p class="section-subtitle">The shift happened fast. Here's the timeline:</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="date">February 2025</span>
+                    <p class="event">The term <strong>"vibe coding"</strong> is coined</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="date">May 2025</span>
+                    <p class="event"><strong>Claude Code</strong> and <strong>OpenAI Codex</strong> first released</p>
+                </div>
+                <div class="timeline-item highlight">
+                    <span class="date">November 2025</span>
+                    <p class="event">Opus 4.5 released — this is when everything changed</p>
+                </div>
+                <div class="timeline-item highlight">
+                    <span class="date">Now</span>
+                    <p class="event">AI Engineering is a core competency, not a nice-to-have</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-now">
+        <div class="container">
+            <h2>The Challenge</h2>
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <div class="icon">🔄</div>
+                    <h3>A Layer of Abstraction</h3>
+                    <p>AI isn't code completion anymore or cute code editor plugins. It's a layer of abstraction — huge leverage for the Engineer who embraces it.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="icon">⚠️</div>
+                    <h3>Existential Risk</h3>
+                    <p>An existential threat to a business which isn't making AI engineering a core competency. Your competitors are already investing in this.</p>
+                </div>
+                <div class="challenge-card">
+                    <div class="icon">🤔</div>
+                    <h3>Change Is Hard</h3>
+                    <p>Software Engineers are split on whether these tools are good for software craftsmanship and need guidance. Teams and working processes need to reshape around this technology.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="outcomes-section">
+        <div class="container">
+            <h2>Outcomes</h2>
+            <div class="outcomes-grid">
+                <div class="outcomes-column">
+                    <h3 class="team">👩‍💻 Your Team Will</h3>
+                    <ul class="outcomes-list">
+                        <li>Get hands-on exposure to AI Engineering tools (we recommend Claude Code)</li>
+                        <li>Focus for a dedicated period on new ways of working</li>
+                        <li>Level set across the team — everyone on the same page</li>
+                        <li>Build muscle memory with AI-first development workflows</li>
+                        <li>Understand when AI helps and when it gets in the way</li>
+                    </ul>
+                </div>
+                <div class="outcomes-column exec">
+                    <h3 class="exec">📊 Executive Outcomes</h3>
+                    <ul class="outcomes-list">
+                        <li>A grade on how ready your Engineering teams are for the change we are in</li>
+                        <li>Red flags report on major risks and challenges</li>
+                        <li>Clear roadmap for continued AI adoption</li>
+                        <li>Measurable before/after on team velocity and confidence</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to level up your team?</h2>
+            <p>Let's talk about what a bootcamp looks like for your organization.</p>
+            <a href="index.html#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <script>document.write(new Date().getFullYear())</script> <a href="/">Patrick van Staveren</a>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Interactive Particle Network Background
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height, particles, mouse;
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            mouse = { x: width / 2, y: height / 2 };
+
+            const numParticles = Math.floor((width * height) / 12000);
+            particles = [];
+
+            for (let i = 0; i < numParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 1.5 + 0.5,
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw gradient background
+            const grad = ctx.createRadialGradient(
+                mouse.x, mouse.y, 0,
+                mouse.x, mouse.y, 400
+            );
+            grad.addColorStop(0, 'rgba(74, 158, 255, 0.03)');
+            grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, width, height);
+
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
+                // Move
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // Bounce off edges
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                // Draw particle
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(74, 158, 255, 0.4)';
+                ctx.fill();
+
+                // Connect nearby particles
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dx = p.x - p2.x;
+                    const dy = p.y - p2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(74, 158, 255, ${0.15 * (1 - dist / 120)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+
+                // Connect to mouse
+                const mx = p.x - mouse.x;
+                const my = p.y - mouse.y;
+                const mouseDist = Math.sqrt(mx * mx + my * my);
+
+                if (mouseDist < 200) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.strokeStyle = `rgba(168, 85, 247, ${0.3 * (1 - mouseDist / 200)})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+
+                    // Subtle attraction to mouse
+                    p.vx += (mouse.x - p.x) * 0.00005;
+                    p.vy += (mouse.y - p.y) * 0.00005;
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
