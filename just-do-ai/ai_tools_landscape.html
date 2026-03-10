@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding Tools Landscape</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0f0f13; color: #e8e4df; min-height: 100vh; padding: 48px 40px; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; color: #fff; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #8a8680; font-weight: 400; }
+  .landscape { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .category { border-radius: 16px; padding: 28px; position: relative; overflow: hidden; }
+  .category::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0; }
+
+  .cat-generators { background: linear-gradient(135deg, #1a1520 0%, #161220 100%); border: 1px solid #2d2338; grid-column: 1; grid-row: 1 / 4; }
+  .cat-generators::before { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+  .cat-generators .cat-label { color: #c084fc; }
+  .cat-generators .tool-card { border-color: #2d2338; background: #1f1828; }
+  .cat-generators .tool-card:hover { border-color: #7c3aed; background: #251e30; }
+  .cat-generators .more-box { border-color: #2d2338; }
+
+  .cat-ide { background: linear-gradient(135deg, #141a20 0%, #121820 100%); border: 1px solid #1e2d38; grid-column: 2; grid-row: 1; }
+  .cat-ide::before { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+  .cat-ide .cat-label { color: #60a5fa; }
+  .cat-ide .tool-card { border-color: #1e2d38; background: #182028; }
+  .cat-ide .tool-card:hover { border-color: #2563eb; background: #1c2630; }
+
+  .cat-terminal { background: linear-gradient(135deg, #141f1a 0%, #121a16 100%); border: 1px solid #1e382d; grid-column: 2; grid-row: 2 / 4; }
+  .cat-terminal::before { background: linear-gradient(90deg, #22c55e, #16a34a); }
+  .cat-terminal .cat-label { color: #4ade80; }
+  .cat-terminal .tool-card { border-color: #1e382d; background: #182820; }
+  .cat-terminal .tool-card:hover { border-color: #16a34a; background: #1c3028; }
+  .cat-terminal .more-box { border-color: #1e382d; }
+
+  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 4; }
+  .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
+  .cat-always-on .cat-label { color: #f9a8d4; }
+  .cat-always-on .tool-card { border-color: #38232d; background: #201420; }
+  .cat-always-on .tool-card:hover { border-color: #db2777; background: #281a28; }
+  .cat-always-on .tools-grid { grid-template-columns: 1fr 1fr 1fr; }
+
+  .infra-sub { margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); }
+  .infra-sub-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 6px; }
+  .infra-sub-desc { font-size: 12px; color: #7a7570; line-height: 1.55; }
+  .infra-sub-desc strong { color: #9a9590; font-weight: 600; }
+
+  .cat-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .cat-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .cat-tagline { font-size: 13px; color: #8a8680; font-style: italic; margin-bottom: 20px; }
+  .cat-audience { font-size: 12px; color: #6b6560; margin-bottom: 16px; padding: 8px 12px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; }
+  .cat-audience strong { color: #a09890; font-weight: 500; }
+  .tools-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .tool-card { border: 1px solid; border-radius: 10px; padding: 14px 16px; transition: all 0.2s ease; cursor: default; position: relative; }
+  .tool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .tool-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .tool-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
+  .tool-desc { font-size: 12.5px; color: #9a9590; line-height: 1.5; }
+  .tool-highlight { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }
+  .tool-star { position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }
+  .tool-star.gray { color: #6b6560; }
+  .tool-star.gold { color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4)); }
+  .more-box { border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; }
+  .more-box strong { color: #8a8680; font-weight: 500; }
+  .bootcamp-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #b0a8a0; }
+  .bootcamp-badge.primary { background: rgba(139, 30, 30, 0.3); color: #f0a0a0; border: 1px solid rgba(139, 30, 30, 0.5); }
+  .footer-note { text-align: center; margin-top: 36px; font-size: 12px; color: #5a5550; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .star-legend { display: flex; justify-content: center; gap: 24px; margin-top: 14px; font-size: 12px; color: #6b6560; }
+  .star-legend span { display: flex; align-items: center; gap: 5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>AI Coding Tools Landscape</h1>
+  <div class="subtitle">Coding with AI Bootcamp — Session 1 Reference · updated 9 March 2026</div>
+</div>
+
+<div class="landscape">
+
+  <!-- APP GENERATORS -->
+  <div class="category cat-generators">
+    <div class="cat-label">App Generators</div>
+    <div class="cat-title">Prompt → App</div>
+    <div class="cat-tagline">"Describe it, get a working app"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Rapid prototypes, MVPs, non-technical builders, PM demos</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gray">★</span>
+        <div class="tool-header">
+          <span class="tool-name">Lovable</span>
+          <span class="tool-type">browser</span>
+        </div>
+        <div class="tool-desc">Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy.</div>
+        <div class="tool-highlight">~$20/mo · Credit-based · GitHub sync</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Google AI Studio</span>
+          <span class="tool-type">browser</span>
+        </div>
+        <div class="tool-desc">Free Gemini 3 access. "Build" mode for vibe coding apps. Firebase Studio for full-stack deployment. Best for AI-powered prototypes.</div>
+        <div class="tool-highlight">Free tier · Google ecosystem · Less mature as app builder</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Bolt</span>
+          <span class="tool-type">browser</span>
+        </div>
+        <div class="tool-desc">By StackBlitz. Full Node.js in-browser via WebContainers. React/Vite output. Multiple AI model support.</div>
+        <div class="tool-highlight">Token-based · Netlify/Vercel deploy · Open source</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Replit</span>
+          <span class="tool-type">browser IDE</span>
+        </div>
+        <div class="tool-desc">Cloud IDE + Agent 3. Most autonomous — runs 200 min unattended, self-tests, auto-debugs. 50+ languages. Mobile app support.</div>
+        <div class="tool-highlight">Checkpoint pricing · Built-in DB & auth · Also a full IDE</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> v0, Base44, Create.xyz, Hostinger Horizons …
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">Common infrastructure defaults</div>
+        <div class="infra-sub-desc"><strong>Supabase</strong> (Postgres DB, auth, storage) and <strong>Vercel</strong> (frontend deploy) show up as defaults in most app generators — but they're not AI-specific. Netlify, Cloudflare Pages, Fly.io, Firebase, or whatever you already use works just as well.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IDE AGENTS -->
+  <div class="category cat-ide">
+    <div class="cat-label">AI-Native Editors</div>
+    <div class="cat-title">IDE + Agent</div>
+    <div class="cat-tagline">"Tab autocomplete AI — and growing to be more agentic"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Day-to-day dev work, refactoring, feature builds, code review</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Cursor</span>
+          <span class="tool-type">desktop IDE</span>
+        </div>
+        <div class="tool-desc">VS Code fork rebuilt around AI. Indexes entire repos. Composer for multi-file edits. Background agents on branches. Multi-model.</div>
+        <div class="tool-highlight">~$20/mo Pro · Also in JetBrains via ACP</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">GitHub Copilot</span>
+          <span class="tool-type">IDE plugin</span>
+        </div>
+        <div class="tool-desc">Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. MCP + multi-model support.</div>
+        <div class="tool-highlight">VS Code, JetBrains, Visual Studio, Xcode · Plan/Agent/Edit modes</div>
+      </div>
+      <div class="more-box" style="border-color: #1e2d38;">
+        <strong>And many more:</strong> Windsurf, JetBrains AI, Zed AI, Trae …
+      </div>
+    </div>
+  </div>
+
+  <!-- TERMINAL AGENTS -->
+  <div class="category cat-terminal">
+    <div class="bootcamp-badge primary">Bootcamp Focus</div>
+    <div class="cat-label">Agentic Coding Tool</div>
+    <div class="cat-title">CLI + Agent</div>
+    <div class="cat-tagline">"Agentic-first experience"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Production codebases, deep refactoring, experienced engineers</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <span class="tool-name">Claude Code</span>
+          <span class="tool-type">CLI + App</span>
+        </div>
+        <div class="tool-desc">Anthropic's terminal agent. Deep codebase understanding via large context. Sandboxed execution. Git-aware. MCP extensible. Transparent operation.</div>
+        <div class="tool-highlight">Claude Sonnet/Opus · Configurable approval modes · Local-first</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Codex</span>
+          <span class="tool-type">CLI + App</span>
+        </div>
+        <div class="tool-desc">OpenAI's agent. Open-source, Rust-built. Multi-agent workflows (fork sub-tasks). Skills system. Cloud mode for async work. Desktop app + CLI + IDE.</div>
+        <div class="tool-highlight">GPT-5.x · Web search built in · Plugin/MCP ecosystem</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Gemini CLI</span>
+          <span class="tool-type">CLI</span>
+        </div>
+        <div class="tool-desc">Google's terminal agent. ReAct loop with built-in tools. Strong on frontend/UI tasks. Multimodal input support. Generous free tier.</div>
+        <div class="tool-highlight">Gemini models · Free tier · Open source</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> Qwen Code, OpenCode, Aider, Kilo Code …
+      </div>
+    </div>
+  </div>
+
+  <!-- ALWAYS-ON AGENTS -->
+  <div class="category cat-always-on">
+    <div class="cat-label">Always-On Agents</div>
+    <div class="cat-title">Personal AI That Runs 24/7</div>
+    <div class="cat-tagline">"AI that works while you sleep — scheduling, automating, and acting on your behalf"</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">OpenClaw</span>
+          <span class="tool-type">self-hosted</span>
+        </div>
+        <div class="tool-desc">Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord. Heartbeat scheduler, persistent memory, self-installing skills.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Dreamer</span>
+          <span class="tool-type">platform</span>
+        </div>
+        <div class="tool-desc">Agent platform by ex-Stripe CTO & Hugo Barra ($50M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Anthropic partnership.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Nanobot</span>
+          <span class="tool-type">self-hosted</span>
+        </div>
+        <div class="tool-desc">Lightweight OpenClaw alternative (~4K lines Python). 8+ messaging platforms. Broader Asia-Pacific model support. Auditable and minimal.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">
+  These categories aren't walls — tools are converging fast. The best AI-assisted developers reach for different tools at different moments.<br>
+  This bootcamp focuses on <strong style="color:#f0a0a0;">Claude Code</strong> because understanding the terminal agent paradigm gives you the deepest foundation. Everything else is a layer of abstraction on top.
+</div>
+<div class="star-legend">
+  <span><span style="color:#fbbf24; font-size:16px; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4));">★</span> Bootcamp primary tool</span>
+  <span><span style="color:#6b6560; font-size:16px;">★</span> Covered in bootcamp</span>
+</div>
+<div style="text-align:center; margin-top:24px; font-size:11px; color:#3a3530;">© 2026 <a href="https://v9n.us/" style="color:#5a5550; text-decoration:none; border-bottom:1px solid #3a3530;">V9N Consulting</a></div>
+
+</body>
+</html>
