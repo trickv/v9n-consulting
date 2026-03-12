@@ -167,9 +167,37 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
+        /* Intro */
+        .intro {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .intro-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #e0e0e0;
+            flex-shrink: 0;
+        }
+
+        .intro-text {
+            font-size: 1.15rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .intro-text strong {
+            color: #1a1a1a;
+        }
+
         /* Services Overview */
         .services-overview {
-            padding: 8rem 0 6rem;
+            padding: 0 0 6rem;
             background: #ffffff;
             margin-top: 60px; /* Account for fixed header */
         }
@@ -487,6 +515,11 @@
                 margin-top: 70px;
             }
 
+            .intro {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
                 gap: 3rem;
@@ -580,10 +613,16 @@
 
     <section class="services-overview" id="services">
         <div class="container">
+            <div class="intro">
+                <img src="images/contact-photo.jpg" alt="Patrick van Staveren" class="intro-photo">
+                <div class="intro-text">
+                    I'm <strong>Patrick van Staveren</strong> — an independent technology consultant helping businesses navigate AI, infrastructure, and digital transformation.
+                </div>
+            </div>
+
             <h2 class="section-title">How I Can Help</h2>
             <p class="section-subtitle">Strategic consulting and hands-on implementation to help your business leverage technology effectively</p>
 
-            <h3 class="services-category">Strategic Services</h3>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
