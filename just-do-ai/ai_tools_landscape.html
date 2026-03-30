@@ -35,7 +35,14 @@
   .cat-terminal .tool-card:hover { border-color: #16a34a; background: #1c3028; }
   .cat-terminal .more-box { border-color: #1e382d; }
 
-  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 4; }
+  .cat-review { background: linear-gradient(135deg, #1a1710 0%, #1a1508 100%); border: 1px solid #38301e; grid-column: 1 / 3; grid-row: 4; }
+  .cat-review::before { background: linear-gradient(90deg, #f59e0b, #d97706); }
+  .cat-review .cat-label { color: #fbbf24; }
+  .cat-review .tool-card { border-color: #38301e; background: #201c10; }
+  .cat-review .tool-card:hover { border-color: #d97706; background: #282010; }
+  .cat-review .tools-grid { grid-template-columns: 1fr 1fr 1fr; }
+
+  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 5; }
   .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
   .cat-always-on .cat-label { color: #f9a8d4; }
   .cat-always-on .tool-card { border-color: #38232d; background: #201420; }
@@ -75,7 +82,7 @@
 
 <div class="header">
   <h1>AI Coding Tools Landscape</h1>
-  <div class="subtitle">Coding with AI Bootcamp — Session 1 Reference · updated 9 March 2026</div>
+  <div class="subtitle">Coding with AI Bootcamp — Session 1 Reference · updated 30 March 2026</div>
 </div>
 
 <div class="landscape">
@@ -194,6 +201,40 @@
       </div>
       <div class="more-box">
         <strong>And many more:</strong> Qwen Code, OpenCode, Aider, Kilo Code …
+      </div>
+    </div>
+  </div>
+
+  <!-- AI CODE REVIEW -->
+  <div class="category cat-review">
+    <div class="cat-label">AI Code Review</div>
+    <div class="cat-title">Automated PR Review</div>
+    <div class="cat-tagline">"AI reviewers that catch bugs before your teammates do"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Teams wanting faster, more consistent code review and fewer bugs in production</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Claude Code Review</span>
+          <span class="tool-type">GitHub app</span>
+        </div>
+        <div class="tool-desc">Anthropic's code review agent. Runs on GitHub PRs via @claude mention or auto-assignment. Deep understanding of codebase context. Inline comments with suggested fixes.</div>
+        <div class="tool-highlight">Free during beta · GitHub integration · Claude models</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">GitHub Copilot Code Review</span>
+          <span class="tool-type">GitHub built-in</span>
+        </div>
+        <div class="tool-desc">Native GitHub PR reviewer. Request review from "Copilot" like any teammate. Inline suggestions you can commit directly. Custom coding guidelines support.</div>
+        <div class="tool-highlight">Included with Copilot sub · Deepest GitHub integration</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Cubic</span>
+          <span class="tool-type">GitHub app</span>
+        </div>
+        <div class="tool-desc">AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans.</div>
+        <div class="tool-highlight">Free for open source · From $30/mo for teams · SOC 2 compliant</div>
       </div>
     </div>
   </div>
