@@ -206,7 +206,7 @@ def build(data: dict) -> str:
 
 <div class="header">
   <h1>{h(data["title"])}</h1>
-  <div class="subtitle">{h(data["subtitle"])} · updated {today}</div>
+  <div class="subtitle">{h(data["subtitle"])} · updated {today} · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
 </div>
 
 <div class="landscape">
