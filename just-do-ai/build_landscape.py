@@ -23,7 +23,10 @@ def render_tool_card(tool: dict, cat_colors: dict) -> str:
     if star := tool.get("star"):
         lines.append(f'        <span class="tool-star {star}">★</span>')
     lines.append('        <div class="tool-header">')
-    lines.append(f'          <span class="tool-name">{h(tool["name"])}</span>')
+    if url := tool.get("url"):
+        lines.append(f'          <a class="tool-name" href="{h(url)}">{h(tool["name"])}</a>')
+    else:
+        lines.append(f'          <span class="tool-name">{h(tool["name"])}</span>')
     lines.append(f'          <span class="tool-type">{h(tool["type"])}</span>')
     lines.append('        </div>')
     lines.append(f'        <div class="tool-desc">{tool["desc"]}</div>')
@@ -34,9 +37,16 @@ def render_tool_card(tool: dict, cat_colors: dict) -> str:
 
 
 def render_more_box(more: list, border_color: str, more_urls: dict | None = None) -> str:
+    urls = more_urls or {}
+    parts = []
+    for t in more:
+        if url := urls.get(t):
+            parts.append(f'<a class="more-link" href="{h(url)}">{h(t)}</a>')
+        else:
+            parts.append(h(t))
     return f"""\
       <div class="more-box">
-        <strong>And many more:</strong> {", ".join(h(t) for t in more)} …
+        <strong>And many more:</strong> {", ".join(parts)} …
       </div>"""
 
 
@@ -160,7 +170,7 @@ def build(data: dict) -> str:
 
 {category_css}
 
-  .infra-sub {{ margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); }}
+  .infra-sub {{ margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); grid-column: 1 / -1; }}
   .infra-sub-label {{ font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 6px; }}
   .infra-sub-desc {{ font-size: 12px; color: #7a7570; line-height: 1.55; }}
   .infra-sub-desc strong {{ color: #9a9590; font-weight: 600; }}
@@ -173,14 +183,17 @@ def build(data: dict) -> str:
   .tools-grid {{ display: grid; grid-template-columns: 1fr; gap: 10px; }}
   .tool-card {{ border: 1px solid; border-radius: 10px; padding: 14px 16px; transition: all 0.2s ease; cursor: default; position: relative; }}
   .tool-header {{ display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }}
-  .tool-name {{ font-size: 15px; font-weight: 700; color: #fff; }}
+  .tool-name {{ font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; }}
+  a.tool-name:hover {{ color: #fff; }}
+  .more-link {{ color: inherit; text-decoration: none; }}
+  .more-link:hover {{ color: inherit; }}
   .tool-type {{ font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }}
   .tool-desc {{ font-size: 12.5px; color: #9a9590; line-height: 1.5; }}
   .tool-highlight {{ font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }}
   .tool-star {{ position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }}
   .tool-star.gray {{ color: #6b6560; }}
   .tool-star.gold {{ color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4)); }}
-  .more-box {{ border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; }}
+  .more-box {{ border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; grid-column: 1 / -1; }}
   .more-box strong {{ color: #8a8680; font-weight: 500; }}
   .bootcamp-badge {{ position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #b0a8a0; }}
   .bootcamp-badge.primary {{ background: rgba(139, 30, 30, 0.3); color: #f0a0a0; border: 1px solid rgba(139, 30, 30, 0.5); }}

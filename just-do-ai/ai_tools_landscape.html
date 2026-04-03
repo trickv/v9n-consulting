@@ -22,14 +22,14 @@
   .cat-generators .tool-card:hover { border-color: #7c3aed; background: #251e30; }
   .cat-generators .more-box { border-color: #2d2338; }
 
-  .cat-ide { background: linear-gradient(135deg, #141a20 0%, #121820 100%); border: 1px solid #1e2d38; grid-column: 2; grid-row: 1; }
+  .cat-ide { background: linear-gradient(135deg, #141a20 0%, #121820 100%); border: 1px solid #1e2d38; grid-column: 2; grid-row: 3; }
   .cat-ide::before { background: linear-gradient(90deg, #3b82f6, #2563eb); }
   .cat-ide .cat-label { color: #60a5fa; }
   .cat-ide .tool-card { border-color: #1e2d38; background: #182028; }
   .cat-ide .tool-card:hover { border-color: #2563eb; background: #1c2630; }
   .cat-ide .more-box { border-color: #1e2d38; }
 
-  .cat-terminal { background: linear-gradient(135deg, #141f1a 0%, #121a16 100%); border: 1px solid #1e382d; grid-column: 2; grid-row: 2 / 4; }
+  .cat-terminal { background: linear-gradient(135deg, #141f1a 0%, #121a16 100%); border: 1px solid #1e382d; grid-column: 2; grid-row: 1 / 3; }
   .cat-terminal::before { background: linear-gradient(90deg, #22c55e, #16a34a); }
   .cat-terminal .cat-label { color: #4ade80; }
   .cat-terminal .tool-card { border-color: #1e382d; background: #182820; }
@@ -42,7 +42,7 @@
   .cat-review .tool-card { border-color: #38301e; background: #201c10; }
   .cat-review .tool-card:hover { border-color: #d97706; background: #282010; }
   .cat-review .more-box { border-color: #38301e; }
-  .cat-review .tools-grid { grid-template-columns: repeat(3, 1fr); }
+  .cat-review .tools-grid { grid-template-columns: repeat(4, 1fr); }
 
   .cat-qa { background: linear-gradient(135deg, #1a1a14 0%, #181810 100%); border: 1px solid #33382e; grid-column: 1 / 3; grid-row: 5; }
   .cat-qa::before { background: linear-gradient(90deg, #84cc16, #65a30d); }
@@ -50,7 +50,7 @@
   .cat-qa .tool-card { border-color: #33382e; background: #1c2018; }
   .cat-qa .tool-card:hover { border-color: #65a30d; background: #242820; }
   .cat-qa .more-box { border-color: #33382e; }
-  .cat-qa .tools-grid { grid-template-columns: repeat(1, 1fr); }
+  .cat-qa .tools-grid { grid-template-columns: repeat(2, 1fr); }
 
   .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 6; }
   .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
@@ -59,7 +59,7 @@
   .cat-always-on .tool-card:hover { border-color: #db2777; background: #281a28; }
   .cat-always-on .tools-grid { grid-template-columns: repeat(3, 1fr); }
 
-  .infra-sub { margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); }
+  .infra-sub { margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); grid-column: 1 / -1; }
   .infra-sub-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 6px; }
   .infra-sub-desc { font-size: 12px; color: #7a7570; line-height: 1.55; }
   .infra-sub-desc strong { color: #9a9590; font-weight: 600; }
@@ -72,14 +72,17 @@
   .tools-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
   .tool-card { border: 1px solid; border-radius: 10px; padding: 14px 16px; transition: all 0.2s ease; cursor: default; position: relative; }
   .tool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-  .tool-name { font-size: 15px; font-weight: 700; color: #fff; }
+  .tool-name { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; }
+  a.tool-name:hover { color: #fff; }
+  .more-link { color: inherit; text-decoration: none; }
+  .more-link:hover { color: inherit; }
   .tool-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
   .tool-desc { font-size: 12.5px; color: #9a9590; line-height: 1.5; }
   .tool-highlight { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }
   .tool-star { position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }
   .tool-star.gray { color: #6b6560; }
   .tool-star.gold { color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4)); }
-  .more-box { border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; }
+  .more-box { border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; grid-column: 1 / -1; }
   .more-box strong { color: #8a8680; font-weight: 500; }
   .bootcamp-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #b0a8a0; }
   .bootcamp-badge.primary { background: rgba(139, 30, 30, 0.3); color: #f0a0a0; border: 1px solid rgba(139, 30, 30, 0.5); }
@@ -106,7 +109,7 @@
       <div class="tool-card">
         <span class="tool-star gray">★</span>
         <div class="tool-header">
-          <span class="tool-name">Lovable</span>
+          <a class="tool-name" href="https://lovable.dev/">Lovable</a>
           <span class="tool-type">browser</span>
         </div>
         <div class="tool-desc">Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy.</div>
@@ -114,7 +117,7 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Google AI Studio</span>
+          <a class="tool-name" href="https://aistudio.google.com/">Google AI Studio</a>
           <span class="tool-type">browser</span>
         </div>
         <div class="tool-desc">Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.</div>
@@ -122,7 +125,7 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Bolt</span>
+          <a class="tool-name" href="https://bolt.new/">Bolt</a>
           <span class="tool-type">browser</span>
         </div>
         <div class="tool-desc">By StackBlitz. Full Node.js in-browser via WebContainers. React/Vite output. Multiple AI model support.</div>
@@ -130,14 +133,14 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Replit</span>
+          <a class="tool-name" href="https://replit.com/">Replit</a>
           <span class="tool-type">browser IDE</span>
         </div>
         <div class="tool-desc">Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages.</div>
         <div class="tool-highlight">Credit-based · From $17/mo Core · Built-in DB, auth &amp; hosting</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> v0, Base44, Create.xyz, Hostinger Horizons …
+        <strong>And many more:</strong> <a class="more-link" href="https://v0.app/">v0</a>, <a class="more-link" href="https://base44.com/">Base44</a>, <a class="more-link" href="https://create.xyz/">Create.xyz</a>, <a class="more-link" href="https://www.hostinger.com/horizons">Hostinger Horizons</a> …
       </div>
       <div class="infra-sub">
         <div class="infra-sub-label">Common infrastructure defaults</div>
@@ -149,12 +152,12 @@
   <div class="category cat-ide">
     <div class="cat-label">AI-Native Editors</div>
     <div class="cat-title">IDE + Agent</div>
-    <div class="cat-tagline">"Tab autocomplete AI — and growing to be more agentic"</div>
-    <div class="cat-audience"><strong>Best for:</strong> Day-to-day dev work, refactoring, feature builds, code review</div>
+    <div class="cat-tagline">"Your editor, supercharged with AI agents"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Day-to-day dev work, refactoring, feature builds — and devs who still want hands on the keyboard</div>
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Cursor</span>
+          <a class="tool-name" href="https://cursor.com/">Cursor</a>
           <span class="tool-type">desktop IDE</span>
         </div>
         <div class="tool-desc">VS Code fork rebuilt around AI. Indexes entire repos. Composer for multi-file edits. Background agents on branches. Multi-model.</div>
@@ -162,14 +165,14 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">GitHub Copilot</span>
+          <a class="tool-name" href="https://github.com/features/copilot">GitHub Copilot</a>
           <span class="tool-type">IDE plugin</span>
         </div>
         <div class="tool-desc">Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. MCP + multi-model support.</div>
         <div class="tool-highlight">VS Code, JetBrains, Visual Studio, Xcode · Plan/Agent/Edit modes</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> Windsurf, JetBrains AI, Zed AI, Trae …
+        <strong>And many more:</strong> <a class="more-link" href="https://windsurf.com/">Windsurf</a>, <a class="more-link" href="https://www.jetbrains.com/ai/">JetBrains AI</a>, <a class="more-link" href="https://zed.dev/">Zed AI</a>, <a class="more-link" href="https://trae.ai/">Trae</a> …
       </div>
     </div>
   </div>
@@ -177,14 +180,14 @@
   <div class="category cat-terminal">
     <div class="bootcamp-badge primary">Bootcamp Focus</div>
     <div class="cat-label">Agentic Coding</div>
-    <div class="cat-title">CLI + Agent</div>
-    <div class="cat-tagline">"Agentic-first experience"</div>
+    <div class="cat-title">Agent-First</div>
+    <div class="cat-tagline">"Skip the editor — talk directly to the agent"</div>
     <div class="cat-audience"><strong>Best for:</strong> Production codebases, deep refactoring, experienced engineers</div>
     <div class="tools-grid">
       <div class="tool-card">
         <span class="tool-star gold">★</span>
         <div class="tool-header">
-          <span class="tool-name">Claude Code</span>
+          <a class="tool-name" href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a>
           <span class="tool-type">CLI + App</span>
         </div>
         <div class="tool-desc">Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation.</div>
@@ -192,7 +195,7 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Codex</span>
+          <a class="tool-name" href="https://github.com/openai/codex">Codex</a>
           <span class="tool-type">CLI + App</span>
         </div>
         <div class="tool-desc">OpenAI's agent. Open-source, Rust-built. Multi-agent workflows (fork sub-tasks). Skills system. Cloud mode for async work. Desktop app + CLI + IDE.</div>
@@ -200,14 +203,14 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Gemini CLI</span>
+          <a class="tool-name" href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a>
           <span class="tool-type">CLI</span>
         </div>
         <div class="tool-desc">Google's terminal agent. ReAct loop with built-in tools. Strong on frontend/UI tasks. Multimodal input support. Generous free tier.</div>
         <div class="tool-highlight">Gemini models · Free tier · Open source</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> Qwen Code, OpenCode, Aider, Kilo Code …
+        <strong>And many more:</strong> <a class="more-link" href="https://kiro.dev/">Kiro CLI</a>, <a class="more-link" href="https://github.com/QwenLM/qwen-code">Qwen Code</a>, <a class="more-link" href="https://github.com/opencode-ai/opencode">OpenCode</a>, <a class="more-link" href="https://aider.chat/">Aider</a>, <a class="more-link" href="https://kilo.ai/">Kilo Code</a> …
       </div>
     </div>
   </div>
@@ -220,7 +223,7 @@
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Claude Code Review</span>
+          <a class="tool-name" href="https://code.claude.com/docs/en/code-review">Claude Code Review</a>
           <span class="tool-type">GitHub app</span>
         </div>
         <div class="tool-desc">Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes.</div>
@@ -228,7 +231,7 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">GitHub Copilot Code Review</span>
+          <a class="tool-name" href="https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review">GitHub Copilot Code Review</a>
           <span class="tool-type">GitHub built-in</span>
         </div>
         <div class="tool-desc">Native GitHub PR reviewer. Request review from "Copilot" like any teammate. Inline suggestions you can commit directly. Custom coding guidelines support.</div>
@@ -236,14 +239,22 @@
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Cubic</span>
+          <a class="tool-name" href="https://www.cubic.dev/">Cubic</a>
           <span class="tool-type">GitHub app</span>
         </div>
         <div class="tool-desc">AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans.</div>
         <div class="tool-highlight">Free for open source · From $30/mo for teams · SOC 2 compliant</div>
       </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.coderabbit.ai/">CodeRabbit</a>
+          <span class="tool-type">GitHub/GitLab app</span>
+        </div>
+        <div class="tool-desc">Most-installed AI app on GitHub (3M+ repos). Line-by-line suggestions, 1-click fixes, codegraph analysis. GitHub, GitLab, Azure DevOps & Bitbucket.</div>
+        <div class="tool-highlight">Free for OSS · From $12/seat/mo Lite · $24/seat/mo Pro</div>
+      </div>
       <div class="more-box">
-        <strong>And many more:</strong> CodeRabbit, Greptile, Sourcery, Qodo Merge …
+        <strong>And many more:</strong> <a class="more-link" href="https://www.greptile.com/">Greptile</a>, <a class="more-link" href="https://www.sourcery.ai/">Sourcery</a>, <a class="more-link" href="https://www.qodo.ai/">Qodo Merge</a> …
       </div>
     </div>
   </div>
@@ -256,14 +267,22 @@
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Thunders</span>
+          <a class="tool-name" href="https://www.thunders.ai/">Thunders</a>
           <span class="tool-type">platform</span>
         </div>
         <div class="tool-desc">AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits.</div>
         <div class="tool-highlight">From €399/mo · CI/CD integration · Jira/Linear/Xray</div>
       </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.mabl.com/">Mabl</a>
+          <span class="tool-type">platform</span>
+        </div>
+        <div class="tool-desc">AI-native test automation (est. 2017). Agentic tester for web, mobile & API. Auto-healing tests, semantic search, failure triaging. Gartner-recognized, 5x AI Breakthrough Award winner.</div>
+        <div class="tool-highlight">Free trial · Enterprise pricing · Jira/GitHub/Slack integrations</div>
+      </div>
       <div class="more-box">
-        <strong>And many more:</strong> Momentic, QA Wolf, Mabl …
+        <strong>And many more:</strong> <a class="more-link" href="https://www.momentic.ai/">Momentic</a>, <a class="more-link" href="https://www.qawolf.com/">QA Wolf</a> …
       </div>
     </div>
   </div>
@@ -276,24 +295,28 @@
     <div class="tools-grid">
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">OpenClaw</span>
+          <a class="tool-name" href="https://github.com/openclaw/openclaw">OpenClaw</a>
           <span class="tool-type">self-hosted</span>
         </div>
         <div class="tool-desc">Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Dreamer</span>
+          <a class="tool-name" href="https://dreamer.com/">Dreamer</a>
           <span class="tool-type">platform</span>
         </div>
         <div class="tool-desc">Agent platform by ex-Stripe CTO & Hugo Barra ($56M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Team acqui-hired by Meta (March 2026).</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <span class="tool-name">Nanobot</span>
+          <a class="tool-name" href="https://github.com/nanobot-ai/nanobot">Nanobot</a>
           <span class="tool-type">self-hosted</span>
         </div>
         <div class="tool-desc">Open-source MCP agent platform built in Go. Web chat interface with Slack/SMS/email on roadmap. Multi-LLM support (OpenAI, Anthropic). YAML-configured agents. Auditable and minimal.</div>
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">Honorable mentions</div>
+        <div class="infra-sub-desc"><strong><a href="https://claude.com/product/cowork" style="color:inherit; text-decoration:none;">Claude Cowork</a></strong> (scheduled remote agents with full tool access) and <strong><a href="https://copilot.microsoft.com" style="color:inherit; text-decoration:none;">Microsoft Copilot</a></strong> (scheduled actions, reminders, always-on assistant) overlap with this category. They're not purpose-built personal agents, but their scheduling and remote-access features are heading this direction.</div>
       </div>
     </div>
   </div>
