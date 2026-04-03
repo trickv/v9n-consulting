@@ -261,18 +261,18 @@ categories:
         url: https://github.com/openclaw/openclaw
         type: self-hosted
         desc: "Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills."
-      - name: Dreamer
-        url: https://dreamer.com/
-        type: platform
-        desc: 'Agent platform by ex-Stripe CTO & Hugo Barra ($56M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Team acqui-hired by Meta (March 2026).'
-      - name: Nanobot
-        url: https://github.com/nanobot-ai/nanobot
-        type: self-hosted
-        desc: "Open-source MCP agent platform built in Go. Web chat interface with Slack/SMS/email on roadmap. Multi-LLM support (OpenAI, Anthropic). YAML-configured agents. Auditable and minimal."
-    infra_note:
-      label: Honorable mentions
-      text: >
-        <strong><a href="https://manus.im/" style="color:inherit; text-decoration:none;">Manus</a></strong> (Meta-backed agent with desktop app for personal device automation),
-        <strong><a href="https://claude.com/product/cowork" style="color:inherit; text-decoration:none;">Claude Cowork</a></strong> (scheduled remote agents with full tool access), and
-        <strong><a href="https://copilot.microsoft.com" style="color:inherit; text-decoration:none;">Microsoft Copilot</a></strong> (scheduled actions, reminders, always-on assistant)
-        overlap with this category. They're not purpose-built personal agents, but their scheduling and remote-access features are heading this direction.
+        highlight: "Multi-model · MCP/skills · Self-hosted · Free"
+    more:
+      - NemoClaw
+      - Manus
+      - Dreamer
+      - Nanobot
+      - Claude Cowork
+      - Microsoft Copilot
+    more_urls:
+      NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
+      Manus: https://manus.im/
+      Dreamer: https://dreamer.com/
+      Nanobot: https://github.com/nanobot-ai/nanobot
+      Claude Cowork: https://claude.com/product/cowork
+      Microsoft Copilot: https://copilot.microsoft.com
