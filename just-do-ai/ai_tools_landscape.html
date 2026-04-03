@@ -41,9 +41,18 @@
   .cat-review .cat-label { color: #fbbf24; }
   .cat-review .tool-card { border-color: #38301e; background: #201c10; }
   .cat-review .tool-card:hover { border-color: #d97706; background: #282010; }
+  .cat-review .more-box { border-color: #38301e; }
   .cat-review .tools-grid { grid-template-columns: repeat(3, 1fr); }
 
-  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 5; }
+  .cat-qa { background: linear-gradient(135deg, #1a1a14 0%, #181810 100%); border: 1px solid #33382e; grid-column: 1 / 3; grid-row: 5; }
+  .cat-qa::before { background: linear-gradient(90deg, #84cc16, #65a30d); }
+  .cat-qa .cat-label { color: #a3e635; }
+  .cat-qa .tool-card { border-color: #33382e; background: #1c2018; }
+  .cat-qa .tool-card:hover { border-color: #65a30d; background: #242820; }
+  .cat-qa .more-box { border-color: #33382e; }
+  .cat-qa .tools-grid { grid-template-columns: repeat(1, 1fr); }
+
+  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 6; }
   .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
   .cat-always-on .cat-label { color: #f9a8d4; }
   .cat-always-on .tool-card { border-color: #38232d; background: #201420; }
@@ -83,7 +92,7 @@
 
 <div class="header">
   <h1>AI Coding Tools Landscape</h1>
-  <div class="subtitle">Coding with AI Bootcamp — Session 1 Reference · updated 30 March 2026</div>
+  <div class="subtitle">Coding with AI Bootcamp — Session 1 Reference · updated 3 April 2026</div>
 </div>
 
 <div class="landscape">
@@ -91,7 +100,7 @@
   <div class="category cat-generators">
     <div class="cat-label">App Generators</div>
     <div class="cat-title">Prompt → App</div>
-    <div class="cat-tagline">"Describe it, get a working app"</div>
+    <div class="cat-tagline">"Describe it, get a working app — batteries included"</div>
     <div class="cat-audience"><strong>Best for:</strong> Rapid prototypes, MVPs, non-technical builders, PM demos</div>
     <div class="tools-grid">
       <div class="tool-card">
@@ -101,15 +110,15 @@
           <span class="tool-type">browser</span>
         </div>
         <div class="tool-desc">Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy.</div>
-        <div class="tool-highlight">~$20/mo · Credit-based · GitHub sync</div>
+        <div class="tool-highlight">~$25/mo Pro · Credit-based · GitHub sync</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <span class="tool-name">Google AI Studio</span>
           <span class="tool-type">browser</span>
         </div>
-        <div class="tool-desc">Free Gemini 3 access. "Build" mode for vibe coding apps. Firebase Studio for full-stack deployment. Best for AI-powered prototypes.</div>
-        <div class="tool-highlight">Free tier · Google ecosystem · Less mature as app builder</div>
+        <div class="tool-desc">Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.</div>
+        <div class="tool-highlight">Free tier · Google ecosystem · Gemini API keys</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -117,15 +126,15 @@
           <span class="tool-type">browser</span>
         </div>
         <div class="tool-desc">By StackBlitz. Full Node.js in-browser via WebContainers. React/Vite output. Multiple AI model support.</div>
-        <div class="tool-highlight">Token-based · Netlify/Vercel deploy · Open source</div>
+        <div class="tool-highlight">Tiered pricing · Bolt Cloud / Netlify / Vercel deploy</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <span class="tool-name">Replit</span>
           <span class="tool-type">browser IDE</span>
         </div>
-        <div class="tool-desc">Cloud IDE + Agent 3. Most autonomous — runs 200 min unattended, self-tests, auto-debugs. 50+ languages. Mobile app support.</div>
-        <div class="tool-highlight">Checkpoint pricing · Built-in DB &amp; auth · Also a full IDE</div>
+        <div class="tool-desc">Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages.</div>
+        <div class="tool-highlight">Credit-based · From $17/mo Core · Built-in DB, auth &amp; hosting</div>
       </div>
       <div class="more-box">
         <strong>And many more:</strong> v0, Base44, Create.xyz, Hostinger Horizons …
@@ -206,7 +215,7 @@
   <div class="category cat-review">
     <div class="cat-label">AI Code Review</div>
     <div class="cat-title">Automated PR Review</div>
-    <div class="cat-tagline">"AI reviewers that catch bugs before your teammates do"</div>
+    <div class="cat-tagline">"AI reviewers that catch bugs before your teammates and customers do"</div>
     <div class="cat-audience"><strong>Best for:</strong> Teams wanting faster, more consistent code review and fewer bugs in production</div>
     <div class="tools-grid">
       <div class="tool-card">
@@ -214,8 +223,8 @@
           <span class="tool-name">Claude Code Review</span>
           <span class="tool-type">GitHub app</span>
         </div>
-        <div class="tool-desc">Anthropic's code review agent. Runs on GitHub PRs via @claude mention or auto-assignment. Deep understanding of codebase context. Inline comments with suggested fixes.</div>
-        <div class="tool-highlight">Free during beta · GitHub integration · Claude models</div>
+        <div class="tool-desc">Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes.</div>
+        <div class="tool-highlight">~$15–25/review avg · Teams &amp; Enterprise · Claude models</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -233,6 +242,29 @@
         <div class="tool-desc">AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans.</div>
         <div class="tool-highlight">Free for open source · From $30/mo for teams · SOC 2 compliant</div>
       </div>
+      <div class="more-box">
+        <strong>And many more:</strong> CodeRabbit, Greptile, Sourcery, Qodo Merge …
+      </div>
+    </div>
+  </div>
+
+  <div class="category cat-qa">
+    <div class="cat-label">AI QA &amp; Testing</div>
+    <div class="cat-title">Automated Testing</div>
+    <div class="cat-tagline">"AI that tests your app so you don&#x27;t ship bugs"</div>
+    <div class="cat-audience"><strong>Best for:</strong> QA teams, developers wanting automated test coverage, teams scaling without dedicated QA</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <div class="tool-header">
+          <span class="tool-name">Thunders</span>
+          <span class="tool-type">platform</span>
+        </div>
+        <div class="tool-desc">AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits.</div>
+        <div class="tool-highlight">From €399/mo · CI/CD integration · Jira/Linear/Xray</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> Momentic, QA Wolf, Mabl …
+      </div>
     </div>
   </div>
 
@@ -247,21 +279,21 @@
           <span class="tool-name">OpenClaw</span>
           <span class="tool-type">self-hosted</span>
         </div>
-        <div class="tool-desc">Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord. Heartbeat scheduler, persistent memory, self-installing skills.</div>
+        <div class="tool-desc">Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <span class="tool-name">Dreamer</span>
           <span class="tool-type">platform</span>
         </div>
-        <div class="tool-desc">Agent platform by ex-Stripe CTO & Hugo Barra ($50M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Anthropic partnership.</div>
+        <div class="tool-desc">Agent platform by ex-Stripe CTO & Hugo Barra ($56M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Team acqui-hired by Meta (March 2026).</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <span class="tool-name">Nanobot</span>
           <span class="tool-type">self-hosted</span>
         </div>
-        <div class="tool-desc">Lightweight OpenClaw alternative (~4K lines Python). 8+ messaging platforms. Broader Asia-Pacific model support. Auditable and minimal.</div>
+        <div class="tool-desc">Open-source MCP agent platform built in Go. Web chat interface with Slack/SMS/email on roadmap. Multi-LLM support (OpenAI, Anthropic). YAML-configured agents. Auditable and minimal.</div>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ categories:
   - id: generators
     label: App Generators
     title: "Prompt → App"
-    tagline: "Describe it, get a working app"
+    tagline: "Describe it, get a working app — batteries included"
     audience: "Rapid prototypes, MVPs, non-technical builders, PM demos"
     layout:
       grid_column: "1"
@@ -34,29 +34,29 @@ categories:
         type: browser
         star: gray
         desc: "Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy."
-        highlight: "~$20/mo · Credit-based · GitHub sync"
+        highlight: "~$25/mo Pro · Credit-based · GitHub sync"
       - name: Google AI Studio
         url: https://aistudio.google.com/
         type: browser
-        desc: 'Free Gemini 3 access. "Build" mode for vibe coding apps. Firebase Studio for full-stack deployment. Best for AI-powered prototypes.'
-        highlight: "Free tier · Google ecosystem · Less mature as app builder"
+        desc: 'Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.'
+        highlight: "Free tier · Google ecosystem · Gemini API keys"
       - name: Bolt
         url: https://bolt.new/
         type: browser
         desc: "By StackBlitz. Full Node.js in-browser via WebContainers. React/Vite output. Multiple AI model support."
-        highlight: "Token-based · Netlify/Vercel deploy · Open source"
+        highlight: "Tiered pricing · Bolt Cloud / Netlify / Vercel deploy"
       - name: Replit
         url: https://replit.com/
         type: browser IDE
-        desc: "Cloud IDE + Agent 3. Most autonomous — runs 200 min unattended, self-tests, auto-debugs. 50+ languages. Mobile app support."
-        highlight: "Checkpoint pricing · Built-in DB & auth · Also a full IDE"
+        desc: "Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages."
+        highlight: "Credit-based · From $17/mo Core · Built-in DB, auth & hosting"
     more:
       - v0
       - Base44
       - Create.xyz
       - Hostinger Horizons
     more_urls:
-      v0: https://v0.dev/
+      v0: https://v0.app/
       Base44: https://base44.com/
       Create.xyz: https://create.xyz/
       Hostinger Horizons: https://www.hostinger.com/horizons
@@ -146,14 +146,14 @@ categories:
       - Kilo Code
     more_urls:
       Qwen Code: https://github.com/QwenLM/qwen-code
-      OpenCode: https://github.com/nicepkg/opencode
+      OpenCode: https://github.com/opencode-ai/opencode
       Aider: https://aider.chat/
-      Kilo Code: https://kilocode.ai/
+      Kilo Code: https://kilo.ai/
 
   - id: review
     label: AI Code Review
     title: "Automated PR Review"
-    tagline: "AI reviewers that catch bugs before your teammates do"
+    tagline: "AI reviewers that catch bugs before your teammates and customers do"
     audience: "Teams wanting faster, more consistent code review and fewer bugs in production"
     layout:
       grid_column: "1 / 3"
@@ -168,10 +168,10 @@ categories:
       card_hover_bg: "#282010"
     tools:
       - name: Claude Code Review
-        url: https://docs.anthropic.com/en/docs/claude-code/code-review
+        url: https://code.claude.com/docs/en/code-review
         type: GitHub app
-        desc: "Anthropic's code review agent. Runs on GitHub PRs via @claude mention or auto-assignment. Deep understanding of codebase context. Inline comments with suggested fixes."
-        highlight: "Free during beta · GitHub integration · Claude models"
+        desc: "Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes."
+        highlight: "~$15–25/review avg · Teams & Enterprise · Claude models"
       - name: GitHub Copilot Code Review
         url: https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review
         type: GitHub built-in
@@ -182,6 +182,47 @@ categories:
         type: GitHub app
         desc: "AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans."
         highlight: "Free for open source · From $30/mo for teams · SOC 2 compliant"
+    more:
+      - CodeRabbit
+      - Greptile
+      - Sourcery
+      - Qodo Merge
+    more_urls:
+      CodeRabbit: https://www.coderabbit.ai/
+      Greptile: https://www.greptile.com/
+      Sourcery: https://www.sourcery.ai/
+      Qodo Merge: https://www.qodo.ai/
+
+  - id: qa
+    label: AI QA & Testing
+    title: "Automated Testing"
+    tagline: "AI that tests your app so you don't ship bugs"
+    audience: "QA teams, developers wanting automated test coverage, teams scaling without dedicated QA"
+    layout:
+      grid_column: "1 / 3"
+      grid_row: "5"
+      tools_columns: 1
+    colors:
+      bg_gradient: ["#1a1a14", "#181810"]
+      border: "#33382e"
+      accent: ["#84cc16", "#65a30d"]
+      label: "#a3e635"
+      card_bg: "#1c2018"
+      card_hover_bg: "#242820"
+    tools:
+      - name: Thunders
+        url: https://www.thunders.ai/
+        type: platform
+        desc: "AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits."
+        highlight: "From €399/mo · CI/CD integration · Jira/Linear/Xray"
+    more:
+      - Momentic
+      - QA Wolf
+      - Mabl
+    more_urls:
+      Momentic: https://www.momentic.ai/
+      QA Wolf: https://www.qawolf.com/
+      Mabl: https://www.mabl.com/
 
   - id: always-on
     label: Always-On Agents
@@ -190,7 +231,7 @@ categories:
     audience: "Personal automation, async workflows, always-available assistants"
     layout:
       grid_column: "1 / 3"
-      grid_row: "5"
+      grid_row: "6"
       tools_columns: 3
     colors:
       bg_gradient: ["#1a1418", "#18121a"]
@@ -201,14 +242,14 @@ categories:
       card_hover_bg: "#281a28"
     tools:
       - name: OpenClaw
-        url: https://github.com/open-claw/open-claw
+        url: https://github.com/openclaw/openclaw
         type: self-hosted
-        desc: "Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord. Heartbeat scheduler, persistent memory, self-installing skills."
+        desc: "Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills."
       - name: Dreamer
         url: https://dreamer.com/
         type: platform
-        desc: 'Agent platform by ex-Stripe CTO & Hugo Barra ($50M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Anthropic partnership.'
+        desc: 'Agent platform by ex-Stripe CTO & Hugo Barra ($56M funded). "Sidekick" builds agents for you. Gallery to share/remix. Triggers, cron, memory. Team acqui-hired by Meta (March 2026).'
       - name: Nanobot
         url: https://github.com/nanobot-ai/nanobot
         type: self-hosted
-        desc: "Lightweight OpenClaw alternative (~4K lines Python). 8+ messaging platforms. Broader Asia-Pacific model support. Auditable and minimal."
+        desc: "Open-source MCP agent platform built in Go. Web chat interface with Slack/SMS/email on roadmap. Multi-LLM support (OpenAI, Anthropic). YAML-configured agents. Auditable and minimal."
