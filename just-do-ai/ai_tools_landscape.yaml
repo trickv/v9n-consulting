@@ -53,12 +53,14 @@ categories:
     more:
       - v0
       - Base44
-      - Create.xyz
+      - Anything
+      - Blitzy
       - Hostinger Horizons
     more_urls:
       v0: https://v0.app/
       Base44: https://base44.com/
-      Create.xyz: https://create.xyz/
+      Anything: https://create.xyz/
+      Blitzy: https://blitzy.com/
       Hostinger Horizons: https://www.hostinger.com/horizons
     infra_note:
       label: Common infrastructure defaults
@@ -124,7 +126,7 @@ categories:
       card_hover_bg: "#1c3028"
     tools:
       - name: Claude Code
-        url: https://docs.anthropic.com/en/docs/claude-code
+        url: https://code.claude.com/docs/en/overview
         type: CLI + App
         star: gold
         desc: "Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation."
@@ -142,13 +144,17 @@ categories:
     more:
       - Kiro CLI
       - Qwen Code
-      - OpenCode
+      - Crush
+      - Devin
+      - Junie CLI
       - Aider
       - Kilo Code
     more_urls:
       Kiro CLI: https://kiro.dev/
       Qwen Code: https://github.com/QwenLM/qwen-code
-      OpenCode: https://github.com/opencode-ai/opencode
+      Crush: https://github.com/charmbracelet/crush
+      Devin: https://devin.ai/
+      Junie CLI: https://github.com/JetBrains/junie
       Aider: https://aider.chat/
       Kilo Code: https://kilo.ai/
 
@@ -173,7 +179,7 @@ categories:
         url: https://code.claude.com/docs/en/code-review
         type: GitHub app
         desc: "Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes."
-        highlight: "~$15–25/review avg · Teams & Enterprise · Claude models"
+        highlight: "Team & Enterprise plans · Claude models · @claude mention"
       - name: GitHub Copilot Code Review
         url: https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review
         type: GitHub built-in
@@ -188,12 +194,14 @@ categories:
         url: https://www.coderabbit.ai/
         type: GitHub/GitLab app
         desc: "Most-installed AI app on GitHub (3M+ repos). Line-by-line suggestions, 1-click fixes, codegraph analysis. GitHub, GitLab, Azure DevOps & Bitbucket."
-        highlight: "Free for OSS · From $12/seat/mo Lite · $24/seat/mo Pro"
+        highlight: "Free for OSS · $24/seat/mo Pro (annual) · Enterprise"
     more:
+      - Devin Review
       - Greptile
       - Sourcery
       - Qodo Merge
     more_urls:
+      Devin Review: https://app.devin.ai/review
       Greptile: https://www.greptile.com/
       Sourcery: https://www.sourcery.ai/
       Qodo Merge: https://www.qodo.ai/
@@ -264,6 +272,7 @@ categories:
     infra_note:
       label: Honorable mentions
       text: >
-        <strong><a href="https://claude.com/product/cowork" style="color:inherit; text-decoration:none;">Claude Cowork</a></strong> (scheduled remote agents with full tool access) and
+        <strong><a href="https://manus.im/" style="color:inherit; text-decoration:none;">Manus</a></strong> (Meta-backed agent with desktop app for personal device automation),
+        <strong><a href="https://claude.com/product/cowork" style="color:inherit; text-decoration:none;">Claude Cowork</a></strong> (scheduled remote agents with full tool access), and
         <strong><a href="https://copilot.microsoft.com" style="color:inherit; text-decoration:none;">Microsoft Copilot</a></strong> (scheduled actions, reminders, always-on assistant)
         overlap with this category. They're not purpose-built personal agents, but their scheduling and remote-access features are heading this direction.
