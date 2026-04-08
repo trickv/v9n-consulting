@@ -264,14 +264,12 @@ categories:
         highlight: "Multi-model · MCP/skills · Self-hosted · Free"
     more:
       - NemoClaw
-      - Manus
       - Dreamer
       - Nanobot
       - Claude Cowork
       - Microsoft Copilot
     more_urls:
       NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
-      Manus: https://manus.im/
       Dreamer: https://dreamer.com/
       Nanobot: https://github.com/nanobot-ai/nanobot
       Claude Cowork: https://claude.com/product/cowork
