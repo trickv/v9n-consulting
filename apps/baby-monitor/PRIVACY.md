@@ -2,7 +2,7 @@
 
 _Last updated: April 9, 2026_
 
-Baby Monitor ("the app") is an open source peer-to-peer baby monitor app
+Baby Monitor ("the app") is a peer-to-peer baby monitor app
 that streams audio and video between two devices that you own. This
 document describes what the app does and does not do with your data.
 
@@ -15,8 +15,6 @@ document describes what the app does and does not do with your data.
   shared, or transferred to third parties.
 - **No data storage.** Audio and video are not recorded by the app and
   are not stored anywhere by us.
-- **Source available.** The full source code is published at
-  https://github.com/trickv/baby-monitor and you can verify these claims.
 
 ## What the app accesses
 
