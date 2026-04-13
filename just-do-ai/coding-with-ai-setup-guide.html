@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding with AI — Pre-Class Setup Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f11;
+    --surface: #16181c;
+    --surface-raised: #1e2025;
+    --border: #2a2d35;
+    --border-accent: #3d4150;
+    --text: #e8e9ed;
+    --text-muted: #9398a5;
+    --accent: #c4f06a;
+    --accent-dim: #a3cc4e;
+    --accent-glow: rgba(196, 240, 106, 0.08);
+    --link: #7eb8f7;
+    --link-hover: #a8d0fc;
+    --step-line: #2a2d35;
+    --code-bg: #121317;
+    --code-border: #23262e;
+    --tab-bg: #1a1c22;
+    --tab-active: #c4f06a;
+    --tab-text: #9398a5;
+    --tab-active-text: #0e0f11;
+    --fallback-accent: #e8a84c;
+    --fallback-glow: rgba(232, 168, 76, 0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrapper {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    margin-bottom: 3.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 580px;
+  }
+
+  .time-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.4rem 0.85rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 1.25rem;
+  }
+  .time-bar svg { flex-shrink: 0; }
+
+  /* ── Steps ── */
+  .step {
+    position: relative;
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 2.4rem;
+    bottom: -1.5rem;
+    width: 1px;
+    background: var(--step-line);
+  }
+  .step:last-child::before { display: none; }
+
+  .step-number {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: var(--accent);
+  }
+
+  .step h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .step > p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  /* ── Substeps / cards ── */
+  .substep {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .substep-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .substep p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+  .substep p:last-child { margin-bottom: 0; }
+
+  /* ── Links ── */
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  a:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+  }
+
+  /* ── Code blocks ── */
+  .code-wrap {
+    position: relative;
+    margin: 0.75rem 0 1rem;
+  }
+
+  .code-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    padding: 0.35rem 0.85rem;
+    display: inline-block;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    overflow-x: auto;
+    font-family: 'DM Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text);
+    margin: 0.75rem 0 1rem;
+  }
+
+  .code-wrap pre {
+    border-radius: 0 6px 6px 6px;
+    margin: 0;
+  }
+
+  code {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: var(--surface-raised);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    font-size: 1em;
+  }
+
+  /* ── Tabbed code blocks ── */
+  .tabs { margin: 0.75rem 0 1rem; }
+
+  .tab-bar {
+    display: flex;
+    gap: 0;
+  }
+
+  .tab-btn {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    padding: 0.45rem 1rem;
+    background: var(--tab-bg);
+    color: var(--tab-text);
+    border: 1px solid var(--code-border);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-right: -1px;
+  }
+  .tab-btn:hover { color: var(--text); }
+  .tab-btn.active {
+    background: var(--tab-active);
+    color: var(--tab-active-text);
+    border-color: var(--tab-active);
+    font-weight: 500;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .tabs pre {
+    border-radius: 0 0 6px 6px;
+    margin: 0;
+    border-top: none;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-glow);
+    padding: 0.85rem 1.1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+  }
+  .callout strong { color: var(--text); }
+
+  .callout-warn {
+    border-left-color: var(--fallback-accent);
+    background: var(--fallback-glow);
+  }
+
+  /* ── Fallback section ── */
+  .fallback-section {
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .fallback-section .fallback-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--fallback-accent);
+    background: var(--fallback-glow);
+    border: 1px solid rgba(232, 168, 76, 0.2);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+  }
+
+  .fallback-section h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .fallback-section > p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .fallback-steps {
+    counter-reset: fallback;
+  }
+
+  .fallback-step {
+    display: flex;
+    gap: 0.85rem;
+    align-items: flex-start;
+    padding: 0.65rem 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+
+  .fallback-step::before {
+    counter-increment: fallback;
+    content: counter(fallback);
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1.5px solid var(--fallback-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    font-size: 0.7rem;
+    color: var(--fallback-accent);
+    margin-top: 1px;
+  }
+
+  /* ── Checklist ── */
+  .checklist {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.6rem;
+    margin-top: 2.5rem;
+  }
+
+  .checklist h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .checklist-item:last-child { border-bottom: none; }
+
+  .checklist-item .box {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-accent);
+    border-radius: 4px;
+    margin-top: 2px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+  .footer a { color: var(--text-muted); border-bottom-color: var(--border); }
+  .footer a:hover { color: var(--text); }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page-wrapper { padding: 2rem 1rem 3rem; }
+    .header h1 { font-size: 1.6rem; }
+    .step { padding-left: 2.4rem; }
+    .step::before { left: 11px; }
+    .step-number { width: 24px; height: 24px; font-size: 0.7rem; }
+    pre { font-size: 0.78rem; padding: 0.7rem 0.9rem; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    body { background: #fff; color: #111; }
+    .page-wrapper { max-width: 100%; }
+    a { color: #1a5dab; }
+    a[href]::after { content: ' (' attr(href) ')'; font-size: 0.7em; color: #666; word-break: break-all; }
+    pre { border: 1px solid #ccc; background: #f7f7f7; color: #111; }
+    .step-number { border-color: #333; color: #333; background: #fff; }
+    .substep, .checklist { background: #f9f9f9; border-color: #ddd; }
+    .callout { background: #f4f8e8; border-color: #666; color: #333; }
+    .callout-warn { background: #fef6e8; }
+    .tab-btn { background: #eee; color: #333; border-color: #ccc; }
+    .tab-btn.active { background: #333; color: #fff; border-color: #333; }
+    .header-label, .substep-title, .fallback-badge { color: #333; }
+    .fallback-step::before { border-color: #666; color: #333; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <!-- ════════════════════════════════════ HEADER ════════════════════════════════════ -->
+  <header class="header">
+    <div class="header-label">Coding with AI — Claude Code Bootcamp</div>
+    <h1>Pre-Class Setup Guide</h1>
+    <p>Complete these three steps before the first session so you're ready to code from minute one. The whole thing takes about 15 minutes.</p>
+    <div class="time-bar">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      ~15 min to complete
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════ STEP 1 ════════════════════════════════ -->
+  <div class="step">
+    <div class="step-number">1</div>
+    <h2>Get a Claude subscription &amp; install Claude Code</h2>
+    <p>Claude Code requires a paid Anthropic subscription. The free tier won't work.</p>
+
+    <div class="substep">
+      <div class="substep-title">Subscribe</div>
+      <p>Go to <a href="https://claude.ai/pricing" target="_blank" rel="noopener">claude.ai/pricing</a> and sign up for at least the <strong style="color:var(--text)">Pro</strong> plan ($20/month). If you already have a Pro, Max, Team, or Enterprise account, you're all set.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-title">Install Claude Code</div>
+      <p>Open a terminal and run the install command for your platform:</p>
+
+      <div class="tabs" data-tab-group="install">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="mac">macOS / Linux / WSL</button>
+          <button class="tab-btn" data-tab="ps">Windows PowerShell</button>
+          <button class="tab-btn" data-tab="cmd">Windows CMD</button>
+        </div>
+        <div class="tab-panel active" data-tab="mac">
+          <pre><code>curl -fsSL https://claude.ai/install.sh | bash</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="ps">
+          <pre><code>irm https://claude.ai/install.ps1 | iex</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="cmd">
+          <pre><code>curl -fsSL https://claude.ai/install.cmd -o install.cmd && install.cmd && del install.cmd</code></pre>
+        </div>
+      </div>
+
+      <div class="callout-warn callout">
+        <strong>Windows users:</strong> I highly recommend installing via <strong style="color:var(--text)">WSL</strong> (Windows Subsystem for Linux) even though it takes a bit longer to set up. You'll have much more flexibility in what you can get done throughout the course. The native Windows path requires <a href="https://git-scm.com/downloads/win" target="_blank" rel="noopener">Git for Windows</a> and has more limitations.
+      </div>
+
+      <p style="font-size:0.92rem;">For full platform-specific details, see the <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">official Claude Code installation docs</a>.</p>
+    </div>
+
+    <div class="substep">
+      <div class="substep-title">Verify &amp; Log In</div>
+      <p>Confirm it installed correctly:</p>
+      <pre><code>claude --version</code></pre>
+      <p>Then start Claude Code and follow the browser prompt to log in with your subscription:</p>
+      <pre><code>claude</code></pre>
+      <p>The first time you run it, a browser window will open asking you to authenticate. After that, you're connected.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════ STEP 2 ════════════════════════════════ -->
+  <div class="step">
+    <div class="step-number">2</div>
+    <h2>Install a programming language</h2>
+    <p>You need at least one language runtime on your machine for Claude Code to work with. I recommend <strong style="color:var(--text)">Python</strong> or <strong style="color:var(--text)">Node.js</strong>, but any language works — Go, Ruby, Rust, Java, whatever you're comfortable with.</p>
+
+    <div class="substep">
+      <div class="substep-title">Python (recommended)</div>
+
+      <div class="tabs" data-tab-group="python">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="py-mac">macOS</button>
+          <button class="tab-btn" data-tab="py-win">Windows</button>
+          <button class="tab-btn" data-tab="py-linux">Linux / WSL</button>
+        </div>
+        <div class="tab-panel active" data-tab="py-mac">
+          <pre><code># Download the latest installer from python.org
+# https://www.python.org/downloads/
+
+# After installing, verify:
+python3 --version</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="py-win">
+          <pre><code># Download the latest installer from python.org
+# https://www.python.org/downloads/
+# Check "Add Python to PATH" during installation!
+
+# After installing, verify:
+python3 --version</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="py-linux">
+          <pre><code># Ubuntu / Debian / WSL:
+sudo apt update && sudo apt install -y python3 python3-pip
+
+# Verify:
+python3 --version</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="substep">
+      <div class="substep-title">Node.js (also recommended)</div>
+
+      <div class="tabs" data-tab-group="node">
+        <div class="tab-bar">
+          <button class="tab-btn active" data-tab="node-mac">macOS</button>
+          <button class="tab-btn" data-tab="node-win">Windows</button>
+          <button class="tab-btn" data-tab="node-linux">Linux / WSL</button>
+        </div>
+        <div class="tab-panel active" data-tab="node-mac">
+          <pre><code># Download the LTS installer from nodejs.org
+# https://nodejs.org/
+
+# After installing, verify:
+node --version</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="node-win">
+          <pre><code># Download the LTS installer from nodejs.org
+# https://nodejs.org/
+
+# After installing, verify:
+node --version</code></pre>
+        </div>
+        <div class="tab-panel" data-tab="node-linux">
+          <pre><code># Ubuntu / Debian / WSL:
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Verify:
+node --version</code></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Already have a language installed?</strong> You're probably fine. If you can open a terminal and run something — <code>python3</code>, <code>node</code>, <code>go version</code>, <code>ruby -v</code>, whatever — you're good to go.
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════ STEP 3 ════════════════════════════════ -->
+  <div class="step">
+    <div class="step-number">3</div>
+    <h2>Get a GitHub account</h2>
+    <p>You'll need a GitHub account for some exercises and for the Codespaces fallback environment. A free account is all you need.</p>
+
+    <div class="substep">
+      <div class="substep-title">Sign up or confirm</div>
+      <p>If you don't have one: <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> — it's free.</p>
+      <p>If you already have an account, make sure you can log in and you're good.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════ FALLBACK ════════════════════════════════ -->
+  <div class="fallback-section">
+    <div class="fallback-badge">Fallback plan</div>
+    <h2>Having trouble? Use GitHub Codespaces</h2>
+    <p>If local installation gives you grief — Windows edge cases, work laptop restrictions, anything — don't sweat it. I've set up a pre-configured cloud workspace that comes with Claude Code and basic programming languages already installed. You just need your Claude subscription to authenticate.</p>
+
+    <div class="fallback-steps">
+      <div class="fallback-step">
+        Make sure you have a GitHub account (Step 3 above) and a Claude subscription (Step 1 above).
+      </div>
+      <div class="fallback-step">
+        Go to <a href="https://github.com/trickv/coding-bootcamp-codespace" target="_blank" rel="noopener">github.com/trickv/coding-bootcamp-codespace</a> and click the black <strong style="color:var(--text)">"Open in GitHub Codespaces"</strong> button, then click the green <strong style="color:var(--text)">"Create"</strong> button. GitHub gives you 60 hours/month free — that's plenty for this class.
+      </div>
+      <div class="fallback-step">
+        Once the environment loads, open the terminal and run <code>claude</code> to authenticate with your subscription. That's it — you're ready to go.
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════ CHECKLIST ════════════════════════════════ -->
+  <div class="checklist">
+    <h3>Ready-to-go checklist</h3>
+    <div class="checklist-item">
+      <div class="box"></div>
+      <span>Claude Pro (or higher) subscription — active and logged in</span>
+    </div>
+    <div class="checklist-item">
+      <div class="box"></div>
+      <span>Claude Code installed — <code>claude --version</code> returns a version number</span>
+    </div>
+    <div class="checklist-item">
+      <div class="box"></div>
+      <span>Claude Code authenticated — <code>claude</code> starts without asking you to subscribe</span>
+    </div>
+    <div class="checklist-item">
+      <div class="box"></div>
+      <span>At least one programming language — <code>python3 --version</code> or <code>node --version</code> (or your language of choice)</span>
+    </div>
+    <div class="checklist-item">
+      <div class="box"></div>
+      <span>GitHub account — free tier is fine</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="footer">
+    <p>Coding with AI — Claude Code Bootcamp &nbsp;·&nbsp; <a href="https://v9n.us">V9N Consulting</a></p>
+    <p style="margin-top: 0.4rem;">Questions? Reach out on the class Slack channel.</p>
+  </footer>
+
+</div>
+
+<!-- ════════════════════════════════ SCRIPT ════════════════════════════════ -->
+<script>
+document.querySelectorAll('.tabs').forEach(tabGroup => {
+  const buttons = tabGroup.querySelectorAll('.tab-btn');
+  const panels = tabGroup.querySelectorAll('.tab-panel');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      buttons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      tabGroup.querySelector(`.tab-panel[data-tab="${target}"]`).classList.add('active');
+    });
+  });
+});
+</script>
+
+</body>
+</html>
