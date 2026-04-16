@@ -34,7 +34,7 @@ categories:
         type: browser
         star: gray
         desc: "Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy."
-        highlight: "~$25/mo Pro · Credit-based · GitHub sync"
+        highlight: "~$25/mo Pro (shared across unlimited users) · Credit-based · GitHub sync"
       - name: Google AI Studio
         url: https://aistudio.google.com/
         type: browser
@@ -49,7 +49,7 @@ categories:
         url: https://replit.com/
         type: browser IDE
         desc: "Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages."
-        highlight: "Credit-based · From $17/mo Core · Built-in DB, auth & hosting"
+        highlight: "Credit-based · From $20/mo Core · Built-in DB, auth & hosting"
     more:
       - v0
       - Base44
@@ -88,7 +88,7 @@ categories:
       - name: Cursor
         url: https://cursor.com/
         type: desktop IDE
-        desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer for multi-file edits. Background agents on branches. Multi-model."
+        desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer 2 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model."
         highlight: "~$20/mo Pro · Also in JetBrains via ACP"
       - name: GitHub Copilot
         url: https://github.com/features/copilot
@@ -149,6 +149,7 @@ categories:
       - Junie CLI
       - Aider
       - Kilo Code
+      - Cline
     more_urls:
       Kiro CLI: https://kiro.dev/
       Qwen Code: https://github.com/QwenLM/qwen-code
@@ -157,6 +158,7 @@ categories:
       Junie CLI: https://github.com/JetBrains/junie
       Aider: https://aider.chat/
       Kilo Code: https://kilo.ai/
+      Cline: https://cline.bot/
 
   - id: review
     label: AI Code Review
@@ -189,11 +191,11 @@ categories:
         url: https://www.cubic.dev/
         type: GitHub app
         desc: "AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans."
-        highlight: "Free for open source · From $30/mo for teams · SOC 2 compliant"
+        highlight: "Free for OSS · From $30/mo Team, $79/mo Pro (annual) · SOC 2 compliant"
       - name: CodeRabbit
         url: https://www.coderabbit.ai/
         type: GitHub/GitLab app
-        desc: "Most-installed AI app on GitHub (3M+ repos). Line-by-line suggestions, 1-click fixes, codegraph analysis. GitHub, GitLab, Azure DevOps & Bitbucket."
+        desc: "Most-installed AI app on GitHub (3M+ repos, 15K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket."
         highlight: "Free for OSS · $24/seat/mo Pro (annual) · Enterprise"
     more:
       - Devin Review
@@ -260,7 +262,7 @@ categories:
       - name: OpenClaw
         url: https://github.com/openclaw/openclaw
         type: self-hosted
-        desc: "Open-source personal agent (247K GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills."
+        desc: "Open-source personal agent (300K+ GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills."
         highlight: "Multi-model · MCP/skills · Self-hosted · Free"
     more:
       - NemoClaw
