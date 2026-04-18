@@ -306,57 +306,30 @@
   <!-- ───────── Which Terminal ───────── -->
   <section>
     <h2>Which Terminal Am I Using?</h2>
-    <div class="section-sub">On Mac it's easy. On Windows it's a mess — there are several things that all look like "a terminal" and they behave differently.</div>
+    <div class="section-sub">Mac is easy — there's one terminal. Windows is confusing because several different things all look like "a terminal." Here's the short version.</div>
 
     <div class="platform">
       <div class="platform-header">
-        <span class="platform-name">macOS</span>
+        <span class="platform-name">Mac</span>
       </div>
-      <p class="platform-desc"><strong>Open:</strong> Press <code>⌘ + Space</code>, type "Terminal", hit Enter. Or find it in Applications → Utilities → Terminal.</p>
-      <p class="platform-desc"><strong>What you get:</strong> A <code>zsh</code> shell. Your home folder is <code>/Users/yourname</code>. Everything "just works" the same as a Linux bootcamp example.</p>
+      <p class="platform-desc">Press <code>⌘ + Space</code>, type <strong>Terminal</strong>, hit Enter. You're done. Follow any bootcamp example exactly as written.</p>
     </div>
 
     <div class="platform">
       <div class="platform-header">
-        <span class="platform-name">Windows — WSL / Ubuntu (recommended)</span>
+        <span class="platform-name">Windows — use this one</span>
       </div>
-      <p class="platform-desc"><strong>Open:</strong> Open the "Ubuntu" app from your Start menu. Or open <em>Windows Terminal</em> and pick "Ubuntu" from the dropdown.</p>
-      <p class="platform-desc"><strong>What you get:</strong> A real Linux environment running inside Windows. Prompt looks like <code>yourname@MACHINE:~$</code>. Your home is <code>/home/yourname</code>, separate from your Windows files.</p>
-      <p class="platform-desc"><strong>Why this one:</strong> Claude Code and most dev tooling assume a Linux/Mac environment. WSL gives you that without dual-booting. Every bootcamp example will work as-written here.</p>
-      <div class="callout"><strong>Haven't installed WSL yet?</strong> See the <a href="coding-with-ai-setup-guide.html">Pre-Class Setup Guide</a> — it walks you through it.</div>
+      <p class="platform-desc">Open the <strong>Ubuntu</strong> app from your Start menu. That's it. Everything a bootcamp example says to type will work the same as on a Mac.</p>
+      <p class="platform-desc">"Ubuntu" is the nickname for the Linux environment we set up on your Windows machine — it's called <strong>WSL</strong> under the hood. If you haven't installed it yet, follow the <a href="coding-with-ai-setup-guide.html">Pre-Class Setup Guide</a>.</p>
     </div>
 
-    <div class="platform">
-      <div class="platform-header">
-        <span class="platform-name">Windows — PowerShell</span>
-      </div>
-      <p class="platform-desc"><strong>Open:</strong> Start menu → type "PowerShell" or "Windows Terminal" → Enter. Prompt looks like <code>PS C:\Users\yourname&gt;</code>.</p>
-      <p class="platform-desc"><strong>What you get:</strong> Microsoft's modern shell. Fine for basic navigation. Most bootcamp examples written for bash/zsh will <em>not</em> work as-is — the syntax diverges once you get past <code>cd</code>/<code>ls</code>/<code>mkdir</code>.</p>
-    </div>
-
-    <div class="platform">
-      <div class="platform-header">
-        <span class="platform-name">Windows — Command Prompt (cmd.exe)</span>
-      </div>
-      <p class="platform-desc"><strong>Open:</strong> Start menu → "Command Prompt". Prompt looks like <code>C:\Users\yourname&gt;</code>.</p>
-      <p class="platform-desc"><strong>What you get:</strong> The ancient Windows shell from the 1980s. <strong>Avoid it.</strong> Doesn't have <code>pwd</code>, <code>ls</code> is <code>dir</code>, scripting is painful. If you opened this by accident, close it and open WSL or PowerShell instead.</p>
-    </div>
-
-    <div class="platform">
-      <div class="platform-header">
-        <span class="platform-name">Windows — Git Bash / MinGW64</span>
-      </div>
-      <p class="platform-desc"><strong>Where it comes from:</strong> Installed alongside "Git for Windows." Title bar often says <code>MINGW64</code>. Prompt shows your user, machine, and a path with forward slashes.</p>
-      <p class="platform-desc"><strong>What you get:</strong> A bash shell bolted onto Windows using MSYS2/MinGW. Bash commands mostly work. It's a reasonable fallback if you can't install WSL, but WSL is still the better choice for this bootcamp — more things work, and it matches what your instructor is using.</p>
-    </div>
-
-    <div class="callout callout-warn"><strong>The naming confusion:</strong> "Windows Terminal" is the <em>window</em> (the tabbed app). What runs <em>inside</em> it can be PowerShell, Ubuntu (WSL), Command Prompt, or Git Bash. If someone asks "which terminal are you in?" they mean which of those is running — check the prompt and the tab title.</div>
+    <div class="callout callout-warn"><strong>Why this is confusing on Windows:</strong> the same machine can open windows labeled <em>Ubuntu</em>, <em>PowerShell</em>, <em>Command Prompt</em>, <em>Windows Terminal</em>, or even <em>MINGW64</em>. They all look like black rectangles with text. For this bootcamp, just use <strong>Ubuntu</strong>. If you accidentally opened something else — close it and open Ubuntu instead.</div>
   </section>
 
   <!-- ───────── Core commands ───────── -->
   <section>
     <h2>The Four Commands You Actually Need</h2>
-    <div class="section-sub">Learn these four and you can follow along with any bootcamp exercise. They work — with caveats — across every shell listed above.</div>
+    <div class="section-sub">If you know these four, you can follow along with any bootcamp exercise. They work the same on Mac Terminal and on the Ubuntu app on Windows.</div>
 
     <div class="cmd-block">
       <div class="cmd-header">
@@ -376,7 +349,7 @@
       <p class="cmd-body">Lists the files and folders in the current directory.</p>
       <pre><span class="prompt">$</span> ls
 Documents  Downloads  Desktop  Music  Pictures</pre>
-      <p class="cmd-body">Add <code>-la</code> to see hidden files and details: <code>ls -la</code>. (Flags like <code>-la</code> only work in bash/zsh/WSL — <em>not</em> in PowerShell's <code>ls</code> alias.)</p>
+      <p class="cmd-body">Add <code>-la</code> to see hidden files and details: <code>ls -la</code>.</p>
     </div>
 
     <div class="cmd-block">
@@ -390,7 +363,7 @@ Documents  Downloads  Desktop  Music  Pictures</pre>
 <span class="prompt">$</span> cd ~                <span class="comment"># go to your home folder</span>
 <span class="prompt">$</span> cd                  <span class="comment"># (same thing — home folder)</span>
 <span class="prompt">$</span> cd /tmp             <span class="comment"># jump to an absolute path</span></pre>
-      <div class="callout"><strong>Tab completion:</strong> Start typing a folder name and hit <code>Tab</code>. The shell finishes it for you. This is the single biggest time-saver in the CLI — use it obsessively.</div>
+      <div class="callout"><strong>Tab completion:</strong> Start typing a folder name and hit <code>Tab</code>. The terminal finishes the name for you. This is the single biggest time-saver in the CLI — use it obsessively.</div>
     </div>
 
     <div class="cmd-block">
@@ -405,50 +378,7 @@ Documents  Downloads  Desktop  Music  Pictures</pre>
 /Users/patrick/my-first-project</pre>
     </div>
 
-    <h3 style="margin-top:1.75rem;">Do these work everywhere?</h3>
-    <p>Mostly yes — but with footnotes. The table below shows how each command behaves across the shells listed above.</p>
-
-    <div class="glossary" style="margin-top:0.5rem;">
-      <div class="glossary-row" style="grid-template-columns: 110px 1fr 1fr 1fr 1fr;">
-        <div class="glossary-term" style="color:var(--text);">Command</div>
-        <div class="glossary-term" style="color:var(--text);">bash/zsh<br><span style="font-weight:400;color:var(--text-muted);font-size:0.8rem;">Mac · Linux · WSL · Git Bash</span></div>
-        <div class="glossary-term" style="color:var(--text);">PowerShell</div>
-        <div class="glossary-term" style="color:var(--text);">cmd.exe</div>
-        <div class="glossary-term" style="color:var(--text);">Notes</div>
-      </div>
-      <div class="glossary-row" style="grid-template-columns: 110px 1fr 1fr 1fr 1fr;">
-        <div class="glossary-term">pwd</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">✅ alias for <code>Get-Location</code></div>
-        <div class="glossary-def">❌ use plain <code>cd</code></div>
-        <div class="glossary-def">In <code>cmd.exe</code>, typing <code>cd</code> with no arguments prints the current dir.</div>
-      </div>
-      <div class="glossary-row" style="grid-template-columns: 110px 1fr 1fr 1fr 1fr;">
-        <div class="glossary-term">ls</div>
-        <div class="glossary-def">✅ native, with flags</div>
-        <div class="glossary-def">⚠️ alias only — no <code>-la</code></div>
-        <div class="glossary-def">❌ use <code>dir</code></div>
-        <div class="glossary-def">PowerShell's <code>ls</code> wraps <code>Get-ChildItem</code> — basic listing works, Unix-style flags don't.</div>
-      </div>
-      <div class="glossary-row" style="grid-template-columns: 110px 1fr 1fr 1fr 1fr;">
-        <div class="glossary-term">cd</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def"><code>cd ~</code> works in bash/zsh/PowerShell. In <code>cmd.exe</code> use <code>cd %USERPROFILE%</code>.</div>
-      </div>
-      <div class="glossary-row" style="grid-template-columns: 110px 1fr 1fr 1fr 1fr;">
-        <div class="glossary-term">mkdir</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">✅ native</div>
-        <div class="glossary-def">Works identically everywhere for simple cases.</div>
-      </div>
-    </div>
-
-    <p style="margin-top:1rem;"><strong>Short version:</strong> in WSL, Mac Terminal, and Git Bash, all four commands work exactly like the examples above. In PowerShell, the basics work but don't expect Unix-style flags. In <code>cmd.exe</code>, only <code>cd</code> and <code>mkdir</code> work — another reason to avoid it.</p>
-
-    <div class="callout callout-warn"><strong>Gotcha — spaces in folder names:</strong> <code>cd My Project</code> won't work. Use <code>cd "My Project"</code> (all shells) or <code>cd My\ Project</code> (bash/zsh only). Easier: don't use spaces in folders you'll touch from the CLI. Use <code>my-project</code> or <code>my_project</code>.</div>
+    <div class="callout callout-warn"><strong>Gotcha — spaces in folder names:</strong> <code>cd My Project</code> won't work. Use <code>cd "My Project"</code> with quotes, or just skip spaces when you name folders — use <code>my-project</code> or <code>my_project</code> instead.</div>
   </section>
 
   <!-- ───────── Finding in GUI ───────── -->
@@ -463,37 +393,27 @@ Documents  Downloads  Desktop  Music  Pictures</pre>
     <p>Or from Finder's menu: <strong>Go → Go to Folder…</strong> (<code>⌘ + Shift + G</code>), then paste a path like <code>/Users/yourname/my-first-project</code>.</p>
     <p>To see hidden files in Finder (anything starting with <code>.</code>, like <code>.claude</code>): press <code>⌘ + Shift + .</code> (period).</p>
 
-    <h3>Windows + WSL — Explorer</h3>
-    <p>From your WSL terminal, open the current folder in Windows Explorer:</p>
-    <pre><span class="prompt">$</span> explorer.exe .      <span class="comment"># opens current folder in Explorer</span></pre>
-    <p>WSL files live on a virtual Linux drive. To browse them from Explorer, type this in the Explorer address bar:</p>
-    <pre>\\wsl$\Ubuntu\home\yourname</pre>
-    <p>Or simpler: in the left-hand sidebar of Explorer, scroll down — there's a <strong>Linux</strong> entry with a penguin icon. Your WSL home is in there.</p>
-    <div class="callout callout-warn"><strong>Performance tip:</strong> Keep your coding projects <em>inside</em> WSL (<code>/home/yourname/…</code>), not on the Windows side (<code>/mnt/c/…</code>). Files stored on the WSL side are dramatically faster for Git and build tools.</div>
-
-    <h3>Windows native — Explorer</h3>
-    <p>From PowerShell, open the current folder in Explorer:</p>
-    <pre><span class="prompt">PS&gt;</span> start .             <span class="comment"># opens current folder in Explorer</span>
-<span class="prompt">PS&gt;</span> explorer .</pre>
-    <p>Or in Explorer, click the address bar and type a path like <code>C:\Users\yourname\my-first-project</code>.</p>
+    <h3>Windows (Ubuntu) — Explorer</h3>
+    <p>From the Ubuntu window, open the current folder in Windows Explorer:</p>
+    <pre><span class="prompt">$</span> explorer.exe .      <span class="comment"># opens the current folder in Explorer</span></pre>
+    <p>The files you create in Ubuntu don't show up in your normal Windows drives — they live in their own spot on your computer. The easy way to browse them: open Explorer and look in the left sidebar for a <strong>Linux</strong> entry (penguin icon). Your Ubuntu home folder is inside.</p>
   </section>
 
   <!-- ───────── Going the other way ───────── -->
   <section>
     <h2>Going the Other Way — GUI to CLI</h2>
-    <div class="section-sub">You have a folder open in Finder/Explorer and you want to <code>cd</code> into it.</div>
+    <div class="section-sub">You have a folder open in Finder/Explorer and you want to <code>cd</code> into it from the terminal.</div>
 
-    <h3>macOS</h3>
+    <h3>Mac</h3>
     <ul>
-      <li>Drag the folder from Finder <strong>onto the Terminal window</strong> — the full path gets pasted for you. Type <code>cd</code> first, then drag.</li>
-      <li>Or right-click the folder in Finder → hold <code>Option</code> → "Copy as Pathname."</li>
+      <li>Type <code>cd </code> (with a trailing space) in Terminal, then <strong>drag the folder from Finder onto the Terminal window</strong>. The full path gets pasted in for you. Hit Enter.</li>
+      <li>Or: right-click the folder in Finder → hold <code>Option</code> → "Copy as Pathname."</li>
     </ul>
 
-    <h3>Windows</h3>
+    <h3>Windows (Ubuntu)</h3>
     <ul>
-      <li>In Explorer, click the address bar — it shows the real path. Copy it.</li>
-      <li>Or <code>Shift + right-click</code> a folder → "Copy as path."</li>
-      <li>For WSL: Windows paths use backslashes (<code>C:\Users\…</code>); WSL needs forward slashes and <code>/mnt/c/</code>. So <code>C:\Users\Pat\work</code> becomes <code>/mnt/c/Users/Pat/work</code> in WSL.</li>
+      <li>In Explorer, click the folder's address bar — it shows the full path. Copy it and paste after <code>cd </code> in Ubuntu.</li>
+      <li>Or: <code>Shift + right-click</code> a folder → "Copy as path."</li>
     </ul>
   </section>
 
@@ -502,82 +422,66 @@ Documents  Downloads  Desktop  Music  Pictures</pre>
     <h2>Survival Tips</h2>
 
     <ul>
-      <li><strong>Up arrow</strong> recalls your previous command. Keep pressing it to walk back through history.</li>
-      <li><strong>Tab</strong> auto-completes file and folder names. Use it constantly — it also prevents typos.</li>
+      <li><strong>Up arrow</strong> brings back your previous command. Keep pressing it to walk back through what you typed earlier.</li>
+      <li><strong>Tab</strong> auto-completes file and folder names. Start typing, hit Tab, and the terminal finishes the word for you. Use it constantly.</li>
       <li><strong>Ctrl + C</strong> cancels whatever's currently running. If you're stuck, hit it.</li>
-      <li><strong>Ctrl + L</strong> (or type <code>clear</code>) clears the screen when it gets noisy.</li>
-      <li><strong>Case matters</strong> on Mac/Linux/WSL. <code>Documents</code> and <code>documents</code> are different folders. (Windows native is case-insensitive, confusingly.)</li>
-      <li><strong>The terminal is not scary.</strong> You cannot break anything with <code>cd</code>, <code>ls</code>, <code>pwd</code>, or <code>mkdir</code>. Poke around freely.</li>
+      <li><strong>Type <code>clear</code></strong> to clean up the screen when it gets noisy.</li>
+      <li><strong>Capitalization matters.</strong> <code>Documents</code> and <code>documents</code> are different folders as far as the terminal is concerned.</li>
+      <li><strong>The terminal is not scary.</strong> You can't break anything with <code>pwd</code>, <code>ls</code>, <code>cd</code>, or <code>mkdir</code>. Poke around freely.</li>
     </ul>
 
-    <div class="callout callout-warn"><strong>One command to actually be careful with:</strong> <code>rm -rf</code> deletes files and folders permanently — no Trash, no undo. You won't need it for this bootcamp. If an AI ever suggests it, read carefully before running.</div>
+    <div class="callout callout-warn"><strong>One command to be careful with:</strong> <code>rm -rf</code> deletes files and folders permanently — no Trash, no undo. You won't need it for this bootcamp. If an AI ever suggests it, read carefully before running.</div>
   </section>
 
   <!-- ───────── Glossary ───────── -->
   <section>
     <h2>Glossary</h2>
-    <div class="section-sub">The words that get thrown around. Skim once, refer back as needed.</div>
+    <div class="section-sub">Words that get thrown around. Skim once, refer back as needed.</div>
 
     <div class="glossary">
       <div class="glossary-row">
-        <div class="glossary-term">CLI</div>
-        <div class="glossary-def"><strong>Command-Line Interface.</strong> You type commands, the computer runs them. The opposite of a GUI (Graphical User Interface) where you click things.</div>
-      </div>
-      <div class="glossary-row">
         <div class="glossary-term">Terminal</div>
-        <div class="glossary-def">The <strong>window</strong> you type commands into. On Mac it's called "Terminal." On Windows it's called "Windows Terminal." A terminal is just a container — the actual thing running inside it is a <em>shell</em>.</div>
+        <div class="glossary-def">The window you type commands into. On Mac it's an app literally called <strong>Terminal</strong>. On Windows, the equivalent for this bootcamp is the <strong>Ubuntu</strong> app.</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Shell</div>
-        <div class="glossary-def">The <strong>program</strong> that interprets what you type. Common ones: <code>bash</code>, <code>zsh</code> (Mac default), <code>PowerShell</code> (Windows default), <code>cmd.exe</code> (old Windows).</div>
-      </div>
-      <div class="glossary-row">
-        <div class="glossary-term">Windows Terminal</div>
-        <div class="glossary-def">Microsoft's modern tabbed terminal <em>app</em>. It doesn't do anything by itself — each tab runs a shell (PowerShell, Ubuntu/WSL, Command Prompt, or Git Bash).</div>
-      </div>
-      <div class="glossary-row">
-        <div class="glossary-term">PowerShell</div>
-        <div class="glossary-def">Microsoft's modern shell. Built into Windows. Prompt looks like <code>PS C:\Users\you&gt;</code>. Basic navigation works like Mac/Linux; scripting doesn't.</div>
-      </div>
-      <div class="glossary-row">
-        <div class="glossary-term">Command Prompt</div>
-        <div class="glossary-def">Windows' <em>old</em> shell (<code>cmd.exe</code>), from the 1980s. Prompt looks like <code>C:\Users\you&gt;</code>. Still works, mostly obsolete. Use PowerShell or WSL instead.</div>
+        <div class="glossary-term">CLI</div>
+        <div class="glossary-def"><strong>Command-Line Interface.</strong> Fancy name for "typing commands in a terminal." The opposite of a GUI, where you click things.</div>
       </div>
       <div class="glossary-row">
         <div class="glossary-term">WSL</div>
-        <div class="glossary-def"><strong>Windows Subsystem for Linux.</strong> Lets you run a real Linux environment on Windows. What we'll use for the bootcamp — Claude Code runs best on Linux/Mac, and WSL gives Windows users the same experience.</div>
+        <div class="glossary-def"><strong>Windows Subsystem for Linux.</strong> The tech that lets you run a Linux terminal on a Windows machine. You don't really need to think about it — just open the Ubuntu app.</div>
       </div>
       <div class="glossary-row">
         <div class="glossary-term">Ubuntu</div>
-        <div class="glossary-def">A popular flavor of Linux. When you install WSL, you get Ubuntu by default — the "Ubuntu" app in your Start menu <em>is</em> your WSL shell.</div>
+        <div class="glossary-def">The Linux system that WSL sets up for you. On Windows, the "Ubuntu" app in your Start menu is your terminal for this bootcamp.</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Git Bash / MinGW64</div>
-        <div class="glossary-def">A bash shell bundled with Git for Windows. Title bar often says <code>MINGW64</code>. It's bash-on-Windows via MSYS2. A reasonable fallback if WSL isn't available.</div>
+        <div class="glossary-term">PowerShell</div>
+        <div class="glossary-def">A different Windows terminal you might see floating around. Works for some things, but <em>not</em> what we're using in the bootcamp. If you open it by accident, close it and open Ubuntu instead.</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Bash / Zsh</div>
-        <div class="glossary-def">The two shells you'll see in the Linux/Mac world. They're 95% the same for everyday use. Mac's default is <code>zsh</code>; most Linux systems (and WSL's Ubuntu) default to <code>bash</code>.</div>
+        <div class="glossary-term">Command Prompt</div>
+        <div class="glossary-def">An older Windows terminal (<code>cmd.exe</code>). Same deal — not what we're using. Close and open Ubuntu.</div>
       </div>
       <div class="glossary-row">
         <div class="glossary-term">Prompt</div>
-        <div class="glossary-def">The little bit of text waiting for you to type, usually ending in <code>$</code> or <code>&gt;</code> or <code>%</code>. It often shows your username and current folder. When tutorials write <code>$ ls</code>, the <code>$</code> is the prompt — don't type it.</div>
+        <div class="glossary-def">The little bit of text sitting there waiting for you to type, usually ending in <code>$</code> or <code>&gt;</code>. When a guide shows <code>$ ls</code>, the <code>$</code> is the prompt — don't type it, just type <code>ls</code>.</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Directory / Folder</div>
-        <div class="glossary-def">Same thing. "Folder" is the GUI word, "directory" is the CLI word. Your hard drive is just nested directories.</div>
+        <div class="glossary-term">Folder / Directory</div>
+        <div class="glossary-def">Same thing. "Folder" is what you call it when you see it in Finder or Explorer. "Directory" is what the terminal calls it.</div>
       </div>
       <div class="glossary-row">
         <div class="glossary-term">Path</div>
-        <div class="glossary-def">The address of a file or folder, like <code>/Users/patrick/Documents/project</code>. Forward slashes on Mac/Linux/WSL, backslashes on native Windows.</div>
+        <div class="glossary-def">The full address of a file or folder, written out step by step. Like <code>/Users/patrick/Documents/project</code> — read that as "inside Users, inside patrick, inside Documents, the project folder."</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Home directory</div>
-        <div class="glossary-def">Your personal folder. On Mac: <code>/Users/yourname</code>. On Linux/WSL: <code>/home/yourname</code>. On Windows: <code>C:\Users\yourname</code>. Shortcut in bash/zsh/PowerShell: <code>~</code> (tilde).</div>
+        <div class="glossary-term">Home folder</div>
+        <div class="glossary-def">Your personal folder — where your Documents, Downloads, Desktop etc. live. The terminal shortcut for it is <code>~</code> (tilde).</div>
       </div>
       <div class="glossary-row">
-        <div class="glossary-term">Working directory</div>
-        <div class="glossary-def">The folder you're "in" right now — the folder your commands run against. Shown in the prompt, or run <code>pwd</code> to check.</div>
+        <div class="glossary-term">Current folder</div>
+        <div class="glossary-def">The folder you're "in" right now. Any command you run acts on this folder unless you say otherwise. Run <code>pwd</code> to see it.</div>
       </div>
     </div>
   </section>
