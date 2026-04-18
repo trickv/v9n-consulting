@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXEF9TG8WK');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interesting Claude Code Tools</title>
+<meta name="description" content="A curated table of interesting Claude Code skills, plugins, MCPs, and wrappers — with notes on which I've tried.">
+<meta name="author" content="Patrick van Staveren">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0f0f13; color: #e8e4df; min-height: 100vh; padding: 48px 40px; }
+  .header { text-align: center; margin-bottom: 40px; }
+  .header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; color: #fff; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #8a8680; font-weight: 400; }
+  .header .subtitle a { color: #8a8680; text-decoration: none; }
+  .intro { max-width: 1100px; margin: 0 auto 28px; font-size: 14px; color: #9a9590; line-height: 1.6; text-align: center; }
+
+  .table-wrap { max-width: 1100px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 1px solid #2d2338; background: linear-gradient(135deg, #1a1520 0%, #161220 100%); }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #c084fc; text-align: left; padding: 16px 18px; background: rgba(0,0,0,0.25); border-bottom: 1px solid #2d2338; }
+  thead th.center { text-align: center; }
+  tbody td { padding: 16px 18px; border-bottom: 1px solid #251e30; vertical-align: top; font-size: 13px; color: #9a9590; line-height: 1.55; }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(124, 58, 237, 0.06); }
+  .tool-name { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; display: block; margin-bottom: 4px; }
+  .tool-name:hover { color: #c084fc; }
+  .tool-sub { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: #6b6560; word-break: break-all; }
+  .tool-sub a { color: #6b6560; text-decoration: none; border-bottom: 1px dotted #3a3530; }
+  .tool-sub a:hover { color: #8a8680; }
+  .tool-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 3px 9px; border-radius: 4px; display: inline-block; white-space: nowrap; }
+  .tool-type.skill { color: #4ade80; background: rgba(34, 197, 94, 0.08); }
+  .tool-type.plugin { color: #60a5fa; background: rgba(59, 130, 246, 0.08); }
+  .tool-type.mcp { color: #fbbf24; background: rgba(251, 191, 36, 0.08); }
+  .tool-type.wrapper { color: #f9a8d4; background: rgba(244, 114, 182, 0.08); }
+  .tick { color: #4ade80; font-size: 20px; text-align: center; filter: drop-shadow(0 0 4px rgba(74, 222, 128, 0.4)); }
+  td.center { text-align: center; }
+  td.commentary { color: #b8b3ae; font-style: italic; }
+  td.commentary.empty { color: #4a4540; font-style: normal; }
+
+  .col-name { width: 22%; }
+  .col-type { width: 10%; }
+  .col-desc { width: 38%; }
+  .col-tried { width: 8%; }
+  .col-commentary { width: 22%; }
+
+  .footer-note { text-align: center; margin-top: 32px; font-size: 12px; color: #5a5550; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .legend { display: flex; justify-content: center; flex-wrap: wrap; gap: 18px; margin-top: 16px; font-size: 12px; color: #6b6560; }
+  .legend span { display: flex; align-items: center; gap: 6px; }
+
+  @media (max-width: 800px) {
+    body { padding: 24px 16px; }
+    .table-wrap { border-radius: 12px; }
+    thead { display: none; }
+    tbody td { display: block; padding: 8px 16px; border-bottom: none; }
+    tbody tr { display: block; padding: 14px 0; border-bottom: 1px solid #251e30; }
+    tbody td::before { content: attr(data-label); display: block; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 4px; }
+    .col-name, .col-type, .col-desc, .col-tried, .col-commentary { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Interesting Claude Code Tools</h1>
+  <div class="subtitle">Skills, plugins, MCPs &amp; wrappers worth a look · <a href="https://v9n.us/">Patrick van Staveren</a></div>
+</div>
+
+<div class="intro">
+  A running list of Claude Code extensions I've run across and find interesting. Green tick = I've actually used it.
+</div>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th class="col-name">Tool</th>
+        <th class="col-type">Type</th>
+        <th class="col-desc">What it does</th>
+        <th class="col-tried center">Tried?</th>
+        <th class="col-commentary">Commentary</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-name" data-label="Tool">
+          <a class="tool-name" href="https://github.com/danshapiro/trycycle">Trycycle</a>
+          <span class="tool-sub"><a href="https://github.com/danshapiro/trycycle">github.com/danshapiro/trycycle</a> · by Dan Shapiro</span>
+        </td>
+        <td class="col-type" data-label="Type"><span class="tool-type skill">skill</span></td>
+        <td class="col-desc" data-label="What it does">A hill-climbing skill that plans, strengthens, builds, and reviews code automatically. Spawns fresh planner and reviewer agents each round (up to 5 plan revisions, 8 review rounds) so stale context never accumulates. Handles worktree, plan, test plan, build, and review end-to-end without further input unless human judgment is needed. Also works with Codex CLI, Kimi CLI, and OpenCode.</td>
+        <td class="col-tried center" data-label="Tried?"><span class="tick">✓</span></td>
+        <td class="col-commentary empty" data-label="Commentary">—</td>
+      </tr>
+      <tr>
+        <td class="col-name" data-label="Tool">
+          <a class="tool-name" href="https://github.com/gastownhall/gastown">Gas Town</a>
+          <span class="tool-sub"><a href="https://github.com/gastownhall/gastown">github.com/gastownhall/gastown</a> · by Steve Yegge</span>
+        </td>
+        <td class="col-type" data-label="Type"><span class="tool-type wrapper">wrapper</span></td>
+        <td class="col-desc" data-label="What it does">A Go-based multi-agent workspace manager (<code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">gt</code> CLI) that coordinates fleets of Claude Code / Codex / Copilot / Gemini agents. Built-in mailboxes, identities, handoffs, git-worktree-backed persistent hooks, and a Beads issue ledger so work state survives crashes. Designed to scale from a handful of agents to 20–30. Talk to "the Mayor" — a Claude Code instance that coordinates your town of rigs, crew, and polecat worker agents.</td>
+        <td class="col-tried center" data-label="Tried?"><span class="tick">✓</span></td>
+        <td class="col-commentary empty" data-label="Commentary">—</td>
+      </tr>
+      <tr>
+        <td class="col-name" data-label="Tool">
+          <a class="tool-name" href="https://github.com/safishamsi/graphify">graphify</a>
+          <span class="tool-sub"><a href="https://github.com/safishamsi/graphify">github.com/safishamsi/graphify</a> · by Safi Shamsi</span>
+        </td>
+        <td class="col-type" data-label="Type"><span class="tool-type skill">skill</span> <span class="tool-type mcp">+ MCP</span></td>
+        <td class="col-desc" data-label="What it does">Turns any folder (code, docs, PDFs, screenshots, even audio/video) into a queryable knowledge graph. Deterministic tree-sitter AST pass for 25 languages, faster-whisper transcription for A/V, then Claude subagents extract concepts and relationships. Leiden community detection (no embeddings). Outputs interactive HTML, JSON graph, and a plain-language report. Installs an always-on PreToolUse hook so Claude reads the graph before grepping — claims 71.5× fewer tokens per query vs reading raw files. Optional MCP server mode.</td>
+        <td class="col-tried center" data-label="Tried?"></td>
+        <td class="col-commentary empty" data-label="Commentary">—</td>
+      </tr>
+      <tr>
+        <td class="col-name" data-label="Tool">
+          <a class="tool-name" href="https://github.com/thedotmack/claude-mem">claude-mem</a>
+          <span class="tool-sub"><a href="https://github.com/thedotmack/claude-mem">github.com/thedotmack/claude-mem</a> · <a href="https://claude-mem.ai">claude-mem.ai</a></span>
+        </td>
+        <td class="col-type" data-label="Type"><span class="tool-type plugin">plugin</span> <span class="tool-type mcp">+ MCP</span></td>
+        <td class="col-desc" data-label="What it does">Captures everything Claude does during sessions, compresses it with the Claude Agent SDK, and injects relevant context back into future sessions. Progressive-disclosure retrieval with token-cost visibility, MCP search tools for querying past observations, a live web viewer at <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">localhost:37777</code>, and <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">&lt;private&gt;</code> tags to exclude sensitive content. Install via <code style="font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;">npx claude-mem install</code> or the Claude Code plugin marketplace.</td>
+        <td class="col-tried center" data-label="Tried?"></td>
+        <td class="col-commentary empty" data-label="Commentary">—</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer-note">
+  List is nowhere near exhaustive — Claude Code's ecosystem is moving fast. Suggestions welcome at <a href="mailto:trick@vanstaveren.us" style="color:#8a8680;">trick@vanstaveren.us</a>.
+</div>
+<div class="legend">
+  <span><span class="tick" style="font-size:16px;">✓</span> I've actually tried it</span>
+  <span><span class="tool-type skill">skill</span> sub-agent / skill</span>
+  <span><span class="tool-type plugin">plugin</span> Claude Code plugin</span>
+  <span><span class="tool-type mcp">MCP</span> Model Context Protocol server</span>
+  <span><span class="tool-type wrapper">wrapper</span> wraps / extends Claude Code</span>
+</div>
+<div style="text-align:center; margin-top:24px; font-size:11px; color:#3a3530;">© 2026 <a href="https://v9n.us/" style="color:#5a5550; text-decoration:none; border-bottom:1px solid #3a3530;">V9N Consulting</a></div>
+
+</body>
+</html>
