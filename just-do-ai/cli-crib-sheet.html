@@ -320,10 +320,10 @@
         <span class="platform-name">Windows — use this one</span>
       </div>
       <p class="platform-desc">Open the <strong>Ubuntu</strong> app from your Start menu. That's it. Everything a bootcamp example says to type will work the same as on a Mac.</p>
-      <p class="platform-desc">"Ubuntu" is the nickname for the Linux environment we set up on your Windows machine — it's called <strong>WSL</strong> under the hood. If you haven't installed it yet, follow the <a href="coding-with-ai-setup-guide.html">Pre-Class Setup Guide</a>.</p>
+      <p class="platform-desc">"Ubuntu" is the app we want you to use on Windows for this bootcamp. If you haven't installed it yet, follow the <a href="coding-with-ai-setup-guide.html">Pre-Class Setup Guide</a>.</p>
     </div>
 
-    <div class="callout callout-warn"><strong>Why this is confusing on Windows:</strong> the same machine can open windows labeled <em>Ubuntu</em>, <em>PowerShell</em>, <em>Command Prompt</em>, <em>Windows Terminal</em>, or even <em>MINGW64</em>. They all look like black rectangles with text. For this bootcamp, just use <strong>Ubuntu</strong>. If you accidentally opened something else — consider opening Ubuntu instead for the best experience.</div>
+    <div class="callout callout-warn"><strong>Why this is confusing on Windows:</strong> the same machine can open windows labeled <em>Ubuntu</em>, <em>PowerShell</em>, or <em>Command Prompt</em>. They all look like black rectangles with text. For this bootcamp, just use <strong>Ubuntu</strong>. If you accidentally opened something else, close it and open Ubuntu instead.</div>
   </section>
 
   <!-- ───────── Core commands ───────── -->
@@ -334,7 +334,7 @@
     <div class="cmd-block">
       <div class="cmd-header">
         <span class="cmd-name">pwd</span>
-        <span class="cmd-gloss">"print working directory"</span>
+        <span class="cmd-gloss">"show where I am"</span>
       </div>
       <p class="cmd-body">Shows you <strong>where you are right now</strong>. When in doubt, run this.</p>
       <pre><span class="prompt">$</span> pwd
@@ -349,27 +349,27 @@
       <p class="cmd-body">Lists the files and folders in the current directory.</p>
       <pre><span class="prompt">$</span> ls
 Documents  Downloads  Desktop  Music  Pictures</pre>
-      <p class="cmd-body">Add <code>-la</code> to see hidden files and details: <code>ls -la</code>.</p>
+      <p class="cmd-body">Optional: use <code>ls -la</code> to see more detail, including hidden files.</p>
     </div>
 
     <div class="cmd-block">
       <div class="cmd-header">
         <span class="cmd-name">cd</span>
-        <span class="cmd-gloss">"change directory"</span>
+        <span class="cmd-gloss">"go to a folder"</span>
       </div>
       <p class="cmd-body">Moves you into a folder. This is how you navigate.</p>
       <pre><span class="prompt">$</span> cd Documents        <span class="comment"># go into Documents</span>
 <span class="prompt">$</span> cd ..               <span class="comment"># go UP one level</span>
 <span class="prompt">$</span> cd ~                <span class="comment"># go to your home folder</span>
 <span class="prompt">$</span> cd                  <span class="comment"># (same thing — home folder)</span>
-<span class="prompt">$</span> cd /tmp             <span class="comment"># jump to an absolute path</span></pre>
-      <div class="callout"><strong>Tab completion:</strong> Start typing a folder name and hit <code>Tab</code>. The terminal finishes the name for you. This is the single biggest time-saver in the CLI — use it obsessively.</div>
+<span class="prompt">$</span> cd /tmp             <span class="comment"># jump straight to a specific folder</span></pre>
+      <div class="callout"><strong>Press Tab to save time:</strong> Start typing a folder name and hit <code>Tab</code>. The terminal finishes the name for you. This is one of the easiest ways to avoid typos.</div>
     </div>
 
     <div class="cmd-block">
       <div class="cmd-header">
         <span class="cmd-name">mkdir</span>
-        <span class="cmd-gloss">"make directory"</span>
+        <span class="cmd-gloss">"make a folder"</span>
       </div>
       <p class="cmd-body">Creates a new folder in your current directory.</p>
       <pre><span class="prompt">$</span> mkdir my-first-project
@@ -430,7 +430,7 @@ Documents  Downloads  Desktop  Music  Pictures</pre>
       <li><strong>The terminal is not scary.</strong> You can't break anything with <code>pwd</code>, <code>ls</code>, <code>cd</code>, or <code>mkdir</code>. Poke around freely.</li>
     </ul>
 
-    <div class="callout callout-warn"><strong>One command to be careful with:</strong> <code>rm -rf</code> deletes files and folders permanently — no Trash, no undo. You won't need it for this bootcamp. If an AI ever suggests it, read carefully before running.</div>
+    <div class="callout callout-warn"><strong>Be careful with delete commands:</strong> some commands delete files and folders permanently, with no Trash and no undo. You won't need that for this bootcamp. If an AI suggests a delete command, read carefully before running it.</div>
   </section>
 
   <!-- ───────── Glossary ───────── -->
