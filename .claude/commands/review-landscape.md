@@ -6,6 +6,10 @@ Audit the AI tools landscape data in `just-do-ai/ai_tools_landscape.yaml` for ac
 
 `just-do-ai/ai_tools_landscape.yaml` — YAML source of truth, rendered to HTML by `just-do-ai/build_landscape.py`.
 
+## Step 0: Sync before researching
+
+Before doing any research, run a `git pull` in the repo so the review starts from the latest version Patrick may have edited elsewhere.
+
 ## Step 1: Check every featured tool (full cards)
 
 For each tool that has a full card (not just in the "more" list), fetch the tool's URL and verify:
