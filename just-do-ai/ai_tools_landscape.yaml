@@ -36,15 +36,15 @@ categories:
         desc: "Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy."
         highlight: "~$25/mo Pro (shared across unlimited users) · Credit-based · GitHub sync"
       - name: Google AI Studio
-        url: https://aistudio.google.com/
+        url: https://aistudio.google.com/welcome
         type: browser
         desc: 'Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.'
         highlight: "Free tier · Google ecosystem · Gemini API keys"
       - name: Bolt
         url: https://bolt.new/
         type: browser
-        desc: "By StackBlitz. Full Node.js in-browser via WebContainers. React/Vite output. Multiple AI model support."
-        highlight: "Tiered pricing · Bolt Cloud / Netlify / Vercel deploy"
+        desc: "By StackBlitz. AI builder for websites, apps, and prototypes with design-system support, built-in hosting, databases, auth, analytics, custom domains, and multiple model options."
+        highlight: "Free tier · Pro $25/mo · Teams $30/user/mo · Built-in hosting/databases"
       - name: Replit
         url: https://replit.com/
         type: browser IDE
@@ -56,12 +56,14 @@ categories:
       - Anything
       - Blitzy
       - Hostinger Horizons
+      - Tempo
     more_urls:
       v0: https://v0.app/
       Base44: https://base44.com/
-      Anything: https://create.xyz/
+      Anything: https://www.create.xyz/
       Blitzy: https://blitzy.com/
       Hostinger Horizons: https://www.hostinger.com/horizons
+      Tempo: https://www.tempo.new/
     infra_note:
       label: Common infrastructure defaults
       text: >
@@ -100,11 +102,13 @@ categories:
       - JetBrains AI
       - Zed AI
       - Trae
+      - Void
     more_urls:
       Windsurf: https://windsurf.com/
       JetBrains AI: https://www.jetbrains.com/ai/
       Zed AI: https://zed.dev/
-      Trae: https://trae.ai/
+      Trae: https://www.trae.ai/
+      Void: https://voideditor.com/
 
   - id: terminal
     label: Agentic Coding
@@ -181,12 +185,12 @@ categories:
         url: https://code.claude.com/docs/en/code-review
         type: GitHub app
         desc: "Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes."
-        highlight: "Team & Enterprise plans · Claude models · @claude mention"
+        highlight: "Research preview · Team & Enterprise only · Not available with Zero Data Retention"
       - name: GitHub Copilot Code Review
-        url: https://docs.github.com/en/copilot/using-github-copilot/code-review/using-copilot-code-review
+        url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review
         type: GitHub built-in
         desc: 'Native GitHub PR reviewer. Request review from "Copilot" like any teammate. Inline suggestions you can commit directly. Custom coding guidelines support.'
-        highlight: "Included with Copilot sub · Deepest GitHub integration"
+        highlight: "Native GitHub review flow · Suggested fixes · Org-level enablement available"
       - name: Cubic
         url: https://www.cubic.dev/
         type: GitHub app
@@ -202,11 +206,13 @@ categories:
       - Greptile
       - Sourcery
       - Qodo Merge
+      - Graphite AI Reviews
     more_urls:
       Devin Review: https://app.devin.ai/review
       Greptile: https://www.greptile.com/
       Sourcery: https://www.sourcery.ai/
       Qodo Merge: https://www.qodo.ai/
+      Graphite AI Reviews: https://graphite.com/features/ai-reviews
 
   - id: qa
     label: AI QA & Testing
@@ -229,18 +235,20 @@ categories:
         url: https://www.thunders.ai/
         type: platform
         desc: "AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits."
-        highlight: "From €399/mo · CI/CD integration · Jira/Linear/Xray"
+        highlight: "Starter €300/mo · Pro €800/mo · Enterprise custom"
       - name: Mabl
         url: https://www.mabl.com/
         type: platform
-        desc: "AI-native test automation (est. 2017). Agentic tester for web, mobile & API. Auto-healing tests, semantic search, failure triaging. Gartner-recognized, 5x AI Breakthrough Award winner."
+        desc: "Agentic AI testing platform for web, mobile, APIs, accessibility, and performance. Emphasizes auto-healing, end-to-end coverage, and IDE/CLI workflows."
         highlight: "Free trial · Enterprise pricing · Jira/GitHub/Slack integrations"
     more:
       - Momentic
       - QA Wolf
+      - TestSprite
     more_urls:
-      Momentic: https://www.momentic.ai/
+      Momentic: https://momentic.ai/
       QA Wolf: https://www.qawolf.com/
+      TestSprite: https://www.testsprite.com/
 
   - id: always-on
     label: Always-On Agents
@@ -262,7 +270,7 @@ categories:
       - name: OpenClaw
         url: https://github.com/openclaw/openclaw
         type: self-hosted
-        desc: "Open-source personal agent (300K+ GitHub stars). Runs locally, connects via WhatsApp/Telegram/Discord/Signal. Heartbeat scheduler, persistent memory, self-installing skills."
+        desc: "Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support."
         highlight: "Multi-model · MCP/skills · Self-hosted · Free"
     more:
       - NemoClaw
@@ -270,9 +278,11 @@ categories:
       - Nanobot
       - Claude Cowork
       - Microsoft Copilot
+      - Lindy
     more_urls:
       NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
       Dreamer: https://dreamer.com/
       Nanobot: https://github.com/nanobot-ai/nanobot
       Claude Cowork: https://claude.com/product/cowork
       Microsoft Copilot: https://copilot.microsoft.com
+      Lindy: https://www.lindy.ai/
