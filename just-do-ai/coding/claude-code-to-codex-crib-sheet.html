@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXEF9TG8WK');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code → Codex CLI Crib Sheet</title>
+<meta name="description" content="A crib sheet for Claude Code users learning OpenAI Codex CLI. Ten essential commands mapped side-by-side, plus key concept differences.">
+<meta name="author" content="Patrick van Staveren">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f11;
+    --surface: #16181c;
+    --surface-raised: #1e2025;
+    --border: #2a2d35;
+    --border-accent: #3d4150;
+    --text: #e8e9ed;
+    --text-muted: #9398a5;
+    --accent: #c4f06a;
+    --accent-dim: #a3cc4e;
+    --accent-glow: rgba(196, 240, 106, 0.08);
+    --link: #7eb8f7;
+    --link-hover: #a8d0fc;
+    --code-bg: #121317;
+    --code-border: #23262e;
+    --warn-accent: #e8a84c;
+    --warn-glow: rgba(232, 168, 76, 0.06);
+    --claude-accent: #d4956a;
+    --claude-glow: rgba(212, 149, 106, 0.08);
+    --codex-accent: #5eead4;
+    --codex-glow: rgba(94, 234, 212, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 .arrow {
+    color: var(--text-muted);
+    font-weight: 400;
+    margin: 0 0.25rem;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 620px;
+  }
+
+  .badges {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .badge.claude { background: var(--claude-glow); color: var(--claude-accent); border: 1px solid rgba(212, 149, 106, 0.25); }
+  .badge.claude .dot { background: var(--claude-accent); }
+  .badge.codex { background: var(--codex-glow); color: var(--codex-accent); border: 1px solid rgba(94, 234, 212, 0.25); }
+  .badge.codex .dot { background: var(--codex-accent); }
+
+  section { margin-bottom: 3rem; }
+
+  section > h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  section > .section-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem;
+    color: var(--text);
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  ul { margin: 0.5rem 0 1rem 1.25rem; color: var(--text-muted); }
+  ul li { margin-bottom: 0.35rem; }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+
+  code {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: var(--surface-raised);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: var(--text);
+  }
+
+  /* Intro grid */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .intro-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+  }
+  .intro-box h3 {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 0.5rem;
+  }
+  .intro-box.claude h3 { color: var(--claude-accent); }
+  .intro-box.codex h3 { color: var(--codex-accent); }
+  .intro-box p { font-size: 0.9rem; margin: 0; }
+
+  @media (max-width: 600px) {
+    .intro-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Command cards */
+  .cmd-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  .cmd-step {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.7rem 1.3rem 0;
+  }
+  .cmd-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    padding: 0.25rem 1.3rem 0.6rem;
+    color: var(--text);
+  }
+  .cmd-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding: 0 1.3rem 0.9rem;
+  }
+  .cmd-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .cmd-cell {
+    padding: 0.8rem 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .cmd-cell.cc { border-right: 1px solid var(--border); }
+  .cmd-cell .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .cmd-cell.cc .label { color: var(--claude-accent); }
+  .cmd-cell.cx .label { color: var(--codex-accent); }
+  .cmd-cell .cmd {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .cmd-cell .none {
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--text-muted);
+  }
+  .cmd-body {
+    padding: 1rem 1.3rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .cmd-body strong { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .cmd-row { grid-template-columns: 1fr; }
+    .cmd-cell.cc { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  /* Callouts */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-glow);
+    padding: 0.8rem 1.05rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.85rem 0 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .callout strong { color: var(--text); }
+
+  .callout-warn {
+    border-left-color: var(--warn-accent);
+    background: var(--warn-glow);
+  }
+
+  /* Concept table */
+  .concept-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .concept-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .concept-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-align: left;
+    padding: 0.75rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .concept-table th.cc { color: var(--claude-accent); }
+  .concept-table th.cx { color: var(--codex-accent); }
+  .concept-table td {
+    padding: 0.8rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    color: var(--text-muted);
+  }
+  .concept-table tr:last-child td { border-bottom: none; }
+  .concept-table td:first-child { color: var(--text); font-weight: 500; }
+
+  @media (max-width: 600px) {
+    .concept-table { font-size: 0.82rem; }
+    .concept-table th, .concept-table td { padding: 0.6rem 0.8rem; }
+  }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .footer a { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <header class="header">
+    <div class="header-label">AI Coding · Crib Sheet</div>
+    <h1>Claude Code <span class="arrow">→</span> Codex CLI</h1>
+    <p>Already fluent in Claude Code and dropping into OpenAI's Codex CLI? Ten essential slash commands mapped side-by-side, plus a concept table for the bits that don't translate.</p>
+    <div class="badges">
+      <span class="badge claude"><span class="dot"></span>Claude Code</span>
+      <span class="badge codex"><span class="dot"></span>Codex CLI</span>
+    </div>
+  </header>
+
+  <!-- Orientation -->
+  <section>
+    <h2>Quick Orientation</h2>
+    <div class="section-sub">Same shape, different plumbing. Install, run, point at a project — then everything below is slash commands inside the session.</div>
+
+    <div class="intro-grid">
+      <div class="intro-box claude">
+        <h3>Claude Code</h3>
+        <p>Install with <code>npm i -g @anthropic-ai/claude-code</code>, launch with <code>claude</code>. Anthropic models (Sonnet, Opus, Haiku). Project memory lives in <code>CLAUDE.md</code>. Config in <code>~/.claude/</code>.</p>
+      </div>
+      <div class="intro-box codex">
+        <h3>Codex CLI</h3>
+        <p>Install with <code>npm i -g @openai/codex</code>, launch with <code>codex</code>. OpenAI models (<code>o4-mini</code> default, <code>gpt-4.1</code>, etc). Project instructions in <code>AGENTS.md</code>. Config in <code>~/.codex/config.toml</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands -->
+  <section>
+    <h2>Ten Commands, Side by Side</h2>
+    <div class="section-sub">Roughly in order of how often you'll reach for them.</div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">01 / 10</div>
+      <div class="cmd-title">Initialize a project</div>
+      <div class="cmd-sub">Scaffold a file that gives the agent persistent instructions about your repo.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/init</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/init</span></div>
+      </div>
+      <div class="cmd-body">
+        <strong>Claude Code</strong> generates a <code>CLAUDE.md</code> with coding conventions, tech stack, and common commands. <strong>Codex</strong> generates an <code>AGENTS.md</code> scaffold. Same job, different filename. Both also read nested files in subdirectories, which is handy in a monorepo.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">02 / 10</div>
+      <div class="cmd-title">Compact the conversation</div>
+      <div class="cmd-sub">Summarize earlier turns to free up context window space during long sessions.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/compact [instructions]</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/compact</span></div>
+      </div>
+      <div class="cmd-body">
+        Both summarize the transcript to free tokens. <strong>Claude Code</strong> takes optional focus instructions — e.g. <code>/compact focus on the auth refactor</code> — to steer what's preserved. <strong>Codex</strong> confirms before summarizing.
+        <div class="callout"><strong>Habit worth keeping:</strong> compact before you hit the wall, not after. Easier to steer the summary when you still have room to review it.</div>
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">03 / 10</div>
+      <div class="cmd-title">Switch models</div>
+      <div class="cmd-sub">Change which model powers the session without restarting.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/model</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/model</span></div>
+      </div>
+      <div class="cmd-body">
+        Nearly identical. <strong>Claude Code</strong> picks between Sonnet, Opus, and Haiku. <strong>Codex</strong> shows a popup with OpenAI models like <code>o4-mini</code>, <code>gpt-4.1</code>, <code>gpt-4.1-mini</code>. Codex also has <code>/fast</code> to toggle a speed-optimized mode for the current model — Claude Code has no direct equivalent, so switch to Haiku for speed instead.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">04 / 10</div>
+      <div class="cmd-title">Check usage &amp; cost</div>
+      <div class="cmd-sub">See how many tokens you've burned and where your limits stand.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/usage + /cost</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/status</span></div>
+      </div>
+      <div class="cmd-body">
+        <strong>Claude Code</strong> splits this in two: <code>/usage</code> for plan limits and rate-limit status, <code>/cost</code> for tokens in the current session. <strong>Codex</strong> folds everything into <code>/status</code> — active model, approval policy, writable roots, and token usage in one view.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">05 / 10</div>
+      <div class="cmd-title">Code review</div>
+      <div class="cmd-sub">Ask the agent to review your working tree or recent changes.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/review</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/review</span></div>
+      </div>
+      <div class="cmd-body">
+        Both review your current changes. <strong>Codex</strong> pairs naturally with <code>/diff</code> (shows the full git diff including untracked files). Claude Code has no built-in <code>/diff</code> — just ask it to run <code>git diff</code>.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">06 / 10</div>
+      <div class="cmd-title">Adjust permissions / approval mode</div>
+      <div class="cmd-sub">Control how much the agent can do without asking you first.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/permissions</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/permissions</span></div>
+      </div>
+      <div class="cmd-body">
+        Same name, different mental model. <strong>Claude Code</strong> manages tool-level permissions (which tools can run without asking). <strong>Codex</strong> uses approval presets: <code>Auto</code> (fully autonomous), <code>Suggest</code> (propose, then confirm), <code>Read Only</code> (no file writes). You can also set approval mode at launch with <code>codex --approval-mode auto</code>.
+        <div class="callout"><strong>Sandbox note:</strong> Claude Code's <code>/sandbox</code> enables filesystem and network isolation. Codex sandboxes commands by default and uses <code>/sandbox-add-read-dir</code> to grant extra read access.</div>
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">07 / 10</div>
+      <div class="cmd-title">MCP servers &amp; external tools</div>
+      <div class="cmd-sub">Manage Model Context Protocol integrations.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/mcp</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/mcp</span></div>
+      </div>
+      <div class="cmd-body">
+        Both list configured MCP tools. <strong>Claude Code</strong> uses <code>/mcp</code> to manage connections and handle OAuth interactively. <strong>Codex</strong> uses <code>/mcp</code> to list tools, but servers are configured in <code>~/.codex/config.toml</code> rather than via the CLI. Codex also has <code>/apps</code> to browse and attach connector-style integrations.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">08 / 10</div>
+      <div class="cmd-title">Edit memory &amp; configuration</div>
+      <div class="cmd-sub">Update persistent project instructions or personal preferences.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/memory + /config</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/personality + config.toml</span></div>
+      </div>
+      <div class="cmd-body">
+        <strong>Claude Code</strong> has <code>/memory</code> to edit <code>CLAUDE.md</code> in-session and <code>/config</code> for the settings UI. <strong>Codex</strong> doesn't have an in-session memory editor — you open <code>AGENTS.md</code> in your editor. For tone, Codex has <code>/personality</code> (<code>friendly</code>, <code>pragmatic</code>, or <code>none</code>). Persistent config lives in <code>~/.codex/config.toml</code>.
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">09 / 10</div>
+      <div class="cmd-title">Reset the session</div>
+      <div class="cmd-sub">Start fresh without leaving the terminal.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="cmd">/clear</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/clear or /new</span></div>
+      </div>
+      <div class="cmd-body">
+        <strong>Claude Code's</strong> <code>/clear</code> wipes the conversation and resets context. <strong>Codex</strong> offers two: <code>/clear</code> clears the terminal <em>and</em> starts a fresh chat, <code>/new</code> starts a new conversation but keeps the terminal view. Codex also has <code>/fork</code> to branch into a parallel thread and <code>/resume</code> to reload a previous session.
+        <div class="callout"><strong>Session resume:</strong> Codex's <code>/resume</code> is roughly equivalent to Claude Code's <code>claude -c</code> (continue last) or <code>claude -r</code> (resume specific session) CLI flags.</div>
+      </div>
+    </div>
+
+    <div class="cmd-card">
+      <div class="cmd-step">10 / 10</div>
+      <div class="cmd-title">Plan before executing</div>
+      <div class="cmd-sub">Ask the agent to propose a plan before writing code.</div>
+      <div class="cmd-row">
+        <div class="cmd-cell cc"><span class="label">CC</span><span class="none">ask Claude to plan</span></div>
+        <div class="cmd-cell cx"><span class="label">CX</span><span class="cmd">/plan</span></div>
+      </div>
+      <div class="cmd-body">
+        <strong>Codex</strong> has a dedicated <code>/plan</code> command that switches into plan mode — the agent proposes an execution plan before any implementation. You can pass an inline prompt: <code>/plan migrate this service to TypeScript</code>. <strong>Claude Code</strong> has no built-in equivalent, but you can prompt with "plan this first, don't implement yet" or wrap it in a custom skill.
+      </div>
+    </div>
+  </section>
+
+  <!-- Concept table -->
+  <section>
+    <h2>Key Concept Mapping</h2>
+    <div class="section-sub">The bits that aren't a single slash command — where the tools diverge at the configuration and file-layout level.</div>
+
+    <div class="concept-table-wrap">
+      <table class="concept-table">
+        <thead>
+          <tr>
+            <th>Concept</th>
+            <th class="cc">Claude Code</th>
+            <th class="cx">Codex CLI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Project instructions file</td>
+            <td><code>CLAUDE.md</code></td>
+            <td><code>AGENTS.md</code></td>
+          </tr>
+          <tr>
+            <td>Config location</td>
+            <td><code>~/.claude/settings.json</code></td>
+            <td><code>~/.codex/config.toml</code></td>
+          </tr>
+          <tr>
+            <td>Custom commands</td>
+            <td><code>.claude/skills/</code> or <code>.claude/commands/</code></td>
+            <td>Custom slash commands (community-built)</td>
+          </tr>
+          <tr>
+            <td>Subagents</td>
+            <td><code>.claude/agents/</code> with YAML frontmatter</td>
+            <td><code>/agent</code> to switch threads</td>
+          </tr>
+          <tr>
+            <td>Default model</td>
+            <td>Claude Sonnet</td>
+            <td><code>o4-mini</code></td>
+          </tr>
+          <tr>
+            <td>Continue last session</td>
+            <td><code>claude -c</code></td>
+            <td><code>/resume</code></td>
+          </tr>
+          <tr>
+            <td>Non-interactive / scripting</td>
+            <td><code>claude -p "prompt"</code></td>
+            <td><code>codex "prompt"</code> (prompt as arg)</td>
+          </tr>
+          <tr>
+            <td>Approval / autonomy levels</td>
+            <td>Per-tool allow/deny</td>
+            <td>Presets: Auto, Suggest, Read Only</td>
+          </tr>
+          <tr>
+            <td>Git diff viewer</td>
+            <td>Ask: "show me the diff"</td>
+            <td><code>/diff</code> (built-in)</td>
+          </tr>
+          <tr>
+            <td>Copy last response</td>
+            <td>Select + copy manually</td>
+            <td><code>/copy</code> (built-in)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Takeaways -->
+  <section>
+    <h2>The Mental Shifts</h2>
+    <div class="section-sub">If you remember nothing else, remember these.</div>
+    <ul>
+      <li><strong>Nearly 1:1:</strong> <code>/init</code>, <code>/compact</code>, <code>/model</code>, <code>/review</code>, <code>/permissions</code>, <code>/mcp</code>. The mental model transfers cleanly.</li>
+      <li><strong>Where Codex has more:</strong> <code>/plan</code> (dedicated plan mode), <code>/diff</code> (built-in git diff), <code>/copy</code> (clipboard), <code>/fork</code> (branch conversations), <code>/fast</code> (speed toggle). Things you'd do manually or via custom skills in Claude Code.</li>
+      <li><strong>Where Claude Code has more:</strong> <code>/memory</code> for in-session <code>CLAUDE.md</code> edits, <code>/cost</code> + <code>/usage</code> as separate detailed views, <code>/sandbox</code> for isolation, and a more mature skills/subagents system.</li>
+      <li><strong>The biggest shift:</strong> <code>AGENTS.md</code> instead of <code>CLAUDE.md</code>, TOML config instead of JSON, and permissions as preset tiers (Auto / Suggest / Read Only) rather than per-tool granularity.</li>
+    </ul>
+  </section>
+
+  <footer class="footer">
+    <p>Part of the <a href="../index.html">Just Do AI</a> materials. Questions? <a href="mailto:trick@vanstaveren.us">trick@vanstaveren.us</a>.</p>
+    <p style="margin-top:0.75rem; font-size:0.8rem;">
+      Sources:
+      <a href="https://developers.openai.com/codex/cli/slash-commands">Codex CLI docs</a> ·
+      <a href="https://docs.claude.com/en/docs/claude-code/slash-commands">Claude Code docs</a>
+    </p>
+    <p style="margin-top:0.75rem; font-size:0.8rem;">&copy; 2026 <a href="https://v9n.us/">V9N Consulting</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXEF9TG8WK');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code Fundamentals Crib Sheet</title>
+<meta name="description" content="The first 15 Claude Code commands and concepts a new user needs to get real work done — sessions, permissions, git, models, and interrupts.">
+<meta name="author" content="Patrick van Staveren">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f11;
+    --surface: #16181c;
+    --surface-raised: #1e2025;
+    --border: #2a2d35;
+    --text: #e8e9ed;
+    --text-muted: #9398a5;
+    --accent: #c4f06a;
+    --accent-dim: #a3cc4e;
+    --accent-glow: rgba(196, 240, 106, 0.08);
+    --link: #7eb8f7;
+    --link-hover: #a8d0fc;
+    --code-bg: #121317;
+    --code-border: #23262e;
+    --warn-accent: #e8a84c;
+    --warn-glow: rgba(232, 168, 76, 0.06);
+    --danger-accent: #e87a6a;
+    --danger-glow: rgba(232, 122, 106, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  .header {
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.75rem;
+  }
+
+  .header p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    max-width: 620px;
+  }
+
+  section { margin-bottom: 3rem; }
+
+  section > h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.4rem;
+  }
+
+  section > .section-sub {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem;
+    color: var(--text);
+  }
+
+  p {
+    color: var(--text-muted);
+    margin-bottom: 0.9rem;
+  }
+
+  ul { margin: 0.5rem 0 1rem 1.25rem; color: var(--text-muted); }
+  ul li { margin-bottom: 0.35rem; }
+  ul li strong { color: var(--text); font-weight: 500; }
+
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.15s;
+  }
+  a:hover { color: var(--link-hover); border-bottom-color: var(--link-hover); }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 0.85rem 1.05rem;
+    overflow-x: auto;
+    font-family: 'DM Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0.7rem 0 1rem;
+  }
+  code {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: var(--surface-raised);
+    padding: 0.15em 0.4em;
+    border-radius: 4px;
+    color: var(--text);
+  }
+  pre code { background: none; padding: 0; font-size: 1em; }
+  .prompt { color: #6b6e7a; user-select: none; }
+  .comment { color: #6b6e7a; font-style: italic; }
+
+  /* Command blocks */
+  .cmd-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .cmd-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .cmd-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+  }
+  .cmd-name {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .cmd-gloss {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  .cmd-body { font-size: 0.95rem; color: var(--text-muted); }
+  .cmd-body strong { color: var(--text); font-weight: 500; }
+  .cmd-body p { margin-bottom: 0.6rem; }
+  .cmd-body p:last-child { margin-bottom: 0; }
+
+  /* Callouts */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-glow);
+    padding: 0.8rem 1.05rem;
+    border-radius: 0 6px 6px 0;
+    margin: 0.85rem 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+  .callout strong { color: var(--text); }
+  .callout-warn { border-left-color: var(--warn-accent); background: var(--warn-glow); }
+  .callout-danger { border-left-color: var(--danger-accent); background: var(--danger-glow); }
+
+  /* Concept boxes */
+  .concept {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .concept-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .concept h3 { margin-top: 0; margin-bottom: 0.4rem; }
+  .concept p { font-size: 0.95rem; margin-bottom: 0.5rem; }
+  .concept p:last-child { margin-bottom: 0; }
+  .concept strong { color: var(--text); font-weight: 500; }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .footer a { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+
+  <header class="header">
+    <div class="header-label">Coding with AI Bootcamp · Claude Code Fundamentals</div>
+    <h1>Claude Code Fundamentals: The First 15 Commands</h1>
+    <p>The handful of commands and concepts you need to get real work done your first week with Claude Code. Nothing fancy — just the muscle memory that makes the rest click.</p>
+  </header>
+
+  <!-- Core concepts -->
+  <section>
+    <h2>Six Things to Internalize First</h2>
+    <div class="section-sub">Claude Code isn't ChatGPT in a terminal. These concepts shape everything below.</div>
+
+    <div class="concept">
+      <div class="concept-label">01 · Real execution, real files</div>
+      <p>Claude Code runs on <strong>your computer</strong>. It uses the tools you already have — <code>grep</code>, <code>awk</code>, <code>jq</code>, <code>git</code> — and asks permission to install more if it needs them. When you say "look at this log file," it investigates the way a human operator would, just faster. It's trained on Stack Overflow; it knows how to install software.</p>
+    </div>
+
+    <div class="concept">
+      <div class="concept-label">02 · A session is a conversation</div>
+      <p>Everything you've said this session is in <strong>context</strong> — Claude remembers it. That's a feature (build on previous turns) and a trap (context fills up, gets stale, or wanders off topic). Knowing <em>when</em> to start fresh vs. resume is a real skill.</p>
+    </div>
+
+    <div class="concept">
+      <div class="concept-label">03 · Scoped to your directory</div>
+      <p>Claude Code works inside the folder where you launched it. It will read files outside that directory, but it asks permission first. Inside, it reads and analyzes freely. A great first prompt in a new repo: <em>"What does this code do?"</em></p>
+    </div>
+
+    <div class="concept">
+      <div class="concept-label">04 · Permissions matter</div>
+      <p>It's built for safety. It asks before editing files, running processes, installing things, or touching anything outside your directory. It makes mistakes sometimes — the permission prompt is your safety net. If you ever run in YOLO mode, run it in a <strong>sandbox</strong>.</p>
+    </div>
+
+    <div class="concept">
+      <div class="concept-label">05 · Interrupt any time</div>
+      <p>Hit <strong><code>Esc</code></strong>. That stops whatever it's doing. Tell it it's going down the wrong rabbit hole, or ask a clarifying question. Then say <em>"continue"</em> or <em>"carry on"</em> to pick back up. You're the driver, not a passenger.</p>
+    </div>
+
+    <div class="concept">
+      <div class="concept-label">06 · Excellent at version control</div>
+      <p>The first time you see Claude write a git commit message, it feels like cheating — it signs its name next to yours. It feels wrong for about a week. Then you realize the commit messages are better than what you'd write, and you stop fighting it.</p>
+    </div>
+  </section>
+
+  <!-- Setup -->
+  <section>
+    <h2>Installing &amp; Starting</h2>
+    <div class="section-sub">One-time setup, then two commands to run it.</div>
+
+    <pre><span class="prompt">$</span> npm install -g @anthropic-ai/claude-code   <span class="comment"># one-time install</span>
+<span class="prompt">$</span> cd ~/my-project                             <span class="comment"># go to your repo</span>
+<span class="prompt">$</span> claude                                      <span class="comment"># start a session</span></pre>
+
+    <p>That's it. You're now talking to Claude, scoped to this directory. Ask it anything.</p>
+  </section>
+
+  <!-- Commands -->
+  <section>
+    <h2>The Commands</h2>
+    <div class="section-sub">Slash commands run inside a Claude session. CLI flags go on the <code>claude</code> command itself when you launch.</div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">01</span>
+        <span class="cmd-name">/init</span>
+        <span class="cmd-gloss">"teach Claude about this repo"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Run this the first time you open a project. Claude scans the codebase and writes a <code>CLAUDE.md</code> file at the root — coding conventions, tech stack, common commands, important files. Every future session reads it automatically.</p>
+        <p>Check it into git. Edit it by hand when things change. Treat it like a README for your AI collaborator.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">02</span>
+        <span class="cmd-name">Esc</span>
+        <span class="cmd-gloss">"stop, I want to say something"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Not a slash command — a single key. Press <code>Esc</code> any time Claude is running to interrupt it. You can correct course, ask a question, or kill a bad idea before it writes ten files.</p>
+        <div class="callout"><strong>Habit worth building:</strong> interrupt the moment you spot it going sideways. Cheaper than letting it finish and undoing the damage.</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">03</span>
+        <span class="cmd-name">/model</span>
+        <span class="cmd-gloss">"pick Opus, Sonnet, or Haiku"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Switch models without restarting. Rough guide:</p>
+        <ul>
+          <li><strong>Opus</strong> — smartest. Use for planning, hard debugging, ambiguous problems.</li>
+          <li><strong>Sonnet</strong> — the daily driver. Strong and balanced.</li>
+          <li><strong>Haiku</strong> — fast and cheap. Great for routine edits, repetitive tasks, or when you're iterating a lot.</li>
+        </ul>
+        <p>Starting with Sonnet is almost always the right call. Reach for Opus when stuck.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">04</span>
+        <span class="cmd-name">claude --resume</span>
+        <span class="cmd-gloss">"pick up where I left off"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Launch this way instead of plain <code>claude</code> to reload a previous session. Claude lists recent sessions; you pick one. The full conversation history is back — no re-explaining.</p>
+        <p>Shortcut: <code>claude -c</code> continues your most recent session without the picker.</p>
+        <div class="callout"><strong>Essential skill:</strong> knowing when to resume vs. start fresh. Resume when the context is still relevant. Start fresh when switching tasks — stale context makes Claude worse, not better.</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">05</span>
+        <span class="cmd-name">/clear</span>
+        <span class="cmd-gloss">"start the conversation over"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Wipes the current conversation and starts fresh — same directory, same <code>CLAUDE.md</code>, but no prior turns. Use this when you're switching to a new task or the session has gone off the rails.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">06</span>
+        <span class="cmd-name">/compact</span>
+        <span class="cmd-gloss">"summarize so we can keep going"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Summarizes earlier turns to free up context window space. Use it before you hit the wall on a long session. Optional: pass focus instructions — <code>/compact focus on the auth refactor</code> — to steer what gets preserved.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">07</span>
+        <span class="cmd-name">/permissions</span>
+        <span class="cmd-gloss">"what can Claude do without asking?"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Review and adjust which tools run without prompting. Over time you'll trust Claude with things like <code>git status</code> or <code>npm test</code> and add them to the allow list. Destructive stuff stays behind a prompt.</p>
+        <div class="callout callout-warn"><strong>Don't blanket-allow everything on day one.</strong> The prompts feel annoying for about a week, then you learn which categories are safe to allow and which aren't. Let that calibration happen.</div>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">08</span>
+        <span class="cmd-name">"commit this"</span>
+        <span class="cmd-gloss">"let Claude write your git commit"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Not a slash command — just ask. Claude reads the diff, writes a good commit message, and commits. It co-signs with you (look for <code>Co-Authored-By: Claude</code>). Feels wrong at first. Then you read the message and realize it's better than yours.</p>
+        <p>Works for branches, PRs, rebases, merge conflicts, the whole pipeline. If git confuses you, Claude is a patient guide.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">09</span>
+        <span class="cmd-name">"what does this code do?"</span>
+        <span class="cmd-gloss">"the best first prompt in any repo"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Point Claude at an unfamiliar codebase and ask. It reads the files, traces entry points, and explains the architecture in plain language. Faster than reading the README. Often <em>more accurate</em> than the README.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">10</span>
+        <span class="cmd-name">/cost</span>
+        <span class="cmd-gloss">"how many tokens have I burned?"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Shows token usage for the current session. Pair with <code>/usage</code> to see your plan limits. Useful when a session feels slow — often it's because context is full, and <code>/compact</code> or <code>/clear</code> is the fix.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">11</span>
+        <span class="cmd-name">/help</span>
+        <span class="cmd-gloss">"show me everything I'm forgetting"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Lists every slash command with a short description. When you know the command exists but forgot the name.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">12</span>
+        <span class="cmd-name">/memory</span>
+        <span class="cmd-gloss">"edit CLAUDE.md in place"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Opens <code>CLAUDE.md</code> for editing without leaving the session. Useful when you realize mid-session that a rule — "never touch the migrations folder," "always use pnpm not npm" — should be permanent.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">13</span>
+        <span class="cmd-name">/review</span>
+        <span class="cmd-gloss">"critique my working tree"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Asks Claude to review the code you've changed. Catches small bugs, missed edge cases, and "did you really mean to do this?" moments before you commit. Not a replacement for a human reviewer — a complement.</p>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">14</span>
+        <span class="cmd-name">claude -p "prompt"</span>
+        <span class="cmd-gloss">"one-shot, no chat window"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Run Claude non-interactively — give it a prompt, get the answer, exit. Perfect for scripting, pre-commit hooks, or piping a question through from another tool.</p>
+        <pre><span class="prompt">$</span> claude -p "summarize the last 10 commits"</pre>
+      </div>
+    </div>
+
+    <div class="cmd-block">
+      <div class="cmd-header">
+        <span class="cmd-num">15</span>
+        <span class="cmd-name">"plan first, don't implement yet"</span>
+        <span class="cmd-gloss">"think before you code"</span>
+      </div>
+      <div class="cmd-body">
+        <p>Not a slash command — a prompt pattern. For anything non-trivial, ask Claude to propose a plan before writing code. Read it, push back, adjust. <em>Then</em> say "go ahead." Saves far more time than it costs, especially on anything that touches more than one file.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety -->
+  <section>
+    <h2>Safety Notes</h2>
+
+    <div class="callout callout-warn"><strong>It will make mistakes.</strong> Sometimes small, occasionally expensive. The permission prompts exist for a reason — read them before clicking yes. Review diffs before committing. Run tests.</div>
+
+    <div class="callout callout-danger"><strong>YOLO mode (<code>--dangerously-skip-permissions</code>) belongs in a sandbox.</strong> Running Claude without permission prompts on your real machine is how you end up with deleted files, broken shells, or surprise <code>rm -rf</code>. If you want autonomy, get it via a container, VM, or isolated directory — not by disabling the safety net.</div>
+  </section>
+
+  <footer class="footer">
+    <p>Part of the <a href="../index.html">Just Do AI</a> bootcamp materials. Questions? <a href="mailto:trick@vanstaveren.us">trick@vanstaveren.us</a>.</p>
+    <p style="margin-top:0.75rem; font-size:0.8rem;">&copy; 2026 <a href="https://v9n.us/">V9N Consulting</a></p>
+  </footer>
+
+</div>
+
+</body>
+</html>
