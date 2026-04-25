@@ -415,6 +415,41 @@
     pre { font-size: 0.78rem; padding: 0.7rem 0.9rem; }
   }
 
+  /* ── Copy button ── */
+  .copy-btn {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.55rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-accent);
+    border-radius: 5px;
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.15s, color 0.15s, background 0.15s;
+    padding: 0;
+  }
+  .copy-btn:hover {
+    background: var(--border-accent);
+    color: var(--text);
+  }
+  .copy-btn.copied {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  pre:hover .copy-btn,
+  pre .copy-btn:focus {
+    opacity: 1;
+  }
+  pre {
+    position: relative;
+  }
+
   /* ── Print ── */
   @media print {
     body { background: #fff; color: #111; }
@@ -422,6 +457,7 @@
     a { color: #1a5dab; }
     a[href]::after { content: ' (' attr(href) ')'; font-size: 0.7em; color: #666; word-break: break-all; }
     pre { border: 1px solid #ccc; background: #f7f7f7; color: #111; }
+    .copy-btn { display: none; }
     .step-number { border-color: #333; color: #333; background: #fff; }
     .substep, .checklist { background: #f9f9f9; border-color: #ddd; }
     .callout { background: #f4f8e8; border-color: #666; color: #333; }
@@ -643,6 +679,25 @@ node --version</code></pre>
 
 <!-- ════════════════════════════════ SCRIPT ════════════════════════════════ -->
 <script>
+document.querySelectorAll('pre').forEach(pre => {
+  const btn = document.createElement('button');
+  btn.className = 'copy-btn';
+  btn.setAttribute('aria-label', 'Copy to clipboard');
+  btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+  btn.addEventListener('click', () => {
+    const text = pre.querySelector('code') ? pre.querySelector('code').innerText : pre.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+      }, 1800);
+    });
+  });
+  pre.appendChild(btn);
+});
+
 document.querySelectorAll('.tabs').forEach(tabGroup => {
   const buttons = tabGroup.querySelectorAll('.tab-btn');
   const panels = tabGroup.querySelectorAll('.tab-panel');
