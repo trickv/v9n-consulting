@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code — A Field Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --body: #262626;
+    --mute: #6b6457;
+    --accent: #8b2a2a;
+    --rule: #c9bfae;
+    --paper: #ffffff;
+    --tint: #faf6ed;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.5in;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--paper);
+    color: var(--body);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    font-feature-settings: 'onum' 1, 'liga' 1;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    max-width: 7.5in;
+    margin: 0.5in auto;
+    padding: 0;
+  }
+
+  /* ============ HEADER ============ */
+  .masthead {
+    border-top: 2px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 10px 0 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 14px;
+  }
+
+  .masthead .title {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 30, 'opsz' 144;
+    font-weight: 500;
+    font-size: 32pt;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .masthead .title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+    font-variation-settings: 'SOFT' 80, 'opsz' 144;
+  }
+
+  .masthead .meta {
+    text-align: right;
+    font-size: 8pt;
+    line-height: 1.5;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .masthead .meta strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .dek {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 100, 'opsz' 14;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 13pt;
+    color: var(--mute);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ============ CONCEPT ============ */
+  .concept {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 22px;
+    margin-top: 8px;
+    align-items: start;
+  }
+
+  .concept-term {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 30, 'opsz' 144;
+    font-size: 30pt;
+    font-weight: 400;
+    line-height: 0.9;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .concept-gloss {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100, 'opsz' 14;
+    font-size: 10pt;
+    color: var(--accent);
+    margin: 3px 0 7px;
+  }
+
+  .concept-col p {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    margin-bottom: 7px;
+    color: var(--body);
+  }
+
+  .concept-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.5pt;
+    color: var(--mute);
+    border-top: 1px dotted var(--rule);
+    padding-top: 5px;
+    line-height: 1.35;
+  }
+
+  .concept-tag em {
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .concept-divider {
+    background: var(--rule);
+    align-self: stretch;
+  }
+
+  .concept-close {
+    margin-top: 12px;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 100, 'opsz' 14;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: var(--ink);
+    padding: 0 30px;
+  }
+
+  .concept-close em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .concept-quote {
+    margin: 10px 0 12px;
+    padding: 10px 20px;
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    text-align: center;
+  }
+
+  .concept-quote-text {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 80, 'opsz' 36;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14pt;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .concept-quote-text .eq {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+    margin: 0 4px;
+  }
+
+  .concept-quote-attr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-top: 5px;
+    font-weight: 600;
+  }
+
+  /* ============ THE LOOP ============ */
+  .loop {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .section-label .num {
+    color: var(--mute);
+    margin-right: 6px;
+  }
+
+  .loop-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 8px;
+    align-items: stretch;
+    margin-top: 6px;
+  }
+
+  .loop-step {
+    padding: 0;
+  }
+
+  .loop-step h3 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 60, 'opsz' 24;
+    font-size: 15pt;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 3px;
+    line-height: 1.1;
+  }
+
+  .loop-step h3 .kbd {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: var(--accent);
+    font-weight: 400;
+    margin-left: 4px;
+    vertical-align: 2px;
+  }
+
+  .loop-step h3 code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13pt;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .loop-step p {
+    font-size: 9.5pt;
+    line-height: 1.35;
+    color: var(--body);
+  }
+
+  .loop-arrow {
+    font-family: 'Fraunces', serif;
+    font-size: 20pt;
+    color: var(--accent);
+    align-self: center;
+    line-height: 1;
+    font-weight: 300;
+  }
+
+  .loop-tag {
+    margin-top: 10px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100, 'opsz' 14;
+    font-size: 10.5pt;
+    color: var(--ink);
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  /* ============ GRID ============ */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 22px;
+    margin-bottom: 14px;
+  }
+
+  .block h2 {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 40, 'opsz' 36;
+    font-size: 16pt;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.05;
+    margin-bottom: 2px;
+  }
+
+  .block .sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-variation-settings: 'SOFT' 100;
+    font-size: 9pt;
+    color: var(--mute);
+    margin-bottom: 6px;
+  }
+
+  .block p {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    margin-bottom: 5px;
+  }
+
+  .block ul {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+  }
+
+  .block li {
+    font-size: 9.5pt;
+    line-height: 1.45;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  .block li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8.8pt;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .block li code {
+    background: var(--tint);
+    padding: 0 3px;
+    border-radius: 2px;
+  }
+
+  .pull {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 12px 0 11px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .pull-main {
+    font-family: 'Fraunces', serif;
+    font-variation-settings: 'SOFT' 100, 'opsz' 36;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 15pt;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .pull-main em {
+    font-style: normal;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .pull-sub {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9.5pt;
+    color: var(--mute);
+    margin-top: 6px;
+    font-style: italic;
+    line-height: 1.3;
+  }
+
+  /* ============ FOOTER ============ */
+  .footer {
+    border-top: 2px solid var(--ink);
+    padding-top: 10px;
+  }
+
+  .footer-card {
+    border: 1px solid var(--rule);
+    padding: 11px 16px;
+    background: var(--tint);
+  }
+
+  .footer-card .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .footer-card .url-big {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20pt;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin-bottom: 7px;
+  }
+
+  .footer-card .resources-line {
+    font-family: 'Source Serif 4', serif;
+    font-size: 9.5pt;
+    color: var(--body);
+    line-height: 1.4;
+  }
+
+  .footer-card .resources-line .label {
+    font-style: italic;
+    color: var(--mute);
+  }
+
+  .footer-card .resources-line .sep {
+    color: var(--accent);
+    margin: 0 5px;
+  }
+
+  .colophon {
+    margin-top: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--mute);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    text-align: center;
+  }
+
+  .colophon .sep { margin: 0 8px; color: var(--rule); }
+
+  /* ============ PRINT ============ */
+  .page-break {
+    /* Screen: invisible. Print: forces the next element onto a new page. */
+  }
+
+  @media print {
+    .page-break {
+      page-break-before: always;
+      break-before: page;
+    }
+  }
+
+  @media print {
+    body { margin: 0; }
+    .footer-card { background: transparent; }
+    a { color: var(--body); text-decoration: none; }
+  }
+
+  a { color: inherit; text-decoration: none; }
+</style>
+</head>
+<body>
+
+  <header class="masthead">
+    <div class="title">Claude Code<br><em>A Field Guide</em></div>
+    <div class="meta">
+      Field Notes<br>
+      a leave-behind<br>
+      <strong>v9n.us</strong>
+    </div>
+  </header>
+
+  <!-- CONCEPT: LLM vs AGENT -->
+  <section class="concept">
+    <div class="section-label"><span class="num">01</span>The distinction that matters</div>
+    <div class="concept-quote">
+      <div class="concept-quote-text">An AI agent <span class="eq">=</span> an LLM <span class="eq">+</span> tools in a loop to achieve a goal.</div>
+      <div class="concept-quote-attr">— Simon Willison</div>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-col">
+        <div class="concept-term">LLM</div>
+        <div class="concept-gloss">the engine</div>
+        <p>Takes text in, predicts text out. Smart, but inert. Describes what to do — can't actually do it.</p>
+        <div class="concept-tag">Claude in your browser. <em>You</em> are the loop.</div>
+      </div>
+      <div class="concept-divider"></div>
+      <div class="concept-col">
+        <div class="concept-term">Agent</div>
+        <div class="concept-gloss">an LLM with tools, in a loop</div>
+        <p>Doesn't just answer — it <em>acts</em>. Works the task step by step, asking before each meaningful action, until it's done or stuck.</p>
+        <div class="concept-tag">Claude Code. <em>It</em> is the loop.</div>
+      </div>
+    </div>
+    <div class="concept-close">The chat you've been using <em>answers</em>. Claude Code <em>acts</em> — one approved step at a time, until the job is done.</div>
+  </section>
+
+  <!-- THE LOOP -->
+  <section class="loop">
+    <div class="section-label"><span class="num">02</span>The working loop</div>
+    <div class="loop-row">
+      <div class="loop-step">
+        <h3><code>/plan</code> <span class="kbd">shift+tab</span></h3>
+        <p>Drop into <code>/plan</code> before real work. Claude reads, thinks, proposes — <em>no file writes.</em> Read the plan. Push back. Refine.</p>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step">
+        <h3>Act</h3>
+        <p>Approve the plan and let it execute. Watch the edits stream; interrupt if it veers. Small, bounded tasks beat vague sweeping ones.</p>
+      </div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step">
+        <h3>Commit</h3>
+        <p>Atomic, reviewable commits at every green checkpoint. Your git log is the rollback button when the next loop goes sideways.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GRID OF PRIMITIVES -->
+  <section class="grid">
+
+    <div class="block">
+      <div class="section-label"><span class="num">03</span>Fundamentals</div>
+      <h2>The primitives</h2>
+      <div class="sub">What you'll use in the first ten sessions.</div>
+      <ul>
+        <li><code>/init</code> — reads your codebase, digests what it does, and writes its understanding to <code>CLAUDE.md</code>.</li>
+        <li><code>@path/to/file</code> — pull any file directly into the turn.</li>
+        <li><code>#</code> — prefix a line to add it to memory for later turns.</li>
+        <li><code>/context</code> shows how full the window is; <code>/clear</code> starts fresh; <code>/compact</code> summarizes to keep going.</li>
+        <li><code>/resume</code> to pick up a prior conversation where you left off.</li>
+        <li>A session's sandbox <em>is</em> the folder you start it in. Nothing above, nothing outside.</li>
+        <li>Default to review-each-edit. Only auto-accept once you trust the task shape.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="section-label"><span class="num">04</span>Skills</div>
+      <h2>Reusable capability</h2>
+      <div class="sub">A folder of instructions Claude loads when the task matches.</div>
+      <p>A Skill is a directory with a <code>SKILL.md</code> — a named capability Claude pulls in on demand. Think: "how we write tests here," "how we ship a migration," "how we format a PR description," "how Marketing likes our content to look."</p>
+      <ul>
+        <li>User-wide: <code>~/.claude/skills/</code></li>
+        <li>Project-scoped: <code>.claude/skills/</code></li>
+        <li>Triggered by the description, not by you naming it.</li>
+      </ul>
+    </div>
+
+    <div class="block page-break">
+      <div class="section-label"><span class="num">05</span>Subagents</div>
+      <h2>Specialists on tap</h2>
+      <div class="sub">Spawn a focused Claude with its own context window.</div>
+      <p>Use <code>/agents</code> to create and manage them. A subagent gets a fresh context, a narrowed role, and its results come back summarized — your main session stays clean.</p>
+      <ul>
+        <li>Code reviewer that reads the diff without the design-debate baggage.</li>
+        <li>Test-writer that never sees the implementation it's verifying.</li>
+        <li>Researcher that crawls docs and hands you a one-paragraph answer.</li>
+      </ul>
+    </div>
+
+    <div class="block">
+      <div class="section-label"><span class="num">06</span>Independent review</div>
+      <h2>Something else checks the work</h2>
+      <div class="sub">CodeRabbit. Cubic. Any second pair of eyes that didn't write it.</div>
+      <p>Open a PR. Let a different reviewer — a <em>different tool, different model, different prompt</em> — evaluate the diff. It catches what the author (you or Claude) was too close to see.</p>
+      <ul>
+        <li><strong>CodeRabbit</strong> — mature, GitHub-native, inline suggestions.</li>
+        <li><strong>Cubic</strong> — newer, same lane, worth a look.</li>
+      </ul>
+    </div>
+
+    <div class="pull">
+      <div class="pull-main">Your engineering skills aren't obsolete — they're <em>incomplete</em>.</div>
+      <div class="pull-sub">You learned to write code. Now learn to direct it.</div>
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-card">
+      <div class="kicker">Go Deeper → The Full Shelf</div>
+      <div class="url-big">v9n.us/bootcamp</div>
+      <div class="resources-line">
+        <span class="label">In the Resources box:</span>
+        AI Tools Landscape <span class="sep">·</span>
+        CLI Crib Sheet <span class="sep">·</span>
+        Pre-Class Setup Guide <span class="sep">·</span>
+        Claude Code Tools
+      </div>
+    </div>
+  </footer>
+
+  <div class="colophon">
+    V9N Consulting <span class="sep">·</span> Coding with AI Bootcamp <span class="sep">·</span> Chasing AI at v9n.us
+  </div>
+
+</body>
+</html>
