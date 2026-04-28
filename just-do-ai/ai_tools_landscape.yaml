@@ -14,7 +14,7 @@ star_legend:
 categories:
 
   - id: generators
-    label: App Generators
+    label: Platform Builders
     title: "Prompt → App"
     tagline: "Describe it, get a working app — batteries included"
     audience: "Rapid prototypes, MVPs, non-technical builders, PM demos"
@@ -68,7 +68,7 @@ categories:
       label: Common infrastructure defaults
       text: >
         <strong>Supabase</strong> (Postgres DB, auth, storage) and <strong>Vercel</strong> (frontend deploy)
-        show up as defaults in most app generators — but they're not AI-specific.
+        show up as defaults in most platform builders — but they're not AI-specific.
         Netlify, Cloudflare Pages, Fly.io, Firebase, or whatever you already use works just as well.
 
   - id: ide

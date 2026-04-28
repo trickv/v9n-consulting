@@ -30,7 +30,7 @@ For each tool in every `more:` list:
 
 Search the web for new/emerging tools in each category:
 
-- **App Generators** (prompt-to-app platforms)
+- **Platform Builders** (prompt-to-app platforms)
 - **Agentic Coding** (agent-first coding tools, CLI or otherwise)
 - **AI-Native Editors** (IDE + AI tools)
 - **AI Code Review** (automated PR review)
