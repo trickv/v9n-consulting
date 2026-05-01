@@ -137,9 +137,10 @@ assert_status "/.claude/settings.local.json"            404
 # Nested dotdir — proves the regex is unanchored and catches dotpaths at
 # any depth, not just the root.
 assert_status "/just-do-ai/.claude/settings.local.json" 404
-# .pre-commit-config.yaml: starts with ".", so the dotfile RedirectMatch
-# wins and returns 404.
-assert_status "/.pre-commit-config.yaml"                404
+# .pre-commit-config.yaml is matched by both the dotfile RedirectMatch
+# (404) and the <FilesMatch "\.(py|ya?ml)$"> deny (403). Apache happens
+# to apply the 403 first; either is fine — the file is unreachable.
+assert_blocked "/.pre-commit-config.yaml"
 # Apache's built-in <FilesMatch "^\.ht"> rule returns 403 for any .ht* file
 # regardless of our config — verify the global protection is active.
 assert_status "/.htaccess"                              403
