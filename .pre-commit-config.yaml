@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: check-ga-tracking
+        name: Check Google Analytics tag on HTML pages
+        entry: python3 scripts/check_ga_tracking.py
+        language: system
+        files: \.html$
+        pass_filenames: true

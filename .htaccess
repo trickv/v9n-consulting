@@ -1,0 +1,36 @@
+# Repo-wide protections.
+#
+# This repository is checked out as-is into the web doc root, so anything
+# committed is potentially web-accessible. Block files and patterns that
+# should never be served, even if Apache's default config would allow them.
+
+# Block all dotfiles and dotdirectories (.git, .claude, .htaccess, .env, etc.)
+RedirectMatch 404 /\..*$
+
+# Block repo-internal scripts that live at the doc root.
+<Files "pull">
+    Require all denied
+</Files>
+<Files "webhook.cgi">
+    Require all denied
+</Files>
+
+# Block markdown docs at the repo root. Scoped by filename so that public
+# markdown elsewhere (e.g. apps/baby-monitor/PRIVACY.md) keeps serving.
+<Files "CLAUDE.md">
+    Require all denied
+</Files>
+<Files "DEPLOYMENT.md">
+    Require all denied
+</Files>
+<Files "README-website.md">
+    Require all denied
+</Files>
+<Files "SEO-SOCIAL-TAGS-SUMMARY.md">
+    Require all denied
+</Files>
+
+# Block the pre-commit config — it's harmless but not meant to be served.
+<Files ".pre-commit-config.yaml">
+    Require all denied
+</Files>
