@@ -30,7 +30,10 @@ RedirectMatch 404 /\..*$
     Require all denied
 </Files>
 
-# Block the pre-commit config — it's harmless but not meant to be served.
-<Files ".pre-commit-config.yaml">
+# Block source/data files that should never be served from the doc root.
+# .py covers build_landscape.py and any future stray script.
+# .yaml/.yml covers ai_tools_landscape.yaml, .pre-commit-config.yaml, and
+# any future config files committed at any depth.
+<FilesMatch "\.(py|ya?ml)$">
     Require all denied
-</Files>
+</FilesMatch>
