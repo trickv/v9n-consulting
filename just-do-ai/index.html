@@ -328,6 +328,155 @@
             color: #7bb8ff;
         }
 
+        /* Featured Bootcamp Section */
+        .bootcamp-feature {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #0d1220 0%, #18112a 100%);
+            border-top: 1px solid rgba(74, 158, 255, 0.2);
+            border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bootcamp-feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .bootcamp-feature::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(74, 158, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .bootcamp-feature .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .bootcamp-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #a855f7;
+            margin-bottom: 1rem;
+        }
+
+        .bootcamp-feature h2 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 1rem;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .bootcamp-feature .lead {
+            font-size: 1.2rem;
+            color: #c8c8d0;
+            max-width: 720px;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+        }
+
+        .bootcamp-formats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .bootcamp-format {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .bootcamp-format .format-title {
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .bootcamp-format .format-desc {
+            color: #9a9aa8;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .bootcamp-cta-row {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .bootcamp-cta-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #4a9eff, #a855f7);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .bootcamp-cta-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(168, 85, 247, 0.35);
+        }
+
+        .bootcamp-cta-secondary {
+            color: #c8c8d0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid rgba(200, 200, 208, 0.3);
+            padding-bottom: 2px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .bootcamp-cta-secondary:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .bootcamp-feature {
+                padding: 3.5rem 0;
+            }
+
+            .bootcamp-feature h2 {
+                font-size: 1.9rem;
+            }
+
+            .bootcamp-feature .lead {
+                font-size: 1.05rem;
+            }
+
+            .bootcamp-formats {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+        }
+
         /* Problem Sections */
         .problem-lost, .problem-solution {
             padding: 6rem 0;
@@ -647,6 +796,36 @@
         </div>
     </section>
 
+    <section class="bootcamp-feature">
+        <div class="container">
+            <span class="bootcamp-eyebrow">Flagship Offering</span>
+            <h2>Coding with AI — Claude Code Bootcamp</h2>
+            <p class="lead">
+                Immerse your engineering team in the new way of building software. Hands-on, no fluff — pick the format that matches your team's appetite.
+            </p>
+
+            <div class="bootcamp-formats">
+                <div class="bootcamp-format">
+                    <div class="format-title">1-Day Crash Course</div>
+                    <div class="format-desc">3 hours, 1-on-1, in-person or online</div>
+                </div>
+                <div class="bootcamp-format">
+                    <div class="format-title">4-Day Intensive</div>
+                    <div class="format-desc">4 hrs/day, small team, in-person or online</div>
+                </div>
+                <div class="bootcamp-format">
+                    <div class="format-title">8-Week Cohort</div>
+                    <div class="format-desc">90 min/week, live virtual cohort</div>
+                </div>
+            </div>
+
+            <div class="bootcamp-cta-row">
+                <a href="bootcamp.html#offerings" class="bootcamp-cta-primary">See Bootcamp Offerings</a>
+                <a href="bootcamp.html" class="bootcamp-cta-secondary">Why this matters now →</a>
+            </div>
+        </div>
+    </section>
+
     <section class="problem-lost">
         <div class="container">
             <div class="problem-content-split">
@@ -690,9 +869,9 @@
 
                 <div class="service-card">
                     <div class="service-icon">⌨️</div>
-                    <h3>AI Engineer Bootcamp</h3>
-                    <p>Do your engineers need to level up with new AI skills? Immerse them in a new way of working, level set across your team, and embrace the change AI has brought to writing code.</p>
-                    <a href="bootcamp.html" class="service-link">Learn more →</a>
+                    <h3>Coding with AI Bootcamp</h3>
+                    <p>Do your engineers need to level up with new AI skills? Three formats — a 1-day crash course, a 4-day intensive, or an 8-week cohort — all hands-on, all built around how your team actually works.</p>
+                    <a href="bootcamp.html#offerings" class="service-link">See offerings →</a>
                 </div>
 
                 <div class="service-card">
