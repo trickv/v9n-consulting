@@ -76,6 +76,28 @@ assert_public() {
     esac
 }
 
+# assert_redirect <path> [label]
+#   passes if status is 301/302/307/308 — for paths intentionally redirected
+#   via .htaccess (e.g. renamed pages), where the test should confirm the
+#   URL is reachable, not silently broken or denied.
+assert_redirect() {
+    local path="$1"
+    local label="${2:-$path}"
+    local code
+    code=$(fetch "$path")
+    case "$code" in
+        301|302|307|308)
+            PASS=$((PASS+1))
+            [ "$VERBOSE" = 1 ] && printf '  ok  %-50s redirect (%s)\n' "$label" "$code"
+            ;;
+        *)
+            FAIL=$((FAIL+1))
+            FAILED_DETAIL+=("REDIRECT check failed: $label -> $code (expected 3xx)")
+            printf '  FAIL %-50s expected redirect, got %s\n' "$label" "$code"
+            ;;
+    esac
+}
+
 echo "Host: $HOST"
 echo
 
@@ -123,7 +145,6 @@ assert_public "/just-do-ai/coding/journey-to-agentic-ai-engineering.html"
 assert_public "/just-do-ai/coding/claude-code-field-guide.html"
 assert_public "/just-do-ai/coding/claude-code-fundamentals-crib-sheet.html"
 assert_public "/just-do-ai/coding/claude-code-to-codex-crib-sheet.html"
-assert_public "/just-do-ai/coding/choosing-an-ai-coding-tool.html"
 assert_public "/look-up/privacy.html"
 
 # Deliberately-public markdown (NOT at repo root, so root .htaccess shouldn't touch it)
@@ -131,6 +152,14 @@ assert_public "/apps/baby-monitor/PRIVACY.md"
 
 # Public images
 assert_public "/just-do-ai/images/sunset-0.5x-crop.jpg"
+
+echo
+echo "Should redirect (intentional .htaccess redirects):"
+# choosing-an-ai-coding-tool was renamed to journey-to-agentic-ai-engineering;
+# just-do-ai/coding/.htaccess preserves the old URL via 302.
+assert_redirect "/just-do-ai/coding/choosing-an-ai-coding-tool.html"
+# bootcamp/ -> /just-do-ai/bootcamp.html
+assert_redirect "/bootcamp/"
 
 echo
 echo "Results: $PASS passed, $FAIL failed"
