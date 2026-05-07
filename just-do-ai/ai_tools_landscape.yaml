@@ -154,6 +154,7 @@ categories:
       - Aider
       - Kilo Code
       - Cline
+      - Warp
     more_urls:
       Kiro CLI: https://kiro.dev/
       Qwen Code: https://github.com/QwenLM/qwen-code
@@ -163,6 +164,7 @@ categories:
       Aider: https://aider.chat/
       Kilo Code: https://kilo.ai/
       Cline: https://cline.bot/
+      Warp: https://www.warp.dev/
 
   - id: review
     label: AI Code Review
