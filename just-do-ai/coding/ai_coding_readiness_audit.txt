@@ -1,0 +1,72 @@
+# AI Coding Readiness Audit
+
+You are auditing this codebase for **AI coding readiness**: the infrastructure that makes AI-assisted development safe and fast at team scale.
+
+Without these layers, AI-assisted development gives you AI-speed typing with human-speed verification — which is slower than what you had before. The audit names the gaps so they can be closed.
+
+## What to assess
+
+For each layer below, determine whether it is **present**, **partial**, or **missing**, and write a one-line finding explaining what you found (or didn't).
+
+1. **Continuous integration.** Automated checks that run on every push or pull request.
+2. **Pre-commit hooks.** Local gates that catch basic issues before code leaves the developer's machine.
+3. **Automated tests.** Tests invoked from CI, not just tests that exist in the repo. A `tests/` directory with no CI hook is **partial** at best.
+4. **Linting and formatting.** Enforced style and basic correctness checks.
+5. **Type checking.** Where applicable to the language.
+6. **Dependency scanning.** Automated detection of vulnerable or outdated dependencies.
+7. **AI-assisted code review.** Independent automated review of pull requests (e.g. CodeRabbit, Copilot, Cubic, or similar).
+8. **Deployment automation.** A defined path from merged code to a deployable artifact or environment, visible from this repo. The deployment *target* may live in a separate infra repo — assess what's wired up from here.
+9. **Observability.** Error tracking, logging, or monitoring SDKs wired into the code (e.g. Sentry, Datadog, OpenTelemetry). Detected by imports and configuration; runtime health is out of scope.
+
+Use your judgment about where to look. Conventional config files, CI directories, dependency manifests, and `README` files are all fair game. Don't ask the user for access to external systems — assess what's visible in the repo.
+
+## How to report
+
+Produce a single markdown file named `AI_CODING_READINESS.md` at the repo root with the following structure:
+
+```
+# AI Coding Readiness Audit
+
+**Audited:** <date>
+**Codebase:** <brief one-line description of what this is>
+
+## Summary
+
+<2-3 sentences: overall state, biggest gaps, what stood out>
+
+## Status
+
+| Layer | Status |
+| --- | --- |
+| Continuous integration | ✅ Present / 🟡 Partial / ❌ Missing |
+| Pre-commit hooks | ... |
+| Automated tests | ... |
+| Linting and formatting | ... |
+| Type checking | ... |
+| Dependency scanning | ... |
+| AI-assisted code review | ... |
+| Deployment automation | ... |
+| Observability | ... |
+
+One row per layer, in the order listed above. One emoji + one word per row, nothing else. Use ❓ Unknown only if a layer genuinely couldn't be assessed.
+
+## Findings
+
+<one section per layer, in the order listed above>
+
+### <Layer name> — <Present | Partial | Missing>
+
+**Found:** <what you observed>
+**Why it matters:** <one sentence on the cost of this gap, if any>
+**Next move:** <one concrete smallest-useful step to close or improve this layer>
+```
+
+## Tone
+
+Write findings the way a senior engineer would write them for another senior engineer: direct, specific, no hedging. If something is missing, say it's missing. If something is half-built, say what's half about it. Skip the encouragement language.
+
+## Constraints
+
+- One pass. Don't rerun or re-scan.
+- Don't modify any files except creating `AI_CODING_READINESS.md`.
+- If you genuinely can't tell whether a layer is present after a reasonable look, mark it **Unknown** and say what you'd need to check to be sure.
