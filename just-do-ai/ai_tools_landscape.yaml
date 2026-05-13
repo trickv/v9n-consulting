@@ -91,7 +91,7 @@ categories:
         url: https://cursor.com/
         type: desktop IDE
         desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer 2 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model."
-        highlight: "~$20/mo Pro · Also in JetBrains via ACP"
+        highlight: "$20/mo Pro · $60/mo Pro+ · $200/mo Ultra · $40/user/mo Teams · Also in JetBrains via ACP"
       - name: GitHub Copilot
         url: https://github.com/features/copilot
         type: IDE plugin
@@ -102,13 +102,13 @@ categories:
       - JetBrains AI
       - Zed AI
       - Trae
-      - Void
+      - Void (development paused)
     more_urls:
       Windsurf: https://windsurf.com/
       JetBrains AI: https://www.jetbrains.com/ai/
       Zed AI: https://zed.dev/
       Trae: https://www.trae.ai/
-      Void: https://voideditor.com/
+      Void (development paused): https://voideditor.com/
 
   - id: terminal
     label: Agentic Coding
@@ -197,12 +197,12 @@ categories:
         url: https://www.cubic.dev/
         type: GitHub app
         desc: "AI-native review platform. 2-click GitHub install. Learns your team's standards. Inline feedback in seconds, one-click fixes, intelligent diff ordering. Also does full codebase scans."
-        highlight: "Free for OSS · From $30/mo Team, $79/mo Pro (annual) · SOC 2 compliant"
+        highlight: "Free for OSS · $40/dev/mo Team · $99/dev/mo Pro · SOC 2 compliant"
       - name: CodeRabbit
         url: https://www.coderabbit.ai/
         type: GitHub/GitLab app
         desc: "Most-installed AI app on GitHub (3M+ repos, 15K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket."
-        highlight: "Free for OSS · $24/seat/mo Pro (annual) · Enterprise"
+        highlight: "Free for OSS · $30/seat/mo Pro · Enterprise"
     more:
       - Devin Review
       - Greptile
