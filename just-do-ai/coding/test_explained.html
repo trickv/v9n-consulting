@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>How software keeps its promises</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXEF9TG8WK');
+</script>
+<style>
+  :root {
+    --bg: #fbf3e4;
+    --ink: #2a2622;
+    --muted: #6b6259;
+    --accent: #c25b3f;
+    --accent-soft: #f3d8cf;
+    --card: #ffffff;
+    --rule: #ead9bd;
+    --quiet: #8a7f73;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 19px;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 5rem;
+  }
+  .opener {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--quiet);
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 2.6rem;
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    font-weight: 700;
+  }
+  .lead {
+    font-size: 1.25rem;
+    color: var(--muted);
+    font-style: italic;
+    margin: 0 0 3rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    margin: 3rem 0 0.5rem;
+    font-weight: 700;
+  }
+  p { margin: 0.9rem 0; }
+  em.term { font-style: italic; color: var(--accent); font-weight: 600; }
+
+  .scene {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    margin: 2rem 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .scene p:first-child { margin-top: 0; }
+  .scene p:last-child { margin-bottom: 0; }
+
+  .moral {
+    border-left: 3px solid var(--accent);
+    padding: 0.25rem 0 0.25rem 1.25rem;
+    margin: 2rem 0;
+    color: var(--ink);
+    font-size: 1.15rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 3.5rem 0;
+  }
+
+  details {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  details summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent);
+    list-style: none;
+  }
+  details summary::before {
+    content: "▸ ";
+    display: inline-block;
+    transition: transform 0.15s;
+  }
+  details[open] summary::before { content: "▾ "; }
+  details summary:hover { text-decoration: underline; }
+  details .inside { margin-top: 0.9rem; }
+  details .inside p { margin: 0.6rem 0; }
+  details pre {
+    background: #2d2a2e;
+    color: #f8f8f2;
+    padding: 0.9rem 1rem;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin: 0.8rem 0;
+  }
+  details code {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  .stop {
+    text-align: center;
+    color: var(--quiet);
+    font-style: italic;
+    margin: 3rem 0 1rem;
+    font-size: 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  .stop::before, .stop::after {
+    content: " — ";
+    color: var(--rule);
+  }
+
+  footer {
+    margin-top: 4rem;
+    color: var(--quiet);
+    font-size: 0.85rem;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+</style>
+</head>
+<body>
+<main>
+  <div class="opener">A short read about software</div>
+  <h1>How software keeps its promises</h1>
+  <p class="lead">Every piece of software makes a quiet promise. This is the story of how we check whether it's keeping them.</p>
+
+  <h2>The promise</h2>
+
+  <p>Imagine you've hired someone to run a small errand. You ask them one thing:</p>
+
+  <div class="scene">
+    <p>"When I give you the name of a city, bring me back a map pin showing where it is."</p>
+  </div>
+
+  <p>That's the deal. A name goes in. A location comes out. Simple.</p>
+
+  <p>For a while, it works beautifully. You say "Chicago," and back comes a pin pointing at Chicago. You say "Paris," and back comes Paris. You stop thinking about it.</p>
+
+  <h2>The trouble with promises</h2>
+
+  <p>Months pass. Your errand-runner picks up other tasks along the way. They start handling weather lookups too, and currency conversions, and a dozen little side jobs. Each new task means small changes to how they work.</p>
+
+  <p>One day, after one of those changes, you ask for "Chicago" — and the pin comes back pointing at the wrong city. Or pointing nowhere at all. Or pointing somewhere subtly off, in a way you don't notice for a week.</p>
+
+  <p>Nobody did it on purpose. The errand-runner was just trying to improve. But somewhere along the way, the original promise quietly broke.</p>
+
+  <div class="moral">
+    This is the central problem with software. It changes constantly, and every change risks breaking a promise that was working just fine yesterday.
+  </div>
+
+  <h2>So we hire a checker</h2>
+
+  <p>Here's what we do about it. Alongside the errand-runner, we hire a second person whose entire job is to ask one question, over and over, forever:</p>
+
+  <div class="scene">
+    <p>"If I say <em>Chicago</em>, do you still bring me back a pin pointing at Chicago?"</p>
+  </div>
+
+  <p>That's it. That's their whole job. They're not curious about how the errand-runner does the work. They don't care about the weather lookups or the currency conversions. They only care about that one promise.</p>
+
+  <p>Every time the errand-runner changes anything — anything at all — the checker asks the question again. If the answer is still right, they nod and step aside. If the answer is wrong, they raise their hand immediately, before the broken promise reaches anyone who depends on it.</p>
+
+  <p>That checker is what we call a <em class="term">unit test</em>.</p>
+
+  <h2>Why this matters</h2>
+
+  <p>A real piece of software makes hundreds of small promises. "When someone signs in with the right password, let them in." "When a payment goes through, send a receipt." "When the user types a city, show its weather."</p>
+
+  <p>Each of those promises gets its own checker. They sit there quietly, by the thousands, and every time anything in the software changes, they all wake up and ask their question at once. Within seconds, you know whether anything you cared about has stopped working.</p>
+
+  <p>That's the whole reason testing exists. Not to prove the software is clever. Not to prove it's fast. Just to make sure that the promises it made when it was first written are still being kept today.</p>
+
+  <div class="moral">
+    Software is trustworthy when its promises are being checked. Tests are how we check them.
+  </div>
+
+  <p class="stop">that's the idea</p>
+
+  <p style="text-align: center; color: var(--muted); font-size: 1rem;">If you're curious what one of these checkers actually looks like, open the box below. Otherwise, you already have the important part.</p>
+
+  <hr />
+
+  <details>
+    <summary>What does the checker actually look like?</summary>
+    <div class="inside">
+      <p>Here's a real checker from this project. It's watching over exactly the promise from the story: <em>when you ask for Chicago, you should get a pin pointing at Chicago.</em></p>
+
+<pre><code>def test_city_to_coords_returns_lat_lon(mock_get):
+    mock_response.json.return_value = {
+        "results": [{"latitude": 41.85, "longitude": -87.65, "name": "Chicago"}]
+    }
+    ...
+    lat, lon = city_to_coords("Chicago")
+
+    assert lat == 41.85
+    assert lon == -87.65</code></pre>
+
+      <p>Don't worry about the symbols. Just three things are happening:</p>
+      <p><strong>1.</strong> The checker decides in advance what the right answer is. (Chicago is at latitude 41.85, longitude -87.65.)</p>
+      <p><strong>2.</strong> It asks the errand-runner: <em>look up Chicago.</em></p>
+      <p><strong>3.</strong> It compares what came back to what should have come back. If they match, silence. If they don't, alarm.</p>
+      <p>That's a unit test. One promise, one question, one answer, forever.</p>
+    </div>
+  </details>
+
+  <footer>
+    From the <em>demo-weather-cli</em> project.
+  </footer>
+</main>
+</body>
+</html>
