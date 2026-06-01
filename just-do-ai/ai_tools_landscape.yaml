@@ -49,7 +49,7 @@ categories:
         url: https://replit.com/
         type: browser IDE
         desc: "Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages."
-        highlight: "Credit-based · From $20/mo Core · Built-in DB, auth & hosting"
+        highlight: "Credit-based · Core $20/mo & Pro $95/mo (billed annually) · Built-in DB, auth & hosting"
     more:
       - v0
       - Base44
@@ -90,13 +90,18 @@ categories:
       - name: Cursor
         url: https://cursor.com/
         type: desktop IDE
-        desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer 2 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model."
+        desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer 2.5 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model."
         highlight: "$20/mo Pro · $60/mo Pro+ · $200/mo Ultra · $40/user/mo Teams · Also in JetBrains via ACP"
       - name: GitHub Copilot
         url: https://github.com/features/copilot
         type: IDE plugin
         desc: "Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. MCP + multi-model support."
         highlight: "VS Code, JetBrains, Visual Studio, Xcode · Plan/Agent/Edit modes"
+      - name: Google Antigravity
+        url: https://antigravity.google/
+        type: desktop IDE + CLI
+        desc: "Google's agent-first IDE. VS Code fork built around orchestrating parallel agents — Editor View plus a Manager Surface. Generates verifiable Artifacts (plans, screenshots, browser recordings). 2.0 adds CLI + SDK. Powered by Gemini 3."
+        highlight: "Free for individuals (public preview) · Gemini 3 · IDE + CLI + SDK"
     more:
       - Windsurf
       - JetBrains AI
@@ -275,6 +280,7 @@ categories:
         desc: "Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support."
         highlight: "Multi-model · MCP/skills · Self-hosted · Free"
     more:
+      - Hermes Agent
       - NemoClaw
       - Dreamer
       - Nanobot
@@ -282,6 +288,7 @@ categories:
       - Microsoft Copilot
       - Lindy
     more_urls:
+      Hermes Agent: https://github.com/NousResearch/hermes-agent
       NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
       Dreamer: https://dreamer.com/
       Nanobot: https://github.com/nanobot-ai/nanobot
