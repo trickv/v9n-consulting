@@ -341,98 +341,91 @@
     <div class="cat-tagline">"One agent is productive — a fleet of them is a different game"</div>
     <div class="cat-audience"><strong>Best for:</strong> Engineers who already live in a single-agent CLI and want to run many in parallel, or hand off whole tickets</div>
     <div class="cat-intro">
-      Single-agent coders like Claude Code are productive; the next leap is running fleets of them. These tools sit <strong>above</strong> single-agent coders — orchestrating parallel work, polling issue trackers, or going fully autonomous from spec to app. Organized along the <strong>Yegge 8-stage AI coding maturity model</strong>: stages 3–4 you direct multiple agents hands-on; 5–6 they work autonomously on scoped tickets; 7–8 is autonomous orchestration and the "Dark Factory." This category didn't exist 12 months ago and will consolidate fast — start with the OSS options before paying for anything.
+      Single-agent coders like Claude Code are productive; the next leap is running fleets of them. These tools sit <strong>above</strong> single-agent coders. Loosely mapped to the upper rungs of the <strong>Yegge AI-coding maturity model</strong>: at <strong>stages 6–7</strong> you drive a fleet through an interface and still review and merge the work; at <strong>stage 8 and beyond</strong> the system runs autonomously from spec to shipped app — the "Dark Factory." This category didn't exist 12 months ago and is consolidating fast — start with the OSS options before paying for anything.
     </div>
     <div class="tools-grid">
 
       <div class="stage-row">
-        <span class="stage-label">Stages 3–4</span>
-        <span class="stage-desc">You orchestrate; agents work in parallel</span>
-      </div>
-      <div class="tool-card">
-        <div class="tool-header">
-          <a class="tool-name" href="https://www.conductor.build/">Conductor</a>
-          <span class="tool-license prop">Proprietary</span>
-        </div>
-        <div class="tool-desc">Polished Mac desktop app for running parallel Claude Code + Codex agents in isolated git worktrees with a central dashboard. Apple Silicon only.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-header">
-          <a class="tool-name" href="https://github.com/generalaction/emdash">Emdash</a>
-          <span class="tool-license oss">OSS · Apache-2.0</span>
-        </div>
-        <div class="tool-desc">Cross-platform open-source agent dev environment supporting ~24 CLI agents (Claude Code, Codex, Gemini, OpenCode, Amp) with Linear/Jira/GitHub ticket integration, local or SSH remote.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-header">
-          <a class="tool-name" href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a>
-          <span class="tool-license oss">OSS · community</span>
-        </div>
-        <div class="tool-desc">Kanban board for agent tasks with isolated worktrees and multi-agent support. Original company Bloop shut down early 2026; project continues as community OSS — easy to try via <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">npx vibe-kanban</code> and worth watching where it goes.</div>
-      </div>
-
-      <div class="stage-row">
-        <span class="stage-label">Stages 5–6</span>
-        <span class="stage-desc">Issue-tracker-driven; agents autonomous on scoped work</span>
+        <span class="stage-label">Stage 6–7 · Multi-Agent Interfaces</span>
+        <span class="stage-desc">You drive the fleet; you review and merge the work</span>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/openai/symphony">Symphony</a>
           <span class="tool-license oss">OSS · OpenAI</span>
         </div>
-        <div class="tool-desc">Polls Linear and spawns a Codex session per issue, governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file. 13K stars in three weeks.</div>
+        <div class="tool-desc">Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. ~15K stars in its first week.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.conductor.build/">Conductor</a>
+          <span class="tool-license prop">Proprietary</span>
+        </div>
+        <div class="tool-desc">Polished Mac app (Melty Labs) for running parallel Claude Code + Codex agents in isolated git worktrees, with a central dashboard and inline diff review/merge. Apple Silicon.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/generalaction/emdash">Emdash</a>
+          <span class="tool-license oss">OSS · Apache-2.0</span>
+        </div>
+        <div class="tool-desc">Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Gemini, Amp, Hermes…) in parallel worktrees — local or over SSH — with Linear/Jira/GitHub ticket integration.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/smtg-ai/claude-squad">Claude Squad</a>
+          <span class="tool-license oss">OSS · terminal</span>
+        </div>
+        <div class="tool-desc">Terminal TUI that manages many agents — Claude Code, Codex, Gemini, Aider, OpenCode, Amp — each in its own tmux session and git worktree. The lightweight, terminal-native way to run a fleet.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a>
+          <span class="tool-license oss">OSS · community</span>
+        </div>
+        <div class="tool-desc">Kanban board for agent tasks with isolated worktrees and multi-agent support. Company Bloop shut down April 2026; now community-maintained OSS (Apache-2.0) and fully local — try via <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">npx vibe-kanban</code>.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/ComposioHQ/agent-orchestrator">Composio AO</a>
           <span class="tool-license oss">OSS · MIT</span>
         </div>
-        <div class="tool-desc">Multiple agents in worktrees with full PR-level autonomy — agents fix CI failures and respond to review comments without per-edit human approval.</div>
+        <div class="tool-desc">Agent-, runtime-, and tracker-agnostic orchestrator. Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.</div>
+      </div>
+      <div class="more-box">
+        <strong>And more:</strong> <a class="more-link" href="https://imbue.com/sculptor">Sculptor</a> (Imbue — Docker-isolated Claude Code agents), <a class="more-link" href="https://github.com/stravu/crystal">Crystal</a> (MIT, parallel Claude Code sessions) …
       </div>
 
       <div class="stage-row">
-        <span class="stage-label">Stage 7</span>
-        <span class="stage-desc">Autonomous orchestration; many agents, role-based</span>
+        <span class="stage-label">Stage 8 &amp; Beyond · Autonomous</span>
+        <span class="stage-desc">Spec in, app out — the "Dark Factory"</span>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://github.com/steveyegge/gas-town">Gas Town</a>
+          <a class="tool-name" href="https://github.com/gastownhall/gastown">Gas Town</a>
           <span class="tool-license oss">OSS · Steve Yegge</span>
         </div>
-        <div class="tool-desc">Go-based orchestration running 20–30 parallel Claude Code agents via tmux across 7 worker roles, paired with the Beads work-tracking primitive. Heavy sessions can run $100–200/hr in API costs.</div>
+        <div class="tool-desc">Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. Reached v1.0 in April 2026. Heavy sessions can run $100–200/hr in API costs.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://ghuntley.com/ralph/">Ralph</a>
-          <span class="tool-license oss">OSS · contrarian</span>
+          <a class="tool-name" href="https://cosine.sh/product">Genie (Cosine)</a>
+          <span class="tool-license prop">Proprietary</span>
         </div>
-        <div class="tool-desc">Proof that simple wins: a bash loop that re-feeds Claude a prompt file. A YC hackathon team produced 1,100+ commits across 6 repos overnight for ~$800 — you don't need fancy machinery for a lot of this.</div>
+        <div class="tool-desc">Autonomous software engineer trained on real engineering decision traces. Air-gapped enterprise deployment and top-tier benchmarks (72% SWE-Lancer). Genie 2.0 is the current release.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://github.com/karpathy/agenthub">AgentHub</a>
-          <span class="tool-license oss">OSS · Karpathy</span>
+          <a class="tool-name" href="https://factory.ai/">Factory (Droids)</a>
+          <span class="tool-license prop">Proprietary</span>
         </div>
-        <div class="tool-desc">Agent-native version control: branchless DAG plus message board, designed for swarms coordinating asynchronously. Replaces GitHub's human-centric model.</div>
-      </div>
-
-      <div class="stage-row">
-        <span class="stage-label">Stage 8</span>
-        <span class="stage-desc">Dark Factory — spec in, app out</span>
+        <div class="tool-desc">Enterprise agent-native development: autonomous "Droids" that own migrations, test generation, and modernization across legacy codebases. $150M Series C at $1.5B (2026); Fortune 500 deployments.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://blitzy.com/">Blitzy</a>
           <span class="tool-license prop">Proprietary</span>
         </div>
-        <div class="tool-desc">Spec-to-app autonomous product — the canonical "Dark Factory" example. Buy, don't build.</div>
-      </div>
-      <div class="tool-card">
-        <div class="tool-header">
-          <a class="tool-name" href="https://cosine.sh/genie">Genie (Cosine)</a>
-          <span class="tool-license prop">Proprietary</span>
-        </div>
-        <div class="tool-desc">Air-gapped enterprise deployment with the highest benchmark scores (72% SWE-Lancer). Compliance-friendly autonomous agent for regulated environments.</div>
+        <div class="tool-desc">Spec-to-app autonomous platform — thousands of agents cooperating for hours to build entire projects. The canonical "Dark Factory." $200M raise at $1.4B (2026). Buy, don't build.</div>
       </div>
 
     </div>
