@@ -70,6 +70,20 @@
   .cat-always-on .more-box { border-color: #38232d; }
   .cat-always-on .tools-grid { grid-template-columns: repeat(3, 1fr); }
 
+  .cat-orchestrators { background: linear-gradient(135deg, #101a1c 0%, #0e1820 100%); border: 1px solid #1e3438; grid-column: 1 / 3; grid-row: 7; }
+  .cat-orchestrators::before { background: linear-gradient(90deg, #06b6d4, #0891b2); }
+  .cat-orchestrators .cat-label { color: #67e8f9; }
+  .cat-orchestrators .tool-card { border-color: #1e3438; background: #142428; }
+  .cat-orchestrators .tool-card:hover { border-color: #0891b2; background: #182c30; }
+  .cat-orchestrators .more-box { border-color: #1e3438; }
+  .cat-orchestrators .tools-grid { grid-template-columns: repeat(3, 1fr); }
+  .cat-orchestrators .stage-row { grid-column: 1 / -1; display: flex; align-items: baseline; gap: 12px; margin: 14px 0 2px 2px; }
+  .cat-orchestrators .stage-row:first-of-type { margin-top: 4px; }
+  .cat-orchestrators .stage-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: #67e8f9; }
+  .cat-orchestrators .stage-desc { font-size: 12px; color: #7a8a8e; font-style: italic; }
+  .cat-orchestrators .cat-intro { font-size: 13px; color: #9aa5a8; line-height: 1.55; margin-bottom: 14px; max-width: 780px; }
+  .cat-orchestrators .cat-intro strong { color: #b8c4c8; font-weight: 600; }
+
   .infra-sub { margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); grid-column: 1 / -1; }
   .infra-sub-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 6px; }
   .infra-sub-desc { font-size: 12px; color: #7a7570; line-height: 1.55; }
@@ -88,6 +102,9 @@
   .more-link { color: inherit; text-decoration: none; }
   .more-link:hover { color: inherit; }
   .tool-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
+  .tool-license { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px; }
+  .tool-license.oss { background: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.25); }
+  .tool-license.prop { background: rgba(251, 191, 36, 0.08); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.25); }
   .tool-desc { font-size: 12.5px; color: #9a9590; line-height: 1.5; }
   .tool-highlight { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }
   .tool-star { position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }
@@ -106,7 +123,7 @@
 
 <div class="header">
   <h1>AI Engineering Tools Landscape</h1>
-  <div class="subtitle">Coding with AI Bootcamp — reference · updated 1 June 2026 · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
+  <div class="subtitle">Coding with AI Bootcamp — reference · updated 2 June 2026 · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
 </div>
 
 <div class="landscape">
@@ -330,6 +347,99 @@
       </div>
       <div class="more-box">
         <strong>And many more:</strong> <a class="more-link" href="https://www.nvidia.com/en-us/ai/nemoclaw/">NemoClaw</a>, <a class="more-link" href="https://dreamer.com/">Dreamer</a>, <a class="more-link" href="https://github.com/nanobot-ai/nanobot">Nanobot</a>, <a class="more-link" href="https://claude.com/product/cowork">Claude Cowork</a>, <a class="more-link" href="https://copilot.microsoft.com">Microsoft Copilot</a>, <a class="more-link" href="https://www.lindy.ai/">Lindy</a> …
+      </div>
+    </div>
+  </div>
+
+  <div class="category cat-orchestrators">
+    <div class="cat-label">Orchestrators &amp; Multi-Agent</div>
+    <div class="cat-title">Orchestrators &amp; Multi-Agent Tools</div>
+    <div class="cat-tagline">"One agent is productive — a fleet of them is a different game"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Engineers who already live in a single-agent CLI and want to run many in parallel, or hand off whole tickets</div>
+    <div class="cat-intro">
+      Single-agent coders like Claude Code are productive; the next leap is running fleets of them. These tools sit <strong>above</strong> single-agent coders. Loosely mapped to the upper rungs of the <strong>Yegge AI-coding maturity model</strong>: at <strong>stages 6–7</strong> you drive a fleet through an interface and still review and merge the work; at <strong>stage 8 and beyond</strong> the system runs autonomously from spec to shipped app — the "Dark Factory." This category didn't exist 12 months ago and is consolidating fast — start with the OSS options before paying for anything.
+    </div>
+    <div class="tools-grid">
+      <div class="stage-row">
+        <span class="stage-label">Stage 6–7 · Multi-Agent Interfaces</span>
+        <span class="stage-desc">You drive the fleet; you review and merge the work</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/openai/symphony">Symphony</a>
+          <span class="tool-license oss">OSS · OpenAI</span>
+        </div>
+        <div class="tool-desc">Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. ~15K stars in its first week.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.conductor.build/">Conductor</a>
+          <span class="tool-license prop">Proprietary</span>
+        </div>
+        <div class="tool-desc">Polished Mac app (Melty Labs) for running parallel Claude Code + Codex agents in isolated git worktrees, with a central dashboard and inline diff review/merge. Apple Silicon.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/generalaction/emdash">Emdash</a>
+          <span class="tool-license oss">OSS · Apache-2.0</span>
+        </div>
+        <div class="tool-desc">Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Gemini, Amp, Hermes…) in parallel worktrees — local or over SSH — with Linear/Jira/GitHub ticket integration.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/smtg-ai/claude-squad">Claude Squad</a>
+          <span class="tool-license oss">OSS · terminal</span>
+        </div>
+        <div class="tool-desc">Terminal TUI that manages many agents — Claude Code, Codex, Gemini, Aider, OpenCode, Amp — each in its own tmux session and git worktree. The lightweight, terminal-native way to run a fleet.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a>
+          <span class="tool-license oss">OSS · community</span>
+        </div>
+        <div class="tool-desc">Kanban board for agent tasks with isolated worktrees and multi-agent support. Company Bloop shut down April 2026; now community-maintained OSS (Apache-2.0) and fully local — try via <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">npx vibe-kanban</code>.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/ComposioHQ/agent-orchestrator">Composio AO</a>
+          <span class="tool-license oss">OSS · MIT</span>
+        </div>
+        <div class="tool-desc">Agent-, runtime-, and tracker-agnostic orchestrator. Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.</div>
+      </div>
+      <div class="more-box">
+        <strong>And more:</strong> <a class="more-link" href="https://imbue.com/sculptor">Sculptor</a> (Imbue — Docker-isolated Claude Code agents), <a class="more-link" href="https://github.com/stravu/crystal">Crystal</a> (MIT, parallel Claude Code sessions) …
+      </div>
+      <div class="stage-row">
+        <span class="stage-label">Stage 8 &amp; Beyond · Autonomous</span>
+        <span class="stage-desc">Spec in, app out — the &quot;Dark Factory&quot;</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://github.com/gastownhall/gastown">Gas Town</a>
+          <span class="tool-license oss">OSS · Steve Yegge</span>
+        </div>
+        <div class="tool-desc">Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. Reached v1.0 in April 2026. Heavy sessions can run $100–200/hr in API costs.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://cosine.sh/product">Genie (Cosine)</a>
+          <span class="tool-license prop">Proprietary</span>
+        </div>
+        <div class="tool-desc">Autonomous software engineer trained on real engineering decision traces. Air-gapped enterprise deployment and top-tier benchmarks (72% SWE-Lancer). Genie 2.0 is the current release.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://factory.ai/">Factory (Droids)</a>
+          <span class="tool-license prop">Proprietary</span>
+        </div>
+        <div class="tool-desc">Enterprise agent-native development: autonomous "Droids" that own migrations, test generation, and modernization across legacy codebases. $150M Series C at $1.5B (2026); Fortune 500 deployments.</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://blitzy.com/">Blitzy</a>
+          <span class="tool-license prop">Proprietary</span>
+        </div>
+        <div class="tool-desc">Spec-to-app autonomous platform — thousands of agents cooperating for hours to build entire projects. The canonical "Dark Factory." $200M raise at $1.4B (2026). Buy, don't build.</div>
       </div>
     </div>
   </div>

@@ -27,7 +27,10 @@ def render_tool_card(tool: dict, cat_colors: dict) -> str:
         lines.append(f'          <a class="tool-name" href="{h(url)}">{h(tool["name"])}</a>')
     else:
         lines.append(f'          <span class="tool-name">{h(tool["name"])}</span>')
-    lines.append(f'          <span class="tool-type">{h(tool["type"])}</span>')
+    if lic := tool.get("license"):
+        lines.append(f'          <span class="tool-license {h(lic["style"])}">{h(lic["text"])}</span>')
+    elif typ := tool.get("type"):
+        lines.append(f'          <span class="tool-type">{h(typ)}</span>')
     lines.append('        </div>')
     lines.append(f'        <div class="tool-desc">{tool["desc"]}</div>')
     if hl := tool.get("highlight"):
@@ -36,17 +39,29 @@ def render_tool_card(tool: dict, cat_colors: dict) -> str:
     return "\n".join(lines)
 
 
-def render_more_box(more: list, border_color: str, more_urls: dict | None = None) -> str:
+def render_more_box(
+    more: list, border_color: str, more_urls: dict | None = None, label: str = "And many more:"
+) -> str:
     urls = more_urls or {}
     parts = []
     for t in more:
-        if url := urls.get(t):
+        # Items may be plain strings (URL pulled from more_urls) or dicts
+        # of {name, url?, note?} where note is trailing pass-through HTML.
+        if isinstance(t, dict):
+            name = t["name"]
+            link = (
+                f'<a class="more-link" href="{h(t["url"])}">{h(name)}</a>'
+                if t.get("url")
+                else h(name)
+            )
+            parts.append(f'{link} {t["note"]}' if t.get("note") else link)
+        elif url := urls.get(t):
             parts.append(f'<a class="more-link" href="{h(url)}">{h(t)}</a>')
         else:
             parts.append(h(t))
     return f"""\
       <div class="more-box">
-        <strong>And many more:</strong> {", ".join(parts)} …
+        <strong>{h(label)}</strong> {", ".join(parts)} …
       </div>"""
 
 
@@ -82,12 +97,28 @@ def render_category_css(cat: dict) -> str:
     lines.append(
         f"  .cat-{cid} .tool-card:hover {{ border-color: {c['accent'][1]}; background: {c['card_hover_bg']}; }}"
     )
-    if cat.get("more"):
+    if cat.get("more") or cat.get("stages"):
         lines.append(f"  .cat-{cid} .more-box {{ border-color: {c['border']}; }}")
     if cols:
         lines.append(
             f"  .cat-{cid} .tools-grid {{ grid-template-columns: repeat({cols}, 1fr); }}"
         )
+    if cat.get("stages"):
+        lines.append(
+            f"  .cat-{cid} .stage-row {{ grid-column: 1 / -1; display: flex; align-items: baseline; gap: 12px; margin: 14px 0 2px 2px; }}"
+        )
+        lines.append(f"  .cat-{cid} .stage-row:first-of-type {{ margin-top: 4px; }}")
+        lines.append(
+            f"  .cat-{cid} .stage-label {{ font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: {c['label']}; }}"
+        )
+        lines.append(
+            f"  .cat-{cid} .stage-desc {{ font-size: 12px; color: #7a8a8e; font-style: italic; }}"
+        )
+    if cat.get("intro"):
+        lines.append(
+            f"  .cat-{cid} .cat-intro {{ font-size: 13px; color: #9aa5a8; line-height: 1.55; margin-bottom: 14px; max-width: 780px; }}"
+        )
+        lines.append(f"  .cat-{cid} .cat-intro strong {{ color: #b8c4c8; font-weight: 600; }}")
     return "\n".join(lines)
 
 
@@ -100,22 +131,39 @@ def render_category(cat: dict) -> str:
         style_cls = f' {badge["style"]}' if badge.get("style") else ""
         badge_html = f'    <div class="bootcamp-badge{style_cls}">{h(badge["text"])}</div>\n'
 
-    tools_html = "\n".join(render_tool_card(t, c) for t in cat["tools"])
+    # A category is either a flat list of `tools` or a sequence of `stages`,
+    # each with its own stage-row header, tool cards, and optional more-box.
+    grid_items = []
+    if stages := cat.get("stages"):
+        for st in stages:
+            block = [
+                '      <div class="stage-row">',
+                f'        <span class="stage-label">{h(st["label"])}</span>',
+                f'        <span class="stage-desc">{h(st["desc"])}</span>',
+                '      </div>',
+            ]
+            block += [render_tool_card(t, c) for t in st["tools"]]
+            if more := st.get("more"):
+                block.append(
+                    render_more_box(
+                        more, c["border"], st.get("more_urls"),
+                        st.get("more_label", "And many more:"),
+                    )
+                )
+            grid_items.append("\n".join(block))
+    else:
+        grid_items.append("\n".join(render_tool_card(t, c) for t in cat["tools"]))
+        if more := cat.get("more"):
+            grid_items.append(render_more_box(more, c["border"], cat.get("more_urls")))
 
-    more_html = ""
-    if more := cat.get("more"):
-        more_html = render_more_box(more, c["border"], cat.get("more_urls"))
-
-    infra_html = ""
     if note := cat.get("infra_note"):
-        infra_html = render_infra_note(note)
-
-    grid_items = [tools_html]
-    if more_html:
-        grid_items.append(more_html)
-    if infra_html:
-        grid_items.append(infra_html)
+        grid_items.append(render_infra_note(note))
     grid_content = "\n".join(grid_items)
+
+    intro_html = ""
+    if intro := cat.get("intro"):
+        # intro carries intentional HTML (<strong> tags), pass through
+        intro_html = f'    <div class="cat-intro">\n      {intro.strip()}\n    </div>\n'
 
     return f"""\
   <div class="category cat-{cid}">
@@ -124,6 +172,7 @@ def render_category(cat: dict) -> str:
     <div class="cat-title">{h(cat["title"])}</div>
     <div class="cat-tagline">"{h(cat["tagline"])}"</div>
     <div class="cat-audience"><strong>Best for:</strong> {h(cat["audience"])}</div>
+{intro_html}\
     <div class="tools-grid">
 {grid_content}
     </div>
@@ -198,6 +247,9 @@ def build(data: dict) -> str:
   .more-link {{ color: inherit; text-decoration: none; }}
   .more-link:hover {{ color: inherit; }}
   .tool-type {{ font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }}
+  .tool-license {{ font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px; }}
+  .tool-license.oss {{ background: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.25); }}
+  .tool-license.prop {{ background: rgba(251, 191, 36, 0.08); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.25); }}
   .tool-desc {{ font-size: 12.5px; color: #9a9590; line-height: 1.5; }}
   .tool-highlight {{ font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }}
   .tool-star {{ position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }}
