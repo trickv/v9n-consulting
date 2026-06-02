@@ -279,8 +279,12 @@ categories:
         type: self-hosted
         desc: "Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support."
         highlight: "Multi-model · MCP/skills · Self-hosted · Free"
+      - name: Hermes Agent
+        url: https://github.com/NousResearch/hermes-agent
+        type: self-hosted
+        desc: "Open-source always-on agent from Nous Research. Self-improving — writes itself a reusable skill after each task, so it gets more capable over time. Persistent memory, broad messaging-channel support, runs as a background process on your own infra."
+        highlight: "MIT · Self-hosted · Multi-channel · Free"
     more:
-      - Hermes Agent
       - NemoClaw
       - Dreamer
       - Nanobot
@@ -288,7 +292,6 @@ categories:
       - Microsoft Copilot
       - Lindy
     more_urls:
-      Hermes Agent: https://github.com/NousResearch/hermes-agent
       NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
       Dreamer: https://dreamer.com/
       Nanobot: https://github.com/nanobot-ai/nanobot
