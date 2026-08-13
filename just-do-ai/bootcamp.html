@@ -830,7 +830,7 @@
                     <h3>6-Week Cohort Bootcamp</h3>
                     <p class="offering-tagline">A permanent shift in how you work.</p>
                     <ul class="offering-meta">
-                        <li><span class="label">Starts</span><span class="value">Early September 2026</span></li>
+                        <li data-expires="2026-09-11"><span class="label">Starts</span><span class="value">Early September 2026</span></li>
                         <li><span class="label">Format</span><span class="value">6 weeks · 90 min/week</span></li>
                         <li><span class="label">Delivery</span><span class="value">Live virtual cohort</span></li>
                         <li><span class="label">Audience</span><span class="value">One seat, or a whole team</span></li>
@@ -952,6 +952,14 @@
     </footer>
 
     <script>
+        // Dated content retires itself: anything with data-expires="YYYY-MM-DD"
+        // is removed once that date arrives, so a passed cohort start doesn't
+        // sit on the page advertising itself.
+        document.querySelectorAll('[data-expires]').forEach(el => {
+            const expires = new Date(el.dataset.expires + 'T00:00:00');
+            if (!isNaN(expires) && new Date() >= expires) el.remove();
+        });
+
         // Hamburger menu toggle
         const hamburger = document.querySelector('.hamburger');
         const navLinks = document.querySelector('.nav-links');

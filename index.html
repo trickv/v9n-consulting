@@ -644,7 +644,7 @@
                 <div class="service-card featured">
                     <div class="service-icon">🎓</div>
                     <h3>AI Coding Bootcamps</h3>
-                    <p>Hands-on training that builds real fluency with Claude Code — on your own codebase, not a toy demo. A three-hour crash course, or a six-week cohort starting early September — join as one person, or bring your whole team. I teach every session myself.</p>
+                    <p>Hands-on training that builds real fluency with Claude Code — on your own codebase, not a toy demo. A three-hour crash course, or a six-week cohort<span data-expires="2026-09-11"> starting early September</span> — join as one person, or bring your whole team. I teach every session myself.</p>
                     <a href="/just-do-ai/bootcamp.html" class="service-link">See the Bootcamps →</a>
                 </div>
 
@@ -772,6 +772,13 @@
         });
 
         // Smooth scrolling for navigation links
+        // Dated content retires itself: anything with data-expires="YYYY-MM-DD"
+        // is removed once that date arrives.
+        document.querySelectorAll('[data-expires]').forEach(el => {
+            const expires = new Date(el.dataset.expires + 'T00:00:00');
+            if (!isNaN(expires) && new Date() >= expires) el.remove();
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
