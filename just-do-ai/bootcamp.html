@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding with AI Bootcamp - Just Do AI</title>
-    <meta name="description" content="Intensive AI Engineering bootcamp for software teams. Hands-on training with Claude Code.">
+    <meta name="description" content="Hands-on AI engineering bootcamps for individual engineers and whole teams, taught personally by Patrick van Staveren. Real code, real workflows, Claude Code.">
     <meta name="author" content="Patrick van Staveren">
 
     <style>
@@ -212,6 +212,48 @@
             font-size: 1.1rem;
             color: #888;
             font-style: italic;
+        }
+
+        /* Personal intro */
+        .personal-intro {
+            padding: 0 0 4rem;
+        }
+
+        .intro {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            max-width: 860px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-left: 3px solid #4a9eff;
+            border-radius: 12px;
+            padding: 2.25rem 2.5rem;
+        }
+
+        .intro-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(74, 158, 255, 0.4);
+            flex-shrink: 0;
+        }
+
+        .intro-text p {
+            font-size: 1.05rem;
+            color: #b8b8b8;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .intro-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        .intro-text strong {
+            color: #fff;
         }
 
         /* Offerings */
@@ -665,6 +707,13 @@
                 font-size: 1.1rem;
             }
 
+            .intro {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 2rem 1.5rem;
+            }
+
             .outcomes-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
@@ -726,20 +775,35 @@
             <h1>Coding with AI</h1>
             <h2>Claude Code Bootcamp</h2>
             <p class="subtitle">
-                Immerse your engineering team in the new way of building software.
-                Level set across your organization and embrace the change AI has brought to writing code.
+                AI didn't just bolt autocomplete onto your editor — it changed what writing software <em>is</em>.
+                I run hands-on bootcamps that get you past the hype and actually building this way,
+                on your own code and the work you actually ship.
+                Come as one engineer, or bring the whole org.
             </p>
-            <p class="tagline">AI Engineering is here to stay.</p>
+            <p class="tagline">This isn't a fad to wait out. AI engineering is here to stay.</p>
             <p style="margin-top: 2rem;">
                 <a href="#offerings" class="cta-button">See the Offerings</a>
             </p>
         </div>
     </section>
 
+    <section class="personal-intro">
+        <div class="container">
+            <div class="intro">
+                <img src="../images/contact-photo.jpg" alt="Patrick van Staveren" class="intro-photo">
+                <div class="intro-text">
+                    <p>I'm <strong>Patrick van Staveren</strong> — an independent technology consultant, and the person who actually shows up to teach — whether that's you on your own or a room full of your colleagues. There's no agency behind me and no bench of junior trainers. You get me.</p>
+                    <p>I've spent over two decades building software and leading engineering teams, and I've gone all-in on coding with AI — every day, on real codebases, on work that has to ship. I've hit the walls, found what works, and learned which habits stick and which ones quietly waste your time. That's what I teach: not a vendor demo, but the way I actually work.</p>
+                    <p>I'm not here to sell you a tool. I'm here to make you confident and productive with these tools, and honest about where they still fall short.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="offerings-section" id="offerings">
         <div class="container">
             <h2>Bootcamp Offerings</h2>
-            <p class="section-subtitle">Two formats, one philosophy: hands-on, immersive, and built around how your team actually works. Pick the depth that fits.</p>
+            <p class="section-subtitle">Two formats, one philosophy: hands-on, immersive, and built around how you actually work. Pick the depth that fits — and if neither quite does, tell me and I'll build something that does.</p>
 
             <div class="offerings-grid">
                 <div class="offering-card">
@@ -778,22 +842,21 @@
                         <li>Weekly hands-on builds, with time between sessions to practice and let new habits gel</li>
                         <li>Async Slack channel and optional challenges between sessions</li>
                         <li>Survey of the broader AI coding tool landscape (Cursor, Codex, Lovable, Bolt, and more)</li>
-                        <li>Capstone: apply everything to your own work</li>
                     </ul>
                     <a href="index.html#contact" class="offering-cta">Discuss a Cohort</a>
                 </div>
             </div>
 
             <div class="offerings-note">
-                <strong>Every engagement adapts to you.</strong> Training can be tailored to your stack, your codebase, and your team's starting point — and can include in-depth consulting alongside the curriculum where it helps. Tell me what you're trying to achieve and we'll shape the format to fit.
+                <strong>Every engagement adapts to you.</strong> Training can be tailored to your stack, your codebase, and your starting point — and can include in-depth consulting alongside the curriculum where it helps. Tell me what you're trying to achieve and we'll shape the format to fit.
             </div>
         </div>
     </section>
 
     <section class="timeline-section">
         <div class="container">
-            <h2>Why Now?</h2>
-            <p class="section-subtitle">The shift happened fast. Here's the timeline:</p>
+            <h2>How Fast This Happened</h2>
+            <p class="section-subtitle">I've watched this play out in real time. Here's the short version:</p>
             <div class="timeline">
                 <div class="timeline-item">
                     <span class="date">February 2025</span>
@@ -805,7 +868,7 @@
                 </div>
                 <div class="timeline-item highlight">
                     <span class="date">November 2025</span>
-                    <p class="event">Opus 4.5 released — this is when everything changed</p>
+                    <p class="event">Opus 4.5 released — the month I stopped hedging and went all-in</p>
                 </div>
                 <div class="timeline-item highlight">
                     <span class="date">Now</span>
@@ -817,7 +880,7 @@
 
     <section class="why-now">
         <div class="container">
-            <h2>Why Now</h2>
+            <h2>Why I Think This Matters Now</h2>
             <div class="challenge-grid">
                 <div class="challenge-card">
                     <div class="icon">🔄</div>
@@ -827,12 +890,12 @@
                 <div class="challenge-card">
                     <div class="icon">🚀</div>
                     <h3>Rapid Prototyping</h3>
-                    <p>Iterate faster. Find out if your ideas are what your customers want by building the first version faster. Enable your engineers to get prototypes in front of stakeholders in hours, not days or weeks.</p>
+                    <p>Iterate faster. Find out if your ideas are what your customers want by building the first version faster. Get prototypes in front of stakeholders in hours, not days or weeks.</p>
                 </div>
                 <div class="challenge-card">
                     <div class="icon">⚠️</div>
                     <h3>Existential Risk</h3>
-                    <p>An existential threat to a business which isn't making AI engineering a core competency. Your competitors are already investing in this.</p>
+                    <p>An existential threat to any business that isn't making AI engineering a core competency — and a real career risk for any engineer who sits this one out. Your competitors are already investing in this.</p>
                 </div>
                 <div class="challenge-card">
                     <div class="icon">🤔</div>
@@ -848,19 +911,19 @@
             <h2>Outcomes</h2>
             <div class="outcomes-grid">
                 <div class="outcomes-column">
-                    <h3 class="team">👩‍💻 Your Team Will</h3>
+                    <h3 class="team">👩‍💻 What You'll Walk Away With</h3>
                     <ul class="outcomes-list">
-                        <li>Get hands-on exposure to AI Engineering tools (we recommend Claude Code)</li>
-                        <li>Focus for a dedicated period on new ways of working</li>
-                        <li>Level set across the team — everyone on the same page</li>
-                        <li>Build muscle memory with AI-first development workflows</li>
-                        <li>Understand when AI helps and when it gets in the way</li>
+                        <li>Hands-on time with real AI engineering tools — I teach Claude Code, and it's what I use myself</li>
+                        <li>A dedicated stretch of focus on a genuinely new way of working</li>
+                        <li>Muscle memory for AI-first development workflows</li>
+                        <li>A clear sense of when AI helps and when it gets in the way</li>
+                        <li>If you're coming as a team: everyone level set, on the same page</li>
                     </ul>
                 </div>
                 <div class="outcomes-column exec">
-                    <h3 class="exec">📊 Executive Outcomes</h3>
+                    <h3 class="exec">📊 If You're Bringing a Team</h3>
                     <ul class="outcomes-list">
-                        <li>A grade on how ready your Engineering teams are for the change we are in</li>
+                        <li>My honest read on how ready your engineering teams are for the shift that's already underway</li>
                         <li>Red flags report on major risks and challenges</li>
                         <li>Clear roadmap for continued AI adoption</li>
                         <li>Measurable before/after on team velocity and confidence</li>
@@ -872,9 +935,9 @@
 
     <section class="cta-section">
         <div class="container">
-            <h2>Ready to level up your team?</h2>
-            <p>Let's talk about what a bootcamp looks like for your organization.</p>
-            <a href="index.html#contact" class="cta-button">Get In Touch</a>
+            <h2>Let's talk</h2>
+            <p>Tell me where you are today and where you want to be six months from now — whether that's just you or an org of thirty engineers. I'll tell you honestly whether a bootcamp is the right move, and if it isn't, I'll say so.</p>
+            <a href="index.html#contact" class="cta-button">Email Me</a>
         </div>
     </section>
 

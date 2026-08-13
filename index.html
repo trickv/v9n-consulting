@@ -235,9 +235,15 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         .capabilities-intro {
@@ -305,6 +311,17 @@
             border-color: #b0b0b0;
             background: #f0f2f4;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .service-card.featured {
+            background: #ffffff;
+            border: 2px solid #1a1a1a;
+        }
+
+        .service-card.featured:hover {
+            background: #ffffff;
+            border-color: #1a1a1a;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
         }
 
         .service-icon {
@@ -624,10 +641,17 @@
             <p class="section-subtitle">Strategic consulting and hands-on implementation to help your business leverage technology effectively</p>
 
             <div class="services-grid">
+                <div class="service-card featured">
+                    <div class="service-icon">🎓</div>
+                    <h3>AI Coding Bootcamps</h3>
+                    <p>Hands-on training that builds real fluency with Claude Code — on your own codebase, not a toy demo. A three-hour crash course for one person, or a six-week cohort for a whole engineering org. I teach every session myself.</p>
+                    <a href="/just-do-ai/bootcamp.html" class="service-link">See the Bootcamps →</a>
+                </div>
+
                 <div class="service-card">
                     <div class="service-icon">🤖</div>
                     <h3>AI Strategy & Implementation</h3>
-                    <p>Cut through the AI hype. Get practical advice on ChatGPT, Microsoft Copilot, Claude, and other AI tools that actually make sense for your business. Level up your engineering team with agentic coding practices. Includes team training and implementation support.</p>
+                    <p>Cut through the AI hype. Get practical advice on ChatGPT, Microsoft Copilot, Claude, and other AI tools that actually make sense for your business — plus the implementation support to put them to work.</p>
                     <a href="/just-do-ai/" class="service-link">Just Do AI →</a>
                 </div>
 
