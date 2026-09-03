@@ -52,7 +52,7 @@
   .cat-review .tool-card { border-color: #38301e; background: #201c10; }
   .cat-review .tool-card:hover { border-color: #d97706; background: #282010; }
   .cat-review .more-box { border-color: #38301e; }
-  .cat-review .tools-grid { grid-template-columns: repeat(4, 1fr); }
+  .cat-review .tools-grid { grid-template-columns: repeat(3, 1fr); }
 
   .cat-qa { background: linear-gradient(135deg, #1a1a14 0%, #181810 100%); border: 1px solid #33382e; grid-column: 1 / 3; grid-row: 5; }
   .cat-qa::before { background: linear-gradient(90deg, #84cc16, #65a30d); }
@@ -60,7 +60,7 @@
   .cat-qa .tool-card { border-color: #33382e; background: #1c2018; }
   .cat-qa .tool-card:hover { border-color: #65a30d; background: #242820; }
   .cat-qa .more-box { border-color: #33382e; }
-  .cat-qa .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  .cat-qa .tools-grid { grid-template-columns: repeat(3, 1fr); }
 
   .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 6; }
   .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
@@ -123,7 +123,7 @@
 
 <div class="header">
   <h1>AI Engineering Tools Landscape</h1>
-  <div class="subtitle">Coding with AI Bootcamp — reference · updated 2 June 2026 · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
+  <div class="subtitle">Coding with AI Bootcamp — reference · updated 3 September 2026 · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
 </div>
 
 <div class="landscape">
@@ -140,7 +140,7 @@
           <a class="tool-name" href="https://lovable.dev/">Lovable</a>
           <span class="tool-type">browser</span>
         </div>
-        <div class="tool-desc">Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy.</div>
+        <div class="tool-desc">Full-stack React/TS apps from prompts. Best-in-class UI quality. Lovable Cloud backend (built on Supabase) on by default, or bring your own Supabase. One-click deploy.</div>
         <div class="tool-highlight">~$25/mo Pro (shared across unlimited users) · Credit-based · GitHub sync</div>
       </div>
       <div class="tool-card">
@@ -148,7 +148,7 @@
           <a class="tool-name" href="https://aistudio.google.com/welcome">Google AI Studio</a>
           <span class="tool-type">browser</span>
         </div>
-        <div class="tool-desc">Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.</div>
+        <div class="tool-desc">Free Gemini 3.5 access. "Build" mode for vibe coding apps, powered by the Antigravity agent. Deploy to Cloud Run or sync to GitHub. Web and native Android output. Text, image, audio & video models in one playground.</div>
         <div class="tool-highlight">Free tier · Google ecosystem · Gemini API keys</div>
       </div>
       <div class="tool-card">
@@ -165,10 +165,26 @@
           <span class="tool-type">browser IDE</span>
         </div>
         <div class="tool-desc">Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages.</div>
-        <div class="tool-highlight">Credit-based · Core $20/mo &amp; Pro $95/mo (billed annually) · Built-in DB, auth &amp; hosting</div>
+        <div class="tool-highlight">Credit-based · Core $20/mo · Pro $100/mo · Built-in DB, auth &amp; hosting</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://emergent.sh/">Emergent</a>
+          <span class="tool-type">browser</span>
+        </div>
+        <div class="tool-desc">Conversational full-stack builder — agents design, code, and deploy web and mobile apps end to end. One-click LLM integration, GitHub sync, custom agents on higher tiers. $70M raise (Jan 2026), ~$50M ARR, 6M+ users.</div>
+        <div class="tool-highlight">Free · $17/mo Standard · $167/mo Pro · Enterprise</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.figma.com/make/">Figma Make</a>
+          <span class="tool-type">browser</span>
+        </div>
+        <div class="tool-desc">Figma's prompt-to-app tool. Turns a description or an existing Figma design into a working app, with a visual editor over the generated code and live testing. ~60% of Figma's largest customers use it weekly.</div>
+        <div class="tool-highlight">Included in Figma plans · Design-to-app · Visual code editing</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://v0.app/">v0</a>, <a class="more-link" href="https://base44.com/">Base44</a>, <a class="more-link" href="https://www.create.xyz/">Anything</a>, <a class="more-link" href="https://blitzy.com/">Blitzy</a>, <a class="more-link" href="https://www.hostinger.com/horizons">Hostinger Horizons</a>, <a class="more-link" href="https://www.tempo.new/">Tempo</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://v0.app/">v0</a>, <a class="more-link" href="https://base44.com/">Base44</a>, <a class="more-link" href="https://www.anything.com/">Anything</a>, <a class="more-link" href="https://blitzy.com/">Blitzy</a>, <a class="more-link" href="https://www.hostinger.com/ai-builder">Hostinger AI Builder</a>, <a class="more-link" href="https://www.tempo.new/">Tempo</a>, <a class="more-link" href="https://www.rocket.new/">Rocket.new</a> …
       </div>
       <div class="infra-sub">
         <div class="infra-sub-label">Common infrastructure defaults</div>
@@ -188,7 +204,7 @@
           <a class="tool-name" href="https://cursor.com/">Cursor</a>
           <span class="tool-type">desktop IDE</span>
         </div>
-        <div class="tool-desc">VS Code fork rebuilt around AI. Indexes entire repos. Composer 2.5 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model.</div>
+        <div class="tool-desc">VS Code fork rebuilt around AI, now part of SpaceX (acquired Aug 2026). Indexes entire repos. Composer 2.5 for multi-file edits. Tab autocomplete. Bugbot PR review. Cloud agents. Multi-model incl. Grok 4.6.</div>
         <div class="tool-highlight">$20/mo Pro · $60/mo Pro+ · $200/mo Ultra · $40/user/mo Teams · Also in JetBrains via ACP</div>
       </div>
       <div class="tool-card">
@@ -196,19 +212,27 @@
           <a class="tool-name" href="https://github.com/features/copilot">GitHub Copilot</a>
           <span class="tool-type">IDE plugin</span>
         </div>
-        <div class="tool-desc">Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. MCP + multi-model support.</div>
-        <div class="tool-highlight">VS Code, JetBrains, Visual Studio, Xcode · Plan/Agent/Edit modes</div>
+        <div class="tool-desc">Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. Assign tasks to Claude or Codex agents alongside Copilot's own. MCP + multi-model support.</div>
+        <div class="tool-highlight">Free · $10/mo Pro · $39/mo Pro+ · $100/mo Max · $19/user/mo Business · VS Code, JetBrains, Visual Studio, Xcode, Neovim, Eclipse</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://antigravity.google/">Google Antigravity</a>
           <span class="tool-type">desktop IDE + CLI</span>
         </div>
-        <div class="tool-desc">Google's agent-first IDE. VS Code fork built around orchestrating parallel agents — Editor View plus a Manager Surface. Generates verifiable Artifacts (plans, screenshots, browser recordings). 2.0 adds CLI + SDK. Powered by Gemini 3.</div>
-        <div class="tool-highlight">Free for individuals (public preview) · Gemini 3 · IDE + CLI + SDK</div>
+        <div class="tool-desc">Google's agent-first IDE. VS Code fork built around orchestrating parallel agents — Editor View plus a Manager Surface. Generates verifiable Artifacts (plans, screenshots, browser recordings). 2.0 adds CLI + SDK. Multi-model: Gemini 3.x, Claude Sonnet/Opus 4.6, gpt-oss.</div>
+        <div class="tool-highlight">Free tier (GA) · Gemini 3.x + Claude 4.6 multi-model · IDE + CLI + SDK · Paid via Google AI Pro/Ultra</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://kiro.dev/">Kiro</a>
+          <span class="tool-type">desktop IDE + CLI</span>
+        </div>
+        <div class="tool-desc">AWS's spec-driven agentic IDE — turns a prompt into requirements, a design doc, and a task list that live in the repo, then implements against them. IDE + CLI + web + mobile, parallel agents. GA May 2026 as the replacement for Amazon Q Developer. Claude models via Bedrock.</div>
+        <div class="tool-highlight">Free tier · Credit-based paid tiers · IDE + CLI + web · Claude via Bedrock</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://windsurf.com/">Windsurf</a>, <a class="more-link" href="https://www.jetbrains.com/ai/">JetBrains AI</a>, <a class="more-link" href="https://zed.dev/">Zed AI</a>, <a class="more-link" href="https://www.trae.ai/">Trae</a>, <a class="more-link" href="https://voideditor.com/">Void (development paused)</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://devin.ai/desktop">Devin Desktop (formerly Windsurf)</a>, <a class="more-link" href="https://www.jetbrains.com/ai/">JetBrains AI</a>, <a class="more-link" href="https://zed.dev/">Zed AI</a>, <a class="more-link" href="https://www.trae.ai/">Trae</a> …
       </div>
     </div>
   </div>
@@ -224,10 +248,10 @@
         <span class="tool-star gold">★</span>
         <div class="tool-header">
           <a class="tool-name" href="https://code.claude.com/docs/en/overview">Claude Code</a>
-          <span class="tool-type">CLI + App</span>
+          <span class="tool-type">CLI + Desktop + Web + IDE</span>
         </div>
-        <div class="tool-desc">Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation.</div>
-        <div class="tool-highlight">Claude Sonnet/Opus · Configurable approval modes · Local-first</div>
+        <div class="tool-desc">Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation. Same engine in terminal, IDE, desktop app, and browser — shared CLAUDE.md, settings, and MCP config.</div>
+        <div class="tool-highlight">Claude Fable/Opus/Sonnet · Included in Pro $20/mo, Max $100–200/mo · Configurable approval modes · Local-first</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -235,7 +259,7 @@
           <span class="tool-type">CLI + App</span>
         </div>
         <div class="tool-desc">OpenAI's agent. Open-source, Rust-built. Multi-agent workflows (fork sub-tasks). Skills system. Cloud mode for async work. Desktop app + CLI + IDE.</div>
-        <div class="tool-highlight">GPT-5.x · Web search built in · Plugin/MCP ecosystem</div>
+        <div class="tool-highlight">GPT-5.6 Sol/Terra/Luna · Included in ChatGPT Plus $20/mo, Pro $200/mo · Web search built in · Plugin/MCP ecosystem</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -243,10 +267,18 @@
           <span class="tool-type">CLI</span>
         </div>
         <div class="tool-desc">Google's terminal agent. ReAct loop with built-in tools. Strong on frontend/UI tasks. Multimodal input support. Generous free tier.</div>
-        <div class="tool-highlight">Gemini models · Free tier · Open source</div>
+        <div class="tool-highlight">Gemini 3 Pro/Flash · Free tier (1,000 req/day) · Apache 2.0</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://opencode.ai/">OpenCode</a>
+          <span class="tool-type">CLI + IDE + Desktop</span>
+        </div>
+        <div class="tool-desc">Open-source, model-agnostic terminal agent. 75+ LLM providers including local models, plus direct Claude/GPT/Gemini/Copilot sign-in. The answer to "what if I don't want to pick a vendor." ~195K GitHub stars.</div>
+        <div class="tool-highlight">Free · 75+ model providers incl. local · Optional Zen curated-model tier · Open source</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://kiro.dev/">Kiro CLI</a>, <a class="more-link" href="https://github.com/QwenLM/qwen-code">Qwen Code</a>, <a class="more-link" href="https://github.com/charmbracelet/crush">Crush</a>, <a class="more-link" href="https://devin.ai/">Devin</a>, <a class="more-link" href="https://github.com/JetBrains/junie">Junie CLI</a>, <a class="more-link" href="https://aider.chat/">Aider</a>, <a class="more-link" href="https://kilo.ai/">Kilo Code</a>, <a class="more-link" href="https://cline.bot/">Cline</a>, <a class="more-link" href="https://www.warp.dev/">Warp</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://mistral.ai/products/vibe/code/">Mistral Vibe</a>, <a class="more-link" href="https://docs.factory.ai/droid-cli/overview">Factory Droid CLI</a>, <a class="more-link" href="https://ampcode.com/">Amp</a>, <a class="more-link" href="https://kiro.dev/">Kiro CLI</a>, <a class="more-link" href="https://github.com/QwenLM/qwen-code">Qwen Code</a>, <a class="more-link" href="https://github.com/charmbracelet/crush">Crush</a>, <a class="more-link" href="https://devin.ai/">Devin</a>, <a class="more-link" href="https://github.com/JetBrains/junie">Junie CLI</a>, <a class="more-link" href="https://aider.chat/">Aider</a>, <a class="more-link" href="https://kilo.ai/">Kilo Code</a>, <a class="more-link" href="https://cline.bot/">Cline</a>, <a class="more-link" href="https://www.warp.dev/">Warp</a> …
       </div>
     </div>
   </div>
@@ -262,8 +294,8 @@
           <a class="tool-name" href="https://code.claude.com/docs/en/code-review">Claude Code Review</a>
           <span class="tool-type">GitHub app</span>
         </div>
-        <div class="tool-desc">Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes.</div>
-        <div class="tool-highlight">Research preview · Team &amp; Enterprise only · Not available with Zero Data Retention</div>
+        <div class="tool-desc">Anthropic's code review agent. Multi-agent analysis on GitHub PRs via per-repo review settings or @claude review. Deep codebase context. Inline comments with severity levels and per-finding reasoning.</div>
+        <div class="tool-highlight">Research preview · Team &amp; Enterprise only · ~$15–25/review via usage credits · Not available with Zero Data Retention</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -286,11 +318,27 @@
           <a class="tool-name" href="https://www.coderabbit.ai/">CodeRabbit</a>
           <span class="tool-type">GitHub/GitLab app</span>
         </div>
-        <div class="tool-desc">Most-installed AI app on GitHub (3M+ repos, 15K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket.</div>
-        <div class="tool-highlight">Free for OSS · $30/seat/mo Pro · Enterprise</div>
+        <div class="tool-desc">Most-installed AI app on GitHub (6M+ repos, 17K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket. $143M Series C at $1.5B (Aug 2026).</div>
+        <div class="tool-highlight">Free for OSS · $30/dev/mo Essentials · $60 Team · $90 Advanced · Enterprise</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://cursor.com/bugbot">Cursor Bugbot</a>
+          <span class="tool-type">GitHub app</span>
+        </div>
+        <div class="tool-desc">Cursor's dedicated PR reviewer. Runs as a background check on GitHub PRs, flags logic bugs with a low false-positive rate, and hands fixes to the Cursor editor or a cloud agent. Customizable via Bugbot Rules. Used as a mandatory pre-merge check at Sentry, Discord, Rippling.</div>
+        <div class="tool-highlight">Usage-based (~$1–1.50/review) · Requires Cursor Teams · Owns Graphite</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://learn.chatgpt.com/docs/third-party/github">Codex Code Review</a>
+          <span class="tool-type">GitHub app</span>
+        </div>
+        <div class="tool-desc">OpenAI's GitHub PR reviewer. Trigger with @codex review, or auto-review every new PR. Posts a standard GitHub review focused on serious issues. @codex security review (research preview) does a deeper vulnerability pass. Rules live in AGENTS.md.</div>
+        <div class="tool-highlight">Included with ChatGPT plans · @codex review · Security review (research preview)</div>
       </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://app.devin.ai/review">Devin Review</a>, <a class="more-link" href="https://www.greptile.com/">Greptile</a>, <a class="more-link" href="https://www.sourcery.ai/">Sourcery</a>, <a class="more-link" href="https://www.qodo.ai/">Qodo Merge</a>, <a class="more-link" href="https://graphite.com/features/ai-reviews">Graphite AI Reviews</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://app.devin.ai/review">Devin Review</a>, <a class="more-link" href="https://www.greptile.com/">Greptile</a>, <a class="more-link" href="https://www.sourcery.ai/">Sourcery</a>, <a class="more-link" href="https://www.qodo.ai/">Qodo</a>, <a class="more-link" href="https://graphite.com/features/ai-reviews">Graphite AI Reviews (Cursor)</a>, <a class="more-link" href="https://macroscope.com/">Macroscope</a>, <a class="more-link" href="https://baz.co/">Baz</a> …
       </div>
     </div>
   </div>
@@ -306,8 +354,8 @@
           <a class="tool-name" href="https://www.thunders.ai/">Thunders</a>
           <span class="tool-type">platform</span>
         </div>
-        <div class="tool-desc">AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits.</div>
-        <div class="tool-highlight">Starter €300/mo · Pro €800/mo · Enterprise custom</div>
+        <div class="tool-desc">AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile, desktop & API testing. AI personas for SEO, accessibility & security audits.</div>
+        <div class="tool-highlight">Starter €399/mo · Pro €999/mo · Enterprise custom</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
@@ -317,8 +365,16 @@
         <div class="tool-desc">Agentic AI testing platform for web, mobile, APIs, accessibility, and performance. Emphasizes auto-healing, end-to-end coverage, and IDE/CLI workflows.</div>
         <div class="tool-highlight">Free trial · Enterprise pricing · Jira/GitHub/Slack integrations</div>
       </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.ranger.net/">Ranger</a>
+          <span class="tool-type">platform</span>
+        </div>
+        <div class="tool-desc">AI QA agent that explores your web app, writes and maintains Playwright-style end-to-end tests, runs them as changes land, and triages failures before a human sees them. Built as the QA layer for teams shipping with coding agents. Customers include OpenAI, Suno, Clay.</div>
+        <div class="tool-highlight">Free tier · $50/user/mo Growth · Enterprise usage-based</div>
+      </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://momentic.ai/">Momentic</a>, <a class="more-link" href="https://www.qawolf.com/">QA Wolf</a>, <a class="more-link" href="https://www.testsprite.com/">TestSprite</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://momentic.ai/">Momentic</a>, <a class="more-link" href="https://www.qawolf.com/">QA Wolf</a>, <a class="more-link" href="https://www.testsprite.com/">TestSprite</a>, <a class="more-link" href="https://www.spurtest.com/">Spur</a>, <a class="more-link" href="https://github.com/browserbase/stagehand">Stagehand</a> …
       </div>
     </div>
   </div>
@@ -334,19 +390,27 @@
           <a class="tool-name" href="https://github.com/openclaw/openclaw">OpenClaw</a>
           <span class="tool-type">self-hosted</span>
         </div>
-        <div class="tool-desc">Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support.</div>
-        <div class="tool-highlight">Multi-model · MCP/skills · Self-hosted · Free</div>
+        <div class="tool-desc">Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support. Now governed by the non-profit OpenClaw Foundation.</div>
+        <div class="tool-highlight">Multi-model · MCP/skills · Self-hosted · Free · OpenClaw Foundation</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>
           <span class="tool-type">self-hosted</span>
         </div>
-        <div class="tool-desc">Open-source always-on agent from Nous Research. Self-improving — writes itself a reusable skill after each task, so it gets more capable over time. Persistent memory, broad messaging-channel support, runs as a background process on your own infra.</div>
+        <div class="tool-desc">Open-source always-on agent from Nous Research. Self-improving — writes itself a reusable skill after each task, so it gets more capable over time. Persistent memory, built-in cron scheduler, broad messaging-channel support, runs as a background process on your own infra.</div>
         <div class="tool-highlight">MIT · Self-hosted · Multi-channel · Free</div>
       </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://gemini.google.com/spark">Gemini Spark</a>
+          <span class="tool-type">cloud-hosted</span>
+        </div>
+        <div class="tool-desc">Google's 24/7 personal agent, announced at I/O May 2026. Runs persistently on Google Cloud VMs (works with your laptop closed), takes tasks via Gmail, browses through Chrome, and acts across Gmail, Calendar, Docs, Drive, and MCP-connected apps.</div>
+        <div class="tool-highlight">Requires Google AI Ultra $99.99/mo · US-only at launch · Cloud-hosted</div>
+      </div>
       <div class="more-box">
-        <strong>And many more:</strong> <a class="more-link" href="https://www.nvidia.com/en-us/ai/nemoclaw/">NemoClaw</a>, <a class="more-link" href="https://dreamer.com/">Dreamer</a>, <a class="more-link" href="https://github.com/nanobot-ai/nanobot">Nanobot</a>, <a class="more-link" href="https://claude.com/product/cowork">Claude Cowork</a>, <a class="more-link" href="https://copilot.microsoft.com">Microsoft Copilot</a>, <a class="more-link" href="https://www.lindy.ai/">Lindy</a> …
+        <strong>And many more:</strong> <a class="more-link" href="https://www.nvidia.com/en-us/ai/nemoclaw/">NemoClaw</a>, <a class="more-link" href="https://claude.com/product/cowork">Claude Cowork</a>, <a class="more-link" href="https://copilot.microsoft.com">Microsoft Copilot</a>, <a class="more-link" href="https://www.lindy.ai/">Lindy</a>, <a class="more-link" href="https://www.perplexity.ai/computer">Perplexity Personal Computer</a> …
       </div>
     </div>
   </div>
@@ -367,47 +431,47 @@
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/openai/symphony">Symphony</a>
-          <span class="tool-license oss">OSS · OpenAI</span>
+          <span class="tool-license oss">OSS · Apache-2.0 · OpenAI</span>
         </div>
-        <div class="tool-desc">Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. ~15K stars in its first week.</div>
+        <div class="tool-desc">Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. Shipped as an open spec plus an Elixir reference implementation, not a supported product. ~27K stars.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://www.conductor.build/">Conductor</a>
           <span class="tool-license prop">Proprietary</span>
         </div>
-        <div class="tool-desc">Polished Mac app (Melty Labs) for running parallel Claude Code + Codex agents in isolated git worktrees, with a central dashboard and inline diff review/merge. Apple Silicon.</div>
+        <div class="tool-desc">Polished Mac app (Melty Labs) for running parallel Claude Code, Codex, and Cursor agents in isolated git worktrees — local or cloud — with a central dashboard and inline diff review/merge. Free local tier; Pro $50/mo, Teams $60/user/mo.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/generalaction/emdash">Emdash</a>
           <span class="tool-license oss">OSS · Apache-2.0</span>
         </div>
-        <div class="tool-desc">Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Gemini, Amp, Hermes…) in parallel worktrees — local or over SSH — with Linear/Jira/GitHub ticket integration.</div>
+        <div class="tool-desc">Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Cursor, OpenCode, Amp, Devin, Droid…) in parallel worktrees — local or over SSH — with Linear, Jira, GitHub, GitLab, Asana and more for ticket integration.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/smtg-ai/claude-squad">Claude Squad</a>
-          <span class="tool-license oss">OSS · terminal</span>
+          <span class="tool-license oss">OSS · AGPL-3.0</span>
         </div>
         <div class="tool-desc">Terminal TUI that manages many agents — Claude Code, Codex, Gemini, Aider, OpenCode, Amp — each in its own tmux session and git worktree. The lightweight, terminal-native way to run a fleet.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a>
-          <span class="tool-license oss">OSS · community</span>
+          <a class="tool-name" href="https://github.com/Untrivial-ai/agent-orchestrator">Agent Orchestrator (AO)</a>
+          <span class="tool-license oss">OSS · Apache-2.0</span>
         </div>
-        <div class="tool-desc">Kanban board for agent tasks with isolated worktrees and multi-agent support. Company Bloop shut down April 2026; now community-maintained OSS (Apache-2.0) and fully local — try via <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">npx vibe-kanban</code>.</div>
+        <div class="tool-desc">Agent-, runtime-, and tracker-agnostic orchestrator (formerly Composio AO). Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://github.com/ComposioHQ/agent-orchestrator">Composio AO</a>
+          <a class="tool-name" href="https://github.com/stablyai/orca">Orca</a>
           <span class="tool-license oss">OSS · MIT</span>
         </div>
-        <div class="tool-desc">Agent-, runtime-, and tracker-agnostic orchestrator. Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.</div>
+        <div class="tool-desc">Open-source agent development environment (Stably). Fan one prompt across parallel agents, each in an isolated worktree, compare results, and merge the winner. 30+ CLI agents, GitHub/Linear integration, SSH worktrees, desktop + mobile apps. ~60K stars — the most-starred tool in this category.</div>
       </div>
       <div class="more-box">
-        <strong>And more:</strong> <a class="more-link" href="https://imbue.com/sculptor">Sculptor</a> (Imbue — Docker-isolated Claude Code agents), <a class="more-link" href="https://github.com/stravu/crystal">Crystal</a> (MIT, parallel Claude Code sessions) …
+        <strong>And more:</strong> <a class="more-link" href="https://imbue.com/sculptor">Sculptor</a> (Imbue — Docker-isolated Claude Code + Codex agents), <a class="more-link" href="https://nimbalyst.com/">Nimbalyst</a> (MIT, successor to Crystal — parallel Claude Code/Codex/OpenCode sessions), <a class="more-link" href="https://github.com/manaflow-ai/cmux">cmux</a> (Ghostty-based macOS terminal built for running many agents), <a class="more-link" href="https://github.com/BloopAI/vibe-kanban">Vibe Kanban</a> (Bloop shut down April 2026; repo sunsetting, unmaintained since) …
       </div>
       <div class="stage-row">
         <span class="stage-label">Stage 8 &amp; Beyond · Autonomous</span>
@@ -416,16 +480,16 @@
       <div class="tool-card">
         <div class="tool-header">
           <a class="tool-name" href="https://github.com/gastownhall/gastown">Gas Town</a>
-          <span class="tool-license oss">OSS · Steve Yegge</span>
+          <span class="tool-license oss">OSS · MIT · Steve Yegge</span>
         </div>
-        <div class="tool-desc">Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. Reached v1.0 in April 2026. Heavy sessions can run $100–200/hr in API costs.</div>
+        <div class="tool-desc">Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. v1.2.1 (June 2026). Self-hosted sessions can run $100–200/hr in API costs; a hosted "Gas Town by Kilo" is now GA.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">
-          <a class="tool-name" href="https://cosine.sh/product">Genie (Cosine)</a>
+          <a class="tool-name" href="https://cosine.sh/">Cosine (Lumen)</a>
           <span class="tool-license prop">Proprietary</span>
         </div>
-        <div class="tool-desc">Autonomous software engineer trained on real engineering decision traces. Air-gapped enterprise deployment and top-tier benchmarks (72% SWE-Lancer). Genie 2.0 is the current release.</div>
+        <div class="tool-desc">Formerly Genie. Now "The Sovereign AI Lab": Lumen Scout/Outpost/Sovereign coding agents for air-gapped and single-tenant enterprise deployment. Lumen Outpost leads its Niche-Bench at 59.3%. Pivoting toward UK-government-backed sovereign model training.</div>
       </div>
       <div class="tool-card">
         <div class="tool-header">

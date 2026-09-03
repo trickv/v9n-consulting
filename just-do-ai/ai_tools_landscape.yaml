@@ -33,12 +33,12 @@ categories:
         url: https://lovable.dev/
         type: browser
         star: gray
-        desc: "Full-stack React/TS apps from prompts. Best-in-class UI quality. Native Supabase integration. One-click deploy."
+        desc: "Full-stack React/TS apps from prompts. Best-in-class UI quality. Lovable Cloud backend (built on Supabase) on by default, or bring your own Supabase. One-click deploy."
         highlight: "~$25/mo Pro (shared across unlimited users) · Credit-based · GitHub sync"
       - name: Google AI Studio
         url: https://aistudio.google.com/welcome
         type: browser
-        desc: 'Free Gemini 3 access. "Build" mode for vibe coding apps. One-click deploy. Text, image, audio & video models in one playground.'
+        desc: 'Free Gemini 3.5 access. "Build" mode for vibe coding apps, powered by the Antigravity agent. Deploy to Cloud Run or sync to GitHub. Web and native Android output. Text, image, audio & video models in one playground.'
         highlight: "Free tier · Google ecosystem · Gemini API keys"
       - name: Bolt
         url: https://bolt.new/
@@ -49,21 +49,33 @@ categories:
         url: https://replit.com/
         type: browser IDE
         desc: "Cloud IDE + Agent 4. Parallel agents, infinite canvas design, multiple artifacts. Auto-tests and auto-debugs. 50+ languages."
-        highlight: "Credit-based · Core $20/mo & Pro $95/mo (billed annually) · Built-in DB, auth & hosting"
+        highlight: "Credit-based · Core $20/mo · Pro $100/mo · Built-in DB, auth & hosting"
+      - name: Emergent
+        url: https://emergent.sh/
+        type: browser
+        desc: "Conversational full-stack builder — agents design, code, and deploy web and mobile apps end to end. One-click LLM integration, GitHub sync, custom agents on higher tiers. $70M raise (Jan 2026), ~$50M ARR, 6M+ users."
+        highlight: "Free · $17/mo Standard · $167/mo Pro · Enterprise"
+      - name: Figma Make
+        url: https://www.figma.com/make/
+        type: browser
+        desc: "Figma's prompt-to-app tool. Turns a description or an existing Figma design into a working app, with a visual editor over the generated code and live testing. ~60% of Figma's largest customers use it weekly."
+        highlight: "Included in Figma plans · Design-to-app · Visual code editing"
     more:
       - v0
       - Base44
       - Anything
       - Blitzy
-      - Hostinger Horizons
+      - Hostinger AI Builder
       - Tempo
+      - Rocket.new
     more_urls:
       v0: https://v0.app/
       Base44: https://base44.com/
-      Anything: https://www.create.xyz/
+      Anything: https://www.anything.com/
       Blitzy: https://blitzy.com/
-      Hostinger Horizons: https://www.hostinger.com/horizons
+      Hostinger AI Builder: https://www.hostinger.com/ai-builder
       Tempo: https://www.tempo.new/
+      Rocket.new: https://www.rocket.new/
     infra_note:
       label: Common infrastructure defaults
       text: >
@@ -90,30 +102,33 @@ categories:
       - name: Cursor
         url: https://cursor.com/
         type: desktop IDE
-        desc: "VS Code fork rebuilt around AI. Indexes entire repos. Composer 2.5 for multi-file edits. Tab autocomplete model. BugBot PR review. Background agents. Multi-model."
+        desc: "VS Code fork rebuilt around AI, now part of SpaceX (acquired Aug 2026). Indexes entire repos. Composer 2.5 for multi-file edits. Tab autocomplete. Bugbot PR review. Cloud agents. Multi-model incl. Grok 4.6."
         highlight: "$20/mo Pro · $60/mo Pro+ · $200/mo Ultra · $40/user/mo Teams · Also in JetBrains via ACP"
       - name: GitHub Copilot
         url: https://github.com/features/copilot
         type: IDE plugin
-        desc: "Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. MCP + multi-model support."
-        highlight: "VS Code, JetBrains, Visual Studio, Xcode · Plan/Agent/Edit modes"
+        desc: "Most widely adopted. Agent mode for autonomous edits. Coding Agent assigns issues → PRs. Assign tasks to Claude or Codex agents alongside Copilot's own. MCP + multi-model support."
+        highlight: "Free · $10/mo Pro · $39/mo Pro+ · $100/mo Max · $19/user/mo Business · VS Code, JetBrains, Visual Studio, Xcode, Neovim, Eclipse"
       - name: Google Antigravity
         url: https://antigravity.google/
         type: desktop IDE + CLI
-        desc: "Google's agent-first IDE. VS Code fork built around orchestrating parallel agents — Editor View plus a Manager Surface. Generates verifiable Artifacts (plans, screenshots, browser recordings). 2.0 adds CLI + SDK. Powered by Gemini 3."
-        highlight: "Free for individuals (public preview) · Gemini 3 · IDE + CLI + SDK"
+        desc: "Google's agent-first IDE. VS Code fork built around orchestrating parallel agents — Editor View plus a Manager Surface. Generates verifiable Artifacts (plans, screenshots, browser recordings). 2.0 adds CLI + SDK. Multi-model: Gemini 3.x, Claude Sonnet/Opus 4.6, gpt-oss."
+        highlight: "Free tier (GA) · Gemini 3.x + Claude 4.6 multi-model · IDE + CLI + SDK · Paid via Google AI Pro/Ultra"
+      - name: Kiro
+        url: https://kiro.dev/
+        type: desktop IDE + CLI
+        desc: "AWS's spec-driven agentic IDE — turns a prompt into requirements, a design doc, and a task list that live in the repo, then implements against them. IDE + CLI + web + mobile, parallel agents. GA May 2026 as the replacement for Amazon Q Developer. Claude models via Bedrock."
+        highlight: "Free tier · Credit-based paid tiers · IDE + CLI + web · Claude via Bedrock"
     more:
-      - Windsurf
+      - Devin Desktop (formerly Windsurf)
       - JetBrains AI
       - Zed AI
       - Trae
-      - Void (development paused)
     more_urls:
-      Windsurf: https://windsurf.com/
+      Devin Desktop (formerly Windsurf): https://devin.ai/desktop
       JetBrains AI: https://www.jetbrains.com/ai/
       Zed AI: https://zed.dev/
       Trae: https://www.trae.ai/
-      Void (development paused): https://voideditor.com/
 
   - id: terminal
     label: Agentic Coding
@@ -136,21 +151,29 @@ categories:
     tools:
       - name: Claude Code
         url: https://code.claude.com/docs/en/overview
-        type: CLI + App
+        type: CLI + Desktop + Web + IDE
         star: gold
-        desc: "Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation."
-        highlight: "Claude Sonnet/Opus · Configurable approval modes · Local-first"
+        desc: "Anthropic's leading agent. Deep codebase understanding via large context. Git-aware. Skills/MCP extensible. Transparent operation. Same engine in terminal, IDE, desktop app, and browser — shared CLAUDE.md, settings, and MCP config."
+        highlight: "Claude Fable/Opus/Sonnet · Included in Pro $20/mo, Max $100–200/mo · Configurable approval modes · Local-first"
       - name: Codex
         url: https://github.com/openai/codex
         type: CLI + App
         desc: "OpenAI's agent. Open-source, Rust-built. Multi-agent workflows (fork sub-tasks). Skills system. Cloud mode for async work. Desktop app + CLI + IDE."
-        highlight: "GPT-5.x · Web search built in · Plugin/MCP ecosystem"
+        highlight: "GPT-5.6 Sol/Terra/Luna · Included in ChatGPT Plus $20/mo, Pro $200/mo · Web search built in · Plugin/MCP ecosystem"
       - name: Gemini CLI
         url: https://github.com/google-gemini/gemini-cli
         type: CLI
         desc: "Google's terminal agent. ReAct loop with built-in tools. Strong on frontend/UI tasks. Multimodal input support. Generous free tier."
-        highlight: "Gemini models · Free tier · Open source"
+        highlight: "Gemini 3 Pro/Flash · Free tier (1,000 req/day) · Apache 2.0"
+      - name: OpenCode
+        url: https://opencode.ai/
+        type: CLI + IDE + Desktop
+        desc: "Open-source, model-agnostic terminal agent. 75+ LLM providers including local models, plus direct Claude/GPT/Gemini/Copilot sign-in. The answer to \"what if I don't want to pick a vendor.\" ~195K GitHub stars."
+        highlight: "Free · 75+ model providers incl. local · Optional Zen curated-model tier · Open source"
     more:
+      - Mistral Vibe
+      - Factory Droid CLI
+      - Amp
       - Kiro CLI
       - Qwen Code
       - Crush
@@ -161,6 +184,9 @@ categories:
       - Cline
       - Warp
     more_urls:
+      Mistral Vibe: https://mistral.ai/products/vibe/code/
+      Factory Droid CLI: https://docs.factory.ai/droid-cli/overview
+      Amp: https://ampcode.com/
       Kiro CLI: https://kiro.dev/
       Qwen Code: https://github.com/QwenLM/qwen-code
       Crush: https://github.com/charmbracelet/crush
@@ -179,7 +205,7 @@ categories:
     layout:
       grid_column: "1 / 3"
       grid_row: "4"
-      tools_columns: 4
+      tools_columns: 3
     colors:
       bg_gradient: ["#1a1710", "#1a1508"]
       border: "#38301e"
@@ -191,8 +217,8 @@ categories:
       - name: Claude Code Review
         url: https://code.claude.com/docs/en/code-review
         type: GitHub app
-        desc: "Anthropic's code review agent. Multi-agent analysis on GitHub PRs via @claude mention or auto-assignment. Deep codebase context. Inline comments with severity levels and suggested fixes."
-        highlight: "Research preview · Team & Enterprise only · Not available with Zero Data Retention"
+        desc: "Anthropic's code review agent. Multi-agent analysis on GitHub PRs via per-repo review settings or @claude review. Deep codebase context. Inline comments with severity levels and per-finding reasoning."
+        highlight: "Research preview · Team & Enterprise only · ~$15–25/review via usage credits · Not available with Zero Data Retention"
       - name: GitHub Copilot Code Review
         url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review
         type: GitHub built-in
@@ -206,20 +232,34 @@ categories:
       - name: CodeRabbit
         url: https://www.coderabbit.ai/
         type: GitHub/GitLab app
-        desc: "Most-installed AI app on GitHub (3M+ repos, 15K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket."
-        highlight: "Free for OSS · $30/seat/mo Pro · Enterprise"
+        desc: "Most-installed AI app on GitHub (6M+ repos, 17K+ customers). Line-by-line suggestions, 1-click fixes, codegraph analysis. PR + IDE + CLI review across GitHub, GitLab, Azure DevOps & Bitbucket. $143M Series C at $1.5B (Aug 2026)."
+        highlight: "Free for OSS · $30/dev/mo Essentials · $60 Team · $90 Advanced · Enterprise"
+      - name: Cursor Bugbot
+        url: https://cursor.com/bugbot
+        type: GitHub app
+        desc: "Cursor's dedicated PR reviewer. Runs as a background check on GitHub PRs, flags logic bugs with a low false-positive rate, and hands fixes to the Cursor editor or a cloud agent. Customizable via Bugbot Rules. Used as a mandatory pre-merge check at Sentry, Discord, Rippling."
+        highlight: "Usage-based (~$1–1.50/review) · Requires Cursor Teams · Owns Graphite"
+      - name: Codex Code Review
+        url: https://learn.chatgpt.com/docs/third-party/github
+        type: GitHub app
+        desc: "OpenAI's GitHub PR reviewer. Trigger with @codex review, or auto-review every new PR. Posts a standard GitHub review focused on serious issues. @codex security review (research preview) does a deeper vulnerability pass. Rules live in AGENTS.md."
+        highlight: "Included with ChatGPT plans · @codex review · Security review (research preview)"
     more:
       - Devin Review
       - Greptile
       - Sourcery
-      - Qodo Merge
-      - Graphite AI Reviews
+      - Qodo
+      - Graphite AI Reviews (Cursor)
+      - Macroscope
+      - Baz
     more_urls:
       Devin Review: https://app.devin.ai/review
       Greptile: https://www.greptile.com/
       Sourcery: https://www.sourcery.ai/
-      Qodo Merge: https://www.qodo.ai/
-      Graphite AI Reviews: https://graphite.com/features/ai-reviews
+      Qodo: https://www.qodo.ai/
+      Graphite AI Reviews (Cursor): https://graphite.com/features/ai-reviews
+      Macroscope: https://macroscope.com/
+      Baz: https://baz.co/
 
   - id: qa
     label: AI QA & Testing
@@ -229,7 +269,7 @@ categories:
     layout:
       grid_column: "1 / 3"
       grid_row: "5"
-      tools_columns: 2
+      tools_columns: 3
     colors:
       bg_gradient: ["#1a1a14", "#181810"]
       border: "#33382e"
@@ -241,21 +281,30 @@ categories:
       - name: Thunders
         url: https://www.thunders.ai/
         type: platform
-        desc: "AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile & API testing. AI personas for SEO, accessibility & security audits."
-        highlight: "Starter €300/mo · Pro €800/mo · Enterprise custom"
+        desc: "AI test automation platform. Natural language test creation, self-healing tests that adapt to UI changes. Web, mobile, desktop & API testing. AI personas for SEO, accessibility & security audits."
+        highlight: "Starter €399/mo · Pro €999/mo · Enterprise custom"
       - name: Mabl
         url: https://www.mabl.com/
         type: platform
         desc: "Agentic AI testing platform for web, mobile, APIs, accessibility, and performance. Emphasizes auto-healing, end-to-end coverage, and IDE/CLI workflows."
         highlight: "Free trial · Enterprise pricing · Jira/GitHub/Slack integrations"
+      - name: Ranger
+        url: https://www.ranger.net/
+        type: platform
+        desc: "AI QA agent that explores your web app, writes and maintains Playwright-style end-to-end tests, runs them as changes land, and triages failures before a human sees them. Built as the QA layer for teams shipping with coding agents. Customers include OpenAI, Suno, Clay."
+        highlight: "Free tier · $50/user/mo Growth · Enterprise usage-based"
     more:
       - Momentic
       - QA Wolf
       - TestSprite
+      - Spur
+      - Stagehand
     more_urls:
       Momentic: https://momentic.ai/
       QA Wolf: https://www.qawolf.com/
       TestSprite: https://www.testsprite.com/
+      Spur: https://www.spurtest.com/
+      Stagehand: https://github.com/browserbase/stagehand
 
   - id: always-on
     label: Always-On Agents
@@ -277,27 +326,30 @@ categories:
       - name: OpenClaw
         url: https://github.com/openclaw/openclaw
         type: self-hosted
-        desc: "Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support."
-        highlight: "Multi-model · MCP/skills · Self-hosted · Free"
+        desc: "Open-source personal AI assistant you run on your own devices. Multi-channel, local-first, always-on, with voice, Canvas, memory, skills, and broad messaging-platform support. Now governed by the non-profit OpenClaw Foundation."
+        highlight: "Multi-model · MCP/skills · Self-hosted · Free · OpenClaw Foundation"
       - name: Hermes Agent
         url: https://github.com/NousResearch/hermes-agent
         type: self-hosted
-        desc: "Open-source always-on agent from Nous Research. Self-improving — writes itself a reusable skill after each task, so it gets more capable over time. Persistent memory, broad messaging-channel support, runs as a background process on your own infra."
+        desc: "Open-source always-on agent from Nous Research. Self-improving — writes itself a reusable skill after each task, so it gets more capable over time. Persistent memory, built-in cron scheduler, broad messaging-channel support, runs as a background process on your own infra."
         highlight: "MIT · Self-hosted · Multi-channel · Free"
+      - name: Gemini Spark
+        url: https://gemini.google.com/spark
+        type: cloud-hosted
+        desc: "Google's 24/7 personal agent, announced at I/O May 2026. Runs persistently on Google Cloud VMs (works with your laptop closed), takes tasks via Gmail, browses through Chrome, and acts across Gmail, Calendar, Docs, Drive, and MCP-connected apps."
+        highlight: "Requires Google AI Ultra $99.99/mo · US-only at launch · Cloud-hosted"
     more:
       - NemoClaw
-      - Dreamer
-      - Nanobot
       - Claude Cowork
       - Microsoft Copilot
       - Lindy
+      - Perplexity Personal Computer
     more_urls:
       NemoClaw: https://www.nvidia.com/en-us/ai/nemoclaw/
-      Dreamer: https://dreamer.com/
-      Nanobot: https://github.com/nanobot-ai/nanobot
       Claude Cowork: https://claude.com/product/cowork
       Microsoft Copilot: https://copilot.microsoft.com
       Lindy: https://www.lindy.ai/
+      Perplexity Personal Computer: https://www.perplexity.ai/computer
 
   - id: orchestrators
     label: Orchestrators & Multi-Agent
@@ -328,55 +380,61 @@ categories:
         tools:
           - name: Symphony
             url: https://github.com/openai/symphony
-            license: {style: oss, text: "OSS · OpenAI"}
+            license: {style: oss, text: "OSS · Apache-2.0 · OpenAI"}
             desc: >-
-              Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. ~15K stars in its first week.
+              Polls a Linear board, auto-claims tickets, and spawns an isolated Codex session per issue — governed by an in-repo <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">WORKFLOW.md</code> policy file — then returns PRs with proof-of-work. Shipped as an open spec plus an Elixir reference implementation, not a supported product. ~27K stars.
           - name: Conductor
             url: https://www.conductor.build/
             license: {style: prop, text: "Proprietary"}
             desc: >-
-              Polished Mac app (Melty Labs) for running parallel Claude Code + Codex agents in isolated git worktrees, with a central dashboard and inline diff review/merge. Apple Silicon.
+              Polished Mac app (Melty Labs) for running parallel Claude Code, Codex, and Cursor agents in isolated git worktrees — local or cloud — with a central dashboard and inline diff review/merge. Free local tier; Pro $50/mo, Teams $60/user/mo.
           - name: Emdash
             url: https://github.com/generalaction/emdash
             license: {style: oss, text: "OSS · Apache-2.0"}
             desc: >-
-              Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Gemini, Amp, Hermes…) in parallel worktrees — local or over SSH — with Linear/Jira/GitHub ticket integration.
+              Cross-platform open-source agent dev environment (YC W26). Runs 20+ CLI agents (Claude Code, Codex, Cursor, OpenCode, Amp, Devin, Droid…) in parallel worktrees — local or over SSH — with Linear, Jira, GitHub, GitLab, Asana and more for ticket integration.
           - name: Claude Squad
             url: https://github.com/smtg-ai/claude-squad
-            license: {style: oss, text: "OSS · terminal"}
+            license: {style: oss, text: "OSS · AGPL-3.0"}
             desc: >-
               Terminal TUI that manages many agents — Claude Code, Codex, Gemini, Aider, OpenCode, Amp — each in its own tmux session and git worktree. The lightweight, terminal-native way to run a fleet.
-          - name: Vibe Kanban
-            url: https://github.com/BloopAI/vibe-kanban
-            license: {style: oss, text: "OSS · community"}
+          - name: Agent Orchestrator (AO)
+            url: https://github.com/Untrivial-ai/agent-orchestrator
+            license: {style: oss, text: "OSS · Apache-2.0"}
             desc: >-
-              Kanban board for agent tasks with isolated worktrees and multi-agent support. Company Bloop shut down April 2026; now community-maintained OSS (Apache-2.0) and fully local — try via <code style="font-family:'JetBrains Mono',monospace;color:#9aa5a8;">npx vibe-kanban</code>.
-          - name: Composio AO
-            url: https://github.com/ComposioHQ/agent-orchestrator
+              Agent-, runtime-, and tracker-agnostic orchestrator (formerly Composio AO). Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.
+          - name: Orca
+            url: https://github.com/stablyai/orca
             license: {style: oss, text: "OSS · MIT"}
             desc: >-
-              Agent-, runtime-, and tracker-agnostic orchestrator. Each agent gets its own worktree, branch, and PR; when CI fails the agent fixes it, and it answers review comments without per-edit approval.
+              Open-source agent development environment (Stably). Fan one prompt across parallel agents, each in an isolated worktree, compare results, and merge the winner. 30+ CLI agents, GitHub/Linear integration, SSH worktrees, desktop + mobile apps. ~60K stars — the most-starred tool in this category.
         more_label: "And more:"
         more:
           - name: Sculptor
             url: https://imbue.com/sculptor
-            note: "(Imbue — Docker-isolated Claude Code agents)"
-          - name: Crystal
-            url: https://github.com/stravu/crystal
-            note: "(MIT, parallel Claude Code sessions)"
+            note: "(Imbue — Docker-isolated Claude Code + Codex agents)"
+          - name: Nimbalyst
+            url: https://nimbalyst.com/
+            note: "(MIT, successor to Crystal — parallel Claude Code/Codex/OpenCode sessions)"
+          - name: cmux
+            url: https://github.com/manaflow-ai/cmux
+            note: "(Ghostty-based macOS terminal built for running many agents)"
+          - name: Vibe Kanban
+            url: https://github.com/BloopAI/vibe-kanban
+            note: "(Bloop shut down April 2026; repo sunsetting, unmaintained since)"
       - label: "Stage 8 & Beyond · Autonomous"
         desc: 'Spec in, app out — the "Dark Factory"'
         tools:
           - name: Gas Town
             url: https://github.com/gastownhall/gastown
-            license: {style: oss, text: "OSS · Steve Yegge"}
+            license: {style: oss, text: "OSS · MIT · Steve Yegge"}
             desc: >-
-              Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. Reached v1.0 in April 2026. Heavy sessions can run $100–200/hr in API costs.
-          - name: Genie (Cosine)
-            url: https://cosine.sh/product
+              Go-based orchestration running 20–30 parallel Claude Code agents across role-based "crews," paired with the Beads work-tracking primitive. v1.2.1 (June 2026). Self-hosted sessions can run $100–200/hr in API costs; a hosted "Gas Town by Kilo" is now GA.
+          - name: Cosine (Lumen)
+            url: https://cosine.sh/
             license: {style: prop, text: "Proprietary"}
             desc: >-
-              Autonomous software engineer trained on real engineering decision traces. Air-gapped enterprise deployment and top-tier benchmarks (72% SWE-Lancer). Genie 2.0 is the current release.
+              Formerly Genie. Now "The Sovereign AI Lab": Lumen Scout/Outpost/Sovereign coding agents for air-gapped and single-tenant enterprise deployment. Lumen Outpost leads its Niche-Bench at 59.3%. Pivoting toward UK-government-backed sovereign model training.
           - name: Factory (Droids)
             url: https://factory.ai/
             license: {style: prop, text: "Proprietary"}
