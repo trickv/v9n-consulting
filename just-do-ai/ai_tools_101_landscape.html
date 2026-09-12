@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WXEF9TG8WK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WXEF9TG8WK');
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Tools Landscape — Starter Edition</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;600&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #0f0f13; color: #e8e4df; min-height: 100vh; padding: 48px 40px; }
+  .header { text-align: center; margin-bottom: 48px; }
+  .header h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; color: #fff; margin-bottom: 8px; }
+  .header .subtitle { font-size: 15px; color: #8a8680; font-weight: 400; }
+  .landscape { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .category { border-radius: 16px; padding: 28px; position: relative; overflow: hidden; }
+  .category::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0; }
+
+  .cat-chat { background: linear-gradient(135deg, #141a20 0%, #121820 100%); border: 1px solid #1e2d38; grid-column: 1; grid-row: 1 / 3; }
+  .cat-chat::before { background: linear-gradient(90deg, #3b82f6, #2563eb); }
+  .cat-chat .cat-label { color: #60a5fa; }
+  .cat-chat .tool-card { border-color: #1e2d38; background: #182028; }
+  .cat-chat .tool-card:hover { border-color: #2563eb; background: #1c2630; }
+
+  .cat-desktop { background: linear-gradient(135deg, #1a1520 0%, #161220 100%); border: 1px solid #2d2338; grid-column: 2; grid-row: 1; }
+  .cat-desktop::before { background: linear-gradient(90deg, #a855f7, #7c3aed); }
+  .cat-desktop .cat-label { color: #c084fc; }
+  .cat-desktop .tool-card { border-color: #2d2338; background: #1f1828; }
+  .cat-desktop .tool-card:hover { border-color: #7c3aed; background: #251e30; }
+  .cat-desktop .more-box { border-color: #2d2338; }
+
+  .cat-builders { background: linear-gradient(135deg, #141f1a 0%, #121a16 100%); border: 1px solid #1e382d; grid-column: 2; grid-row: 2; }
+  .cat-builders::before { background: linear-gradient(90deg, #22c55e, #16a34a); }
+  .cat-builders .cat-label { color: #4ade80; }
+  .cat-builders .tool-card { border-color: #1e382d; background: #182820; }
+  .cat-builders .tool-card:hover { border-color: #16a34a; background: #1c3028; }
+  .cat-builders .more-box { border-color: #1e382d; }
+
+  .cat-always-on { background: linear-gradient(135deg, #1a1418 0%, #18121a 100%); border: 1px solid #38232d; grid-column: 1 / 3; grid-row: 3; }
+  .cat-always-on::before { background: linear-gradient(90deg, #f472b6, #db2777); }
+  .cat-always-on .cat-label { color: #f9a8d4; }
+  .cat-always-on .tool-card { border-color: #38232d; background: #201420; }
+  .cat-always-on .tool-card:hover { border-color: #db2777; background: #281a28; }
+  .cat-always-on .more-box { border-color: #38232d; }
+  .cat-always-on .tools-grid { grid-template-columns: repeat(3, 1fr); }
+  .cat-always-on .cat-intro { font-size: 13px; color: #9aa5a8; line-height: 1.55; margin-bottom: 14px; max-width: 780px; }
+  .cat-always-on .cat-intro strong { color: #b8c4c8; font-weight: 600; }
+
+  .infra-sub { margin-top: 4px; padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.04); grid-column: 1 / -1; }
+  .infra-sub-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #6b6560; margin-bottom: 6px; }
+  .infra-sub-desc { font-size: 12px; color: #7a7570; line-height: 1.55; }
+  .infra-sub-desc strong { color: #9a9590; font-weight: 600; }
+
+  .cat-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .cat-title { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .cat-tagline { font-size: 13px; color: #8a8680; font-style: italic; margin-bottom: 20px; }
+  .cat-audience { font-size: 12px; color: #6b6560; margin-bottom: 16px; padding: 8px 12px; background: rgba(0,0,0,0.2); border-radius: 8px; display: inline-block; }
+  .cat-audience strong { color: #a09890; font-weight: 500; }
+  .tools-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+  .tool-card { border: 1px solid; border-radius: 10px; padding: 14px 16px; transition: all 0.2s ease; cursor: default; position: relative; }
+  .tool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
+  .tool-name { font-size: 15px; font-weight: 700; color: #fff; text-decoration: none; }
+  a.tool-name:hover { color: #fff; }
+  .more-link { color: inherit; text-decoration: none; }
+  .more-link:hover { color: inherit; }
+  .tool-type { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #6b6560; background: rgba(255,255,255,0.05); padding: 2px 8px; border-radius: 4px; }
+  .tool-license { font-family: 'JetBrains Mono', monospace; font-size: 9.5px; font-weight: 600; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 4px; }
+  .tool-license.oss { background: rgba(74, 222, 128, 0.1); color: #4ade80; border: 1px solid rgba(74, 222, 128, 0.25); }
+  .tool-license.prop { background: rgba(251, 191, 36, 0.08); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.25); }
+  .tool-desc { font-size: 12.5px; color: #9a9590; line-height: 1.5; }
+  .tool-highlight { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.03); color: #7a7570; font-family: 'JetBrains Mono', monospace; }
+  .tool-star { position: absolute; top: 10px; right: 12px; font-size: 18px; line-height: 1; }
+  .tool-star.gray { color: #6b6560; }
+  .tool-star.gold { color: #fbbf24; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4)); }
+  .more-box { border: 1px dashed; border-radius: 10px; padding: 12px 16px; font-size: 12.5px; color: #6b6560; line-height: 1.5; text-align: center; grid-column: 1 / -1; }
+  .more-box strong { color: #8a8680; font-weight: 500; }
+  .bootcamp-badge { position: absolute; top: 12px; right: 12px; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,0.08); color: #b0a8a0; }
+  .bootcamp-badge.primary { background: rgba(139, 30, 30, 0.3); color: #f0a0a0; border: 1px solid rgba(139, 30, 30, 0.5); }
+  .footer-note { text-align: center; margin-top: 36px; font-size: 12px; color: #5a5550; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+  .star-legend { display: flex; justify-content: center; gap: 24px; margin-top: 14px; font-size: 12px; color: #6b6560; }
+  .star-legend span { display: flex; align-items: center; gap: 5px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>The AI Tools Landscape — Starter Edition</h1>
+  <div class="subtitle">AI 101 — a plain-English map for the rest of us · updated 8 September 2026 · <a href="https://v9n.us/" style="color:#8a8680; text-decoration:none;">Patrick van Staveren</a></div>
+</div>
+
+<div class="landscape">
+
+  <div class="category cat-chat">
+    <div class="cat-label">Everyday AI</div>
+    <div class="cat-title">Chat Assistants</div>
+    <div class="cat-tagline">"The one thing everybody should try first"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Everyone — writing, research, brainstorming, explaining things, second opinions</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://chatgpt.com">ChatGPT</a>
+          <span class="tool-type">web · phone · desktop</span>
+        </div>
+        <div class="tool-desc">The one your neighbor has heard of. Type a question, get an answer — plus voice conversation, image generation, file uploads, and Projects to keep related chats together. It remembers what you've told it before.</div>
+        <div class="tool-highlight">Free · Go $8/mo · Plus $20/mo · Pro $100–200/mo</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://claude.ai">Claude</a>
+          <span class="tool-type">web · phone · desktop</span>
+        </div>
+        <div class="tool-desc">Anthropic's assistant. The favorite for writing that sounds human, working through long documents, and thinking carefully about a problem. Artifacts turn its answers into live documents and mini-apps you can use right in the chat.</div>
+        <div class="tool-highlight">Free · Pro $20/mo · Max from $100/mo · Pro unlocks Cowork</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://gemini.google.com">Google Gemini</a>
+          <span class="tool-type">web · phone · in Google apps</span>
+        </div>
+        <div class="tool-desc">Google's assistant, already sitting inside Gmail, Docs and Android. The easiest starting point if your business already runs on Google Workspace, because it can see your mail and files without any setup.</div>
+        <div class="tool-highlight">Free · AI Plus $4.99/mo · AI Pro $19.99/mo · AI Ultra $99.99/mo</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-star gray">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://notebooklm.google.com">Gemini Notebook</a>
+          <span class="tool-type">web · phone</span>
+        </div>
+        <div class="tool-desc">The old NotebookLM, renamed in 2026. You give it your own documents — contracts, manuals, research, meeting notes — and it answers ONLY from those, with citations. It will also turn them into a podcast-style audio or video summary.</div>
+        <div class="tool-highlight">Generous free tier · Included in Google AI plans · Best for &#x27;what&#x27;s in my own files?&#x27;</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.perplexity.ai/">Perplexity</a>
+          <span class="tool-type">web · phone · browser</span>
+        </div>
+        <div class="tool-desc">A search engine that answers in sentences and shows its sources. Reach for it when you want current, checkable facts rather than a conversation. Its Comet browser puts the same assistant alongside whatever page you're reading.</div>
+        <div class="tool-highlight">Free · Pro $20/mo · Comet browser now free on Mac, Windows, iOS &amp; Android</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://copilot.microsoft.com">Microsoft Copilot</a>
+          <span class="tool-type">web · Windows · in Office</span>
+        </div>
+        <div class="tool-desc">Free chat on the web and built into Windows. The paid version's real value is inside Word, Excel and Outlook — drafting documents, summarizing mail threads, and building spreadsheet formulas for you.</div>
+        <div class="tool-highlight">Free chat · Paid features bundled into Microsoft 365 consumer plans (~$20/mo)</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://grok.com">Grok</a>
+          <span class="tool-type">web · phone · on X</span>
+        </div>
+        <div class="tool-desc">xAI's assistant, wired into X (Twitter) and known for a looser, more opinionated tone and real-time posts. Fine as a chat assistant; the more interesting piece is its Grok Bot agent, further down this page.</div>
+        <div class="tool-highlight">Free tier · SuperGrok tiers from ~$10/mo · Bundled with X Premium</div>
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">How to choose</div>
+        <div class="infra-sub-desc"><strong>Honestly? Any of them.</strong> They are far more alike than different, and the leader changes every few months. Pick the one that fits where you already work — Google Workspace shop, use Gemini; Microsoft Office shop, use Copilot — or just try ChatGPT and Claude side by side for a week on real work and keep whichever one you'd miss. <strong>The free tiers are genuinely useful.</strong> Don't pay until you hit a wall.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category cat-desktop">
+    <div class="cat-label">On Your Computer</div>
+    <div class="cat-title">AI That Can Actually Do Things</div>
+    <div class="cat-tagline">"Same assistant — but now it can open your files and use your apps"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Once chat feels normal and you&#x27;re tired of copying and pasting into it</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://claude.ai/download">Claude Desktop</a>
+          <span class="tool-type">Mac · Windows app</span>
+        </div>
+        <div class="tool-desc">The download-and-install version of Claude. Unlike the website, it can read and write files in folders you approve, and one-click extensions connect it to Google Calendar, Slack, Notion, GitHub and more. It asks permission before touching anything.</div>
+        <div class="tool-highlight">Free to install · Same account as claude.ai · macOS &amp; Windows</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://claude.com/product/cowork">Claude Cowork</a>
+          <span class="tool-type">desktop · web · mobile</span>
+        </div>
+        <div class="tool-desc">Hand Claude a whole job instead of a question — 'reconcile these invoices,' 'review these contracts,' 'build the monthly report from this folder.' It works through your files and connected apps step by step, keeps going after you close the laptop, and shows its work. No coding involved.</div>
+        <div class="tool-highlight">Requires a paid plan (Pro $20/mo and up) · Built into the Claude desktop app</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://chatgpt.com/download">ChatGPT desktop app</a>
+          <span class="tool-type">Mac · Windows app</span>
+        </div>
+        <div class="tool-desc">One app with three modes: Chat (the usual), Work (hand it a task and get back a finished doc, spreadsheet or deck), and Codex (the coding one). The separate Codex desktop app was folded into this in July 2026 — you don't need to hunt for it anymore.</div>
+        <div class="tool-highlight">Free to install · All three modes on every plan, including Free</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.perplexity.ai/comet">Comet browser</a>
+          <span class="tool-type">web browser</span>
+        </div>
+        <div class="tool-desc">Perplexity's web browser with an assistant riding shotgun. It reads the page you're on, summarizes it, compares options across tabs, and can fill in forms and click through routine tasks for you. Went free in March 2026.</div>
+        <div class="tool-highlight">Free · Mac, Windows, iOS &amp; Android · Pro $20/mo for heavier use</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> <a class="more-link" href="https://claude.com/product/claude-code">Claude Code</a>, <a class="more-link" href="https://gemini.google.com">Gemini in Chrome</a>, <a class="more-link" href="https://copilot.microsoft.com">Copilot in Windows</a> …
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">The one habit that matters here</div>
+        <div class="infra-sub-desc">These apps ask before they read a file, send a message, or spend money — and it is tempting to click "allow" on autopilot. <strong>Read the request.</strong> Start them on a copy of a folder rather than the real one, and give them access to the smallest slice of your business that gets the job done.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category cat-builders">
+    <div class="cat-label">Build Without Code</div>
+    <div class="cat-title">Describe It, Get an App</div>
+    <div class="cat-tagline">"Type what you want in plain English — get a real, working website or app"</div>
+    <div class="cat-audience"><strong>Best for:</strong> Anyone with an idea and no developer: internal tools, booking forms, calculators, simple sites</div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://lovable.dev/">Lovable</a>
+          <span class="tool-type">web</span>
+        </div>
+        <div class="tool-desc">The friendliest starting point. Describe your app in a chat, watch it appear, then ask for changes in plain English. The database, logins and hosting are all handled for you — you never see a server or write a line of code.</div>
+        <div class="tool-highlight">Free tier (5 builds/day) · Pro ~$25/mo · Publish with one click</div>
+      </div>
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://base44.com/">Base44</a>
+          <span class="tool-type">web</span>
+        </div>
+        <div class="tool-desc">Owned by Wix. Same idea as Lovable — prompt in, working app out, with the database and user logins included. Widely rated the most beginner-proof of the bunch, and it has a genuinely free forever tier to experiment on.</div>
+        <div class="tool-highlight">Free forever tier · Starter $20/mo · Builder $50/mo · Pro $100/mo</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://bolt.new/">Bolt</a>
+          <span class="tool-type">web</span>
+        </div>
+        <div class="tool-desc">By StackBlitz. Builds sites, apps and prototypes with hosting, database, logins and custom domains built in. Slightly more of a tinkerer's tool than Lovable — a little more power, a little more to look at.</div>
+        <div class="tool-highlight">Free tier · Pro $25/mo · Teams $30/user/mo</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.figma.com/make/">Figma Make</a>
+          <span class="tool-type">web</span>
+        </div>
+        <div class="tool-desc">Turns a description — or a design you already have in Figma — into a working app. The obvious pick if your business already designs in Figma, and an odd door to walk through if it doesn't.</div>
+        <div class="tool-highlight">Included in paid Figma plans</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://replit.com/">Replit</a>
+          <span class="tool-type">web</span>
+        </div>
+        <div class="tool-desc">An AI agent that builds and publishes your app, wrapped in a real programmer's workspace. It will do the whole job for you, but you'll be looking at actual code the entire time — which some people find motivating and others find alarming.</div>
+        <div class="tool-highlight">Credit-based · Core $20/mo · Pro $100/mo · A step toward the developer world</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> <a class="more-link" href="https://v0.app/">v0</a>, <a class="more-link" href="https://aistudio.google.com/">Google AI Studio</a>, <a class="more-link" href="https://emergent.sh/">Emergent</a> …
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">What to expect, honestly</div>
+        <div class="infra-sub-desc">You will get something impressive in an afternoon. Getting it to <strong>90% done</strong> is genuinely easy now; the last 10% — payments, real customer data, security, the weird edge case — is still where people get stuck, and it's the right moment to bring in a human. <strong>Start with something low-stakes and internal</strong> before you build anything a customer touches.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category cat-always-on">
+    <div class="cat-label">Always-On Agents</div>
+    <div class="cat-title">AI That Keeps Working After You Close the Laptop</div>
+    <div class="cat-tagline">"Give it a job, walk away, come back to finished work"</div>
+    <div class="cat-audience"><strong>Best for:</strong> The frontier — overnight research, inbox triage, recurring chores. Newest and roughest category here.</div>
+    <div class="cat-intro">
+      Everything above waits for you to open it. These keep running on their own — on a schedule, or until a long job is done. The catch is <strong>where the agent lives</strong>. Some run on the vendor's computers, so you just sign up. The ones marked <strong>†</strong> are free, open-source software that has to run on a computer that never sleeps — which means either renting one from a hosting company for a few dollars a month and following setup instructions, or paying a managed host to do that part for you.
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card">
+        <span class="tool-star gold">★</span>
+        <div class="tool-header">
+          <a class="tool-name" href="https://gemini.google.com/spark">Gemini Spark</a>
+          <span class="tool-type">nothing to install</span>
+        </div>
+        <div class="tool-desc">Google's 24/7 assistant. It runs on Google's servers, so it works with your laptop shut. You hand it jobs by email, it browses the web through Chrome, and it acts across Gmail, Calendar, Docs and Drive. The easiest way to see what an always-on agent actually feels like.</div>
+        <div class="tool-highlight">Included with Google AI Pro $19.99/mo · 150+ countries — not the EU, UK or Switzerland</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://www.lindy.ai/">Lindy</a>
+          <span class="tool-type">nothing to install</span>
+        </div>
+        <div class="tool-desc">The closest thing to hiring an AI assistant for a small business. Describe the job — 'sort my inbox and draft replies in my voice' — and it builds the agent for you. Connects to Gmail, Outlook, Slack, HubSpot, Salesforce and a hundred others.</div>
+        <div class="tool-highlight">7-day trial, no free plan · Plus $49.99/mo · Pro $99.99/mo · Usage-metered</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://x.ai/">Grok Bot</a>
+          <span class="tool-type">nothing to install</span>
+        </div>
+        <div class="tool-desc">xAI's always-on teammates, launched August 2026. Each one gets its own cloud computer with a browser and files, signs into your apps the way a person would, and grinds through long jobs — 'research these twenty companies overnight.' Still in beta.</div>
+        <div class="tool-highlight">Not sold on its own — bundled into xAI&#x27;s top SuperGrok tier and premium Cursor plans (~$200/mo territory) · Verify before buying</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://hermes-agent.nousresearch.com">Hermes Agent †</a>
+          <span class="tool-type">hosted or self-hosted</span>
+        </div>
+        <div class="tool-desc">Free, open-source, and it teaches itself: after each task it writes down a reusable skill, so it gets better at your work over time. Reaches you over Telegram, Discord, Slack or email, and can run on a schedule. The makers now offer Hermes Cloud, a hosted version — pick a name and a model and it's online, no server required.</div>
+        <div class="tool-highlight">Hermes Cloud (preview): $10 minimum credit · Self-hosted: free software + ~$5–7/mo server + model usage</div>
+      </div>
+      <div class="tool-card">
+        <div class="tool-header">
+          <a class="tool-name" href="https://openclaw.ai">OpenClaw †</a>
+          <span class="tool-type">self-hosted</span>
+        </div>
+        <div class="tool-desc">Free, open-source personal assistant you talk to through WhatsApp or Telegram, with voice, memory and skills. Everything stays on your own machine, which is the appeal. The official setup assumes a Mac you leave running, some terminal commands, and a spare phone number for the assistant — so most newcomers use a managed host instead.</div>
+        <div class="tool-highlight">Software free · Managed hosting from ~$4–10/mo (OneClaw, Agent 37, Hostinger) · Plus model usage</div>
+      </div>
+      <div class="more-box">
+        <strong>And many more:</strong> <a class="more-link" href="https://zapier.com/agents">Zapier Agents</a>, <a class="more-link" href="https://copilot.microsoft.com">Microsoft Copilot agents</a>, <a class="more-link" href="https://www.perplexity.ai/computer">Perplexity Computer ($200/mo)</a>, <a class="more-link" href="https://claude.com/product/cowork">Claude Cowork</a> …
+      </div>
+      <div class="infra-sub">
+        <div class="infra-sub-label">† What &quot;you&#x27;ll need a hosting company&quot; really means</div>
+        <div class="infra-sub-desc">The software is free; the <strong>computer it lives on</strong> is not. In practice you either <strong>rent a small server</strong> from a hosting company like Hetzner, DigitalOcean or Hostinger (roughly <strong>$5–10 a month</strong>) and follow a setup guide that involves the terminal and pasting in API keys — or you pay a <strong>managed host</strong> (OneClaw, Agent 37 and others, from about <strong>$4–10 a month</strong>) that does the setup for you in a few clicks. Either way you also pay the AI model itself, usually a few dollars to $15 a month for personal use. <strong>This is the one category on this page where a weekend of help from a technical friend pays for itself.</strong></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer-note">
+  <strong style="color:#b8c4c8;">You do not need all of these.</strong> Pick one chat assistant and use it every day for two weeks — that single habit is worth more than a shelf full of subscriptions.<br>
+  Prices and features change monthly. Anything with a <strong style="color:#f0a0a0;">†</strong> needs a computer that never sleeps, which means paying a hosting company and doing real setup — happy to help with that part.
+</div>
+<div class="star-legend">
+  <span><span style="color:#fbbf24; font-size:16px; filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.4));">★</span> Start here if you&#x27;re new</span>
+  <span><span style="color:#6b6560; font-size:16px;">★</span> Great once you&#x27;re comfortable</span>
+</div>
+<div style="text-align:center; margin-top:24px; font-size:11px; color:#3a3530;">© 2026 <a href="https://v9n.us/" style="color:#5a5550; text-decoration:none; border-bottom:1px solid #3a3530;">V9N Consulting</a></div>
+
+</body>
+</html>

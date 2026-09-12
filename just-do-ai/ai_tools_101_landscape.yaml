@@ -1,0 +1,259 @@
+title: The AI Tools Landscape — Starter Edition
+subtitle: "AI 101 — a plain-English map for the rest of us"
+
+footer_note: |
+  <strong style="color:#b8c4c8;">You do not need all of these.</strong> Pick one chat assistant and use it every day for two weeks — that single habit is worth more than a shelf full of subscriptions.
+  Prices and features change monthly. Anything with a <strong style="color:#f0a0a0;">†</strong> needs a computer that never sleeps, which means paying a hosting company and doing real setup — happy to help with that part.
+
+star_legend:
+  - label: Start here if you're new
+    style: gold
+  - label: Great once you're comfortable
+    style: gray
+
+categories:
+
+  - id: chat
+    label: Everyday AI
+    title: "Chat Assistants"
+    tagline: "The one thing everybody should try first"
+    audience: "Everyone — writing, research, brainstorming, explaining things, second opinions"
+    layout:
+      grid_column: "1"
+      grid_row: "1 / 3"
+    colors:
+      bg_gradient: ["#141a20", "#121820"]
+      border: "#1e2d38"
+      accent: ["#3b82f6", "#2563eb"]
+      label: "#60a5fa"
+      card_bg: "#182028"
+      card_hover_bg: "#1c2630"
+    tools:
+      - name: ChatGPT
+        url: https://chatgpt.com
+        type: web · phone · desktop
+        star: gold
+        desc: "The one your neighbor has heard of. Type a question, get an answer — plus voice conversation, image generation, file uploads, and Projects to keep related chats together. It remembers what you've told it before."
+        highlight: "Free · Go $8/mo · Plus $20/mo · Pro $100–200/mo"
+      - name: Claude
+        url: https://claude.ai
+        type: web · phone · desktop
+        star: gold
+        desc: "Anthropic's assistant. The favorite for writing that sounds human, working through long documents, and thinking carefully about a problem. Artifacts turn its answers into live documents and mini-apps you can use right in the chat."
+        highlight: "Free · Pro $20/mo · Max from $100/mo · Pro unlocks Cowork"
+      - name: Google Gemini
+        url: https://gemini.google.com
+        type: web · phone · in Google apps
+        desc: "Google's assistant, already sitting inside Gmail, Docs and Android. The easiest starting point if your business already runs on Google Workspace, because it can see your mail and files without any setup."
+        highlight: "Free · AI Plus $4.99/mo · AI Pro $19.99/mo · AI Ultra $99.99/mo"
+      - name: Gemini Notebook
+        url: https://notebooklm.google.com
+        type: web · phone
+        star: gray
+        desc: "The old NotebookLM, renamed in 2026. You give it your own documents — contracts, manuals, research, meeting notes — and it answers ONLY from those, with citations. It will also turn them into a podcast-style audio or video summary."
+        highlight: "Generous free tier · Included in Google AI plans · Best for 'what's in my own files?'"
+      - name: Perplexity
+        url: https://www.perplexity.ai/
+        type: web · phone · browser
+        desc: "A search engine that answers in sentences and shows its sources. Reach for it when you want current, checkable facts rather than a conversation. Its Comet browser puts the same assistant alongside whatever page you're reading."
+        highlight: "Free · Pro $20/mo · Comet browser now free on Mac, Windows, iOS & Android"
+      - name: Microsoft Copilot
+        url: https://copilot.microsoft.com
+        type: web · Windows · in Office
+        desc: "Free chat on the web and built into Windows. The paid version's real value is inside Word, Excel and Outlook — drafting documents, summarizing mail threads, and building spreadsheet formulas for you."
+        highlight: "Free chat · Paid features bundled into Microsoft 365 consumer plans (~$20/mo)"
+      - name: Grok
+        url: https://grok.com
+        type: web · phone · on X
+        desc: "xAI's assistant, wired into X (Twitter) and known for a looser, more opinionated tone and real-time posts. Fine as a chat assistant; the more interesting piece is its Grok Bot agent, further down this page."
+        highlight: "Free tier · SuperGrok tiers from ~$10/mo · Bundled with X Premium"
+    infra_note:
+      label: How to choose
+      text: >
+        <strong>Honestly? Any of them.</strong> They are far more alike than different, and the leader changes
+        every few months. Pick the one that fits where you already work — Google Workspace shop, use Gemini;
+        Microsoft Office shop, use Copilot — or just try ChatGPT and Claude side by side for a week on real work
+        and keep whichever one you'd miss. <strong>The free tiers are genuinely useful.</strong> Don't pay until
+        you hit a wall.
+
+  - id: desktop
+    label: On Your Computer
+    title: "AI That Can Actually Do Things"
+    tagline: "Same assistant — but now it can open your files and use your apps"
+    audience: "Once chat feels normal and you're tired of copying and pasting into it"
+    layout:
+      grid_column: "2"
+      grid_row: "1"
+    colors:
+      bg_gradient: ["#1a1520", "#161220"]
+      border: "#2d2338"
+      accent: ["#a855f7", "#7c3aed"]
+      label: "#c084fc"
+      card_bg: "#1f1828"
+      card_hover_bg: "#251e30"
+    tools:
+      - name: Claude Desktop
+        url: https://claude.ai/download
+        type: Mac · Windows app
+        star: gold
+        desc: "The download-and-install version of Claude. Unlike the website, it can read and write files in folders you approve, and one-click extensions connect it to Google Calendar, Slack, Notion, GitHub and more. It asks permission before touching anything."
+        highlight: "Free to install · Same account as claude.ai · macOS & Windows"
+      - name: Claude Cowork
+        url: https://claude.com/product/cowork
+        type: desktop · web · mobile
+        star: gold
+        desc: "Hand Claude a whole job instead of a question — 'reconcile these invoices,' 'review these contracts,' 'build the monthly report from this folder.' It works through your files and connected apps step by step, keeps going after you close the laptop, and shows its work. No coding involved."
+        highlight: "Requires a paid plan (Pro $20/mo and up) · Built into the Claude desktop app"
+      - name: ChatGPT desktop app
+        url: https://chatgpt.com/download
+        type: Mac · Windows app
+        desc: "One app with three modes: Chat (the usual), Work (hand it a task and get back a finished doc, spreadsheet or deck), and Codex (the coding one). The separate Codex desktop app was folded into this in July 2026 — you don't need to hunt for it anymore."
+        highlight: "Free to install · All three modes on every plan, including Free"
+      - name: Comet browser
+        url: https://www.perplexity.ai/comet
+        type: web browser
+        desc: "Perplexity's web browser with an assistant riding shotgun. It reads the page you're on, summarizes it, compares options across tabs, and can fill in forms and click through routine tasks for you. Went free in March 2026."
+        highlight: "Free · Mac, Windows, iOS & Android · Pro $20/mo for heavier use"
+    more:
+      - Claude Code
+      - Gemini in Chrome
+      - Copilot in Windows
+    more_urls:
+      Claude Code: https://claude.com/product/claude-code
+      Gemini in Chrome: https://gemini.google.com
+      Copilot in Windows: https://copilot.microsoft.com
+    infra_note:
+      label: The one habit that matters here
+      text: >
+        These apps ask before they read a file, send a message, or spend money — and it is tempting to
+        click "allow" on autopilot. <strong>Read the request.</strong> Start them on a copy of a folder rather
+        than the real one, and give them access to the smallest slice of your business that gets the job done.
+
+  - id: builders
+    label: Build Without Code
+    title: "Describe It, Get an App"
+    tagline: "Type what you want in plain English — get a real, working website or app"
+    audience: "Anyone with an idea and no developer: internal tools, booking forms, calculators, simple sites"
+    layout:
+      grid_column: "2"
+      grid_row: "2"
+    colors:
+      bg_gradient: ["#141f1a", "#121a16"]
+      border: "#1e382d"
+      accent: ["#22c55e", "#16a34a"]
+      label: "#4ade80"
+      card_bg: "#182820"
+      card_hover_bg: "#1c3028"
+    tools:
+      - name: Lovable
+        url: https://lovable.dev/
+        type: web
+        star: gold
+        desc: "The friendliest starting point. Describe your app in a chat, watch it appear, then ask for changes in plain English. The database, logins and hosting are all handled for you — you never see a server or write a line of code."
+        highlight: "Free tier (5 builds/day) · Pro ~$25/mo · Publish with one click"
+      - name: Base44
+        url: https://base44.com/
+        type: web
+        star: gold
+        desc: "Owned by Wix. Same idea as Lovable — prompt in, working app out, with the database and user logins included. Widely rated the most beginner-proof of the bunch, and it has a genuinely free forever tier to experiment on."
+        highlight: "Free forever tier · Starter $20/mo · Builder $50/mo · Pro $100/mo"
+      - name: Bolt
+        url: https://bolt.new/
+        type: web
+        desc: "By StackBlitz. Builds sites, apps and prototypes with hosting, database, logins and custom domains built in. Slightly more of a tinkerer's tool than Lovable — a little more power, a little more to look at."
+        highlight: "Free tier · Pro $25/mo · Teams $30/user/mo"
+      - name: Figma Make
+        url: https://www.figma.com/make/
+        type: web
+        desc: "Turns a description — or a design you already have in Figma — into a working app. The obvious pick if your business already designs in Figma, and an odd door to walk through if it doesn't."
+        highlight: "Included in paid Figma plans"
+      - name: Replit
+        url: https://replit.com/
+        type: web
+        desc: "An AI agent that builds and publishes your app, wrapped in a real programmer's workspace. It will do the whole job for you, but you'll be looking at actual code the entire time — which some people find motivating and others find alarming."
+        highlight: "Credit-based · Core $20/mo · Pro $100/mo · A step toward the developer world"
+    more:
+      - v0
+      - Google AI Studio
+      - Emergent
+    more_urls:
+      v0: https://v0.app/
+      Google AI Studio: https://aistudio.google.com/
+      Emergent: https://emergent.sh/
+    infra_note:
+      label: What to expect, honestly
+      text: >
+        You will get something impressive in an afternoon. Getting it to <strong>90% done</strong> is genuinely
+        easy now; the last 10% — payments, real customer data, security, the weird edge case — is still where
+        people get stuck, and it's the right moment to bring in a human. <strong>Start with something low-stakes
+        and internal</strong> before you build anything a customer touches.
+
+  - id: always-on
+    label: Always-On Agents
+    title: "AI That Keeps Working After You Close the Laptop"
+    tagline: "Give it a job, walk away, come back to finished work"
+    audience: "The frontier — overnight research, inbox triage, recurring chores. Newest and roughest category here."
+    layout:
+      grid_column: "1 / 3"
+      grid_row: "3"
+      tools_columns: 3
+    colors:
+      bg_gradient: ["#1a1418", "#18121a"]
+      border: "#38232d"
+      accent: ["#f472b6", "#db2777"]
+      label: "#f9a8d4"
+      card_bg: "#201420"
+      card_hover_bg: "#281a28"
+    intro: >-
+      Everything above waits for you to open it. These keep running on their own — on a schedule, or until a long
+      job is done. The catch is <strong>where the agent lives</strong>. Some run on the vendor's computers, so you
+      just sign up. The ones marked <strong>†</strong> are free, open-source software that has to run on a computer
+      that never sleeps — which means either renting one from a hosting company for a few dollars a month and
+      following setup instructions, or paying a managed host to do that part for you.
+    tools:
+      - name: Gemini Spark
+        url: https://gemini.google.com/spark
+        type: nothing to install
+        star: gold
+        desc: "Google's 24/7 assistant. It runs on Google's servers, so it works with your laptop shut. You hand it jobs by email, it browses the web through Chrome, and it acts across Gmail, Calendar, Docs and Drive. The easiest way to see what an always-on agent actually feels like."
+        highlight: "Included with Google AI Pro $19.99/mo · 150+ countries — not the EU, UK or Switzerland"
+      - name: Lindy
+        url: https://www.lindy.ai/
+        type: nothing to install
+        desc: "The closest thing to hiring an AI assistant for a small business. Describe the job — 'sort my inbox and draft replies in my voice' — and it builds the agent for you. Connects to Gmail, Outlook, Slack, HubSpot, Salesforce and a hundred others."
+        highlight: "7-day trial, no free plan · Plus $49.99/mo · Pro $99.99/mo · Usage-metered"
+      - name: Grok Bot
+        url: https://x.ai/
+        type: nothing to install
+        desc: "xAI's always-on teammates, launched August 2026. Each one gets its own cloud computer with a browser and files, signs into your apps the way a person would, and grinds through long jobs — 'research these twenty companies overnight.' Still in beta."
+        highlight: "Not sold on its own — bundled into xAI's top SuperGrok tier and premium Cursor plans (~$200/mo territory) · Verify before buying"
+      - name: Hermes Agent †
+        url: https://hermes-agent.nousresearch.com
+        type: hosted or self-hosted
+        desc: "Free, open-source, and it teaches itself: after each task it writes down a reusable skill, so it gets better at your work over time. Reaches you over Telegram, Discord, Slack or email, and can run on a schedule. The makers now offer Hermes Cloud, a hosted version — pick a name and a model and it's online, no server required."
+        highlight: "Hermes Cloud (preview): $10 minimum credit · Self-hosted: free software + ~$5–7/mo server + model usage"
+      - name: OpenClaw †
+        url: https://openclaw.ai
+        type: self-hosted
+        desc: "Free, open-source personal assistant you talk to through WhatsApp or Telegram, with voice, memory and skills. Everything stays on your own machine, which is the appeal. The official setup assumes a Mac you leave running, some terminal commands, and a spare phone number for the assistant — so most newcomers use a managed host instead."
+        highlight: "Software free · Managed hosting from ~$4–10/mo (OneClaw, Agent 37, Hostinger) · Plus model usage"
+    more:
+      - Zapier Agents
+      - Microsoft Copilot agents
+      - Perplexity Computer ($200/mo)
+      - Claude Cowork
+    more_urls:
+      Zapier Agents: https://zapier.com/agents
+      Microsoft Copilot agents: https://copilot.microsoft.com
+      Perplexity Computer ($200/mo): https://www.perplexity.ai/computer
+      Claude Cowork: https://claude.com/product/cowork
+    infra_note:
+      label: † What "you'll need a hosting company" really means
+      text: >
+        The software is free; the <strong>computer it lives on</strong> is not. In practice you either
+        <strong>rent a small server</strong> from a hosting company like Hetzner, DigitalOcean or Hostinger
+        (roughly <strong>$5–10 a month</strong>) and follow a setup guide that involves the terminal and pasting
+        in API keys — or you pay a <strong>managed host</strong> (OneClaw, Agent 37 and others, from about
+        <strong>$4–10 a month</strong>) that does the setup for you in a few clicks. Either way you also pay the
+        AI model itself, usually a few dollars to $15 a month for personal use. <strong>This is the one category
+        on this page where a weekend of help from a technical friend pays for itself.</strong>

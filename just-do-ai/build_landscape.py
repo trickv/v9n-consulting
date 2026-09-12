@@ -3,7 +3,10 @@
 # requires-python = ">=3.10"
 # dependencies = ["pyyaml"]
 # ///
-"""Build ai_tools_landscape.html from ai_tools_landscape.yaml."""
+"""Build a landscape HTML page from its YAML source.
+
+Usage: ./build_landscape.py [source.yaml ...]   (defaults to every *_landscape.yaml)
+"""
 
 import html
 import sys
@@ -292,15 +295,18 @@ def build(data: dict) -> str:
 
 def main():
     script_dir = Path(__file__).parent
-    yaml_path = script_dir / "ai_tools_landscape.yaml"
-    html_path = script_dir / "ai_tools_landscape.html"
+    if len(sys.argv) > 1:
+        sources = [Path(a) for a in sys.argv[1:]]
+    else:
+        sources = sorted(script_dir.glob("*_landscape.yaml"))
 
-    with open(yaml_path) as f:
-        data = yaml.safe_load(f)
-
-    output = build(data)
-    html_path.write_text(output)
-    print(f"Built {html_path} ({len(output)} bytes)")
+    for yaml_path in sources:
+        html_path = yaml_path.with_suffix(".html")
+        with open(yaml_path) as f:
+            data = yaml.safe_load(f)
+        output = build(data)
+        html_path.write_text(output)
+        print(f"Built {html_path} ({len(output)} bytes)")
 
 
 if __name__ == "__main__":
