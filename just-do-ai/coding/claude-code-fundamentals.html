@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Patrick van Staveren">
+<meta name="description" content="The ten things to know about Claude Code before anything else: sessions, permissions, plan mode, interrupting, git, models, shortcuts, and CLAUDE.md. Week 2 of the Coding with AI bootcamp.">
+<title>Claude Code Fundamentals — Coding with AI Bootcamp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0f11;
+    --surface: #16181c;
+    --surface-raised: #1e2025;
+    --border: #2a2d35;
+    --border-accent: #3d4150;
+    --text: #e8e9ed;
+    --text-muted: #9398a5;
+    --accent: #c4f06a;
+    --accent-dim: #a3cc4e;
+    --accent-glow: rgba(196, 240, 106, 0.08);
+    --link: #7eb8f7;
+    --link-hover: #a8d0fc;
+    --code-bg: #121317;
+    --code-border: #23262e;
+    --amber: #e8a84c;
+    --amber-glow: rgba(232, 168, 76, 0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page-wrapper {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 5rem;
+  }
+
+  /* ── Header ── */
+  .header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .header .intro {
+    font-size: 1.08rem;
+    color: var(--text-muted);
+    max-width: 62ch;
+  }
+
+  /* ── Links ── */
+  a {
+    color: var(--link);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(126, 184, 247, 0.3);
+    transition: color 0.15s, border-color 0.15s;
+  }
+  a:hover {
+    color: var(--link-hover);
+    border-bottom-color: var(--link-hover);
+  }
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ── Fundamentals ── */
+  .fundamental {
+    padding: 2.25rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .fundamental:last-of-type { border-bottom: none; }
+
+  .fundamental h2 {
+    font-size: 1.45rem;
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 0.5rem;
+  }
+
+  .keys {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.35rem 0 1.1rem;
+  }
+  .key {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--accent);
+    background: var(--surface-raised);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.15em 0.55em;
+    white-space: nowrap;
+  }
+
+  .fundamental p { margin-bottom: 0.9rem; max-width: 66ch; }
+  .fundamental p:last-child { margin-bottom: 0; }
+
+  /* ── Code ── */
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: 6px;
+    padding: 0.9rem 1.1rem;
+    overflow-x: auto;
+    font-family: 'DM Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin: 0.75rem 0 1.1rem;
+  }
+  pre .c { color: var(--text-muted); }
+
+  code {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.88em;
+    background: var(--surface-raised);
+    padding: 0.12em 0.4em;
+    border-radius: 4px;
+  }
+  pre code { background: none; padding: 0; font-size: 1em; }
+
+  kbd {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.85em;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-accent);
+    border-bottom-width: 2px;
+    border-radius: 4px;
+    padding: 0.05em 0.45em;
+    white-space: nowrap;
+  }
+
+  /* ── Callouts ── */
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--accent-glow);
+    padding: 0.85rem 1.1rem;
+    border-radius: 0 6px 6px 0;
+    margin: 1rem 0 0.25rem;
+    font-size: 0.95rem;
+  }
+  .callout.warn {
+    border-left-color: var(--amber);
+    background: var(--amber-glow);
+  }
+  .callout p { margin: 0; max-width: none; }
+  .callout strong { color: var(--text); }
+
+  /* ── Permission modes ── */
+  .modes {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr 1fr;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 0.75rem 0 1.1rem;
+    font-size: 0.93rem;
+  }
+  .modes > div {
+    padding: 0.7rem 0.9rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .modes .head {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: var(--surface);
+  }
+  .modes .name {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: var(--surface);
+  }
+  .modes .runs, .modes .when { color: var(--text); }
+  .modes .when { color: var(--text-muted); }
+  .modes > div:nth-last-child(-n+3) { border-bottom: none; }
+
+  /* ── File locations / reference table ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0.75rem 0 1.1rem;
+    font-size: 0.93rem;
+  }
+  th, td {
+    text-align: left;
+    padding: 0.55rem 0.8rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 500;
+    background: var(--surface);
+  }
+  td:first-child {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  td:last-child { color: var(--text-muted); }
+  tr:last-child td { border-bottom: none; }
+  .table-wrap {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow-x: auto;
+    margin: 0.75rem 0 1.1rem;
+  }
+  .table-wrap table { margin: 0; }
+
+  /* ── Quick reference ── */
+  .reference {
+    margin-top: 1rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .reference h2 {
+    font-size: 1.45rem;
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .reference .lede { color: var(--text-muted); margin-bottom: 1rem; }
+  .reference td:last-child { color: var(--text); }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.88rem;
+    color: var(--text-muted);
+  }
+  .footer p { margin-bottom: 0.4rem; }
+
+  /* ── Mobile ── */
+  @media (max-width: 600px) {
+    .page-wrapper { padding: 2rem 1.1rem 4rem; }
+    .header h1 { font-size: 1.85rem; }
+    .fundamental h2 { font-size: 1.28rem; }
+    .modes { grid-template-columns: 1fr; }
+    .modes .head { display: none; }
+    .modes > div { border-bottom: none; padding-bottom: 0.2rem; }
+    .modes .name { padding-top: 0.8rem; }
+    .modes .when {
+      padding-bottom: 0.9rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .modes .when::before {
+      content: "Use it for: ";
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+    }
+    .modes > div:nth-last-child(-n+3) { border-bottom: none; }
+    .modes .when:last-child { border-bottom: none; }
+    td:first-child { white-space: normal; }
+  }
+
+  /* ── Print ── */
+  @media print {
+    :root {
+      --bg: #ffffff;
+      --surface: #f4f4f5;
+      --surface-raised: #ececee;
+      --border: #d4d4d8;
+      --border-accent: #a1a1aa;
+      --text: #111114;
+      --text-muted: #52525b;
+      --accent: #3f6212;
+      --accent-glow: rgba(63, 98, 18, 0.06);
+      --link: #1d4ed8;
+      --code-bg: #f4f4f5;
+      --code-border: #d4d4d8;
+      --amber: #b45309;
+      --amber-glow: rgba(180, 83, 9, 0.06);
+    }
+    body { font-size: 11pt; }
+    .page-wrapper { max-width: none; padding: 0; }
+    .fundamental { break-inside: avoid; padding: 1.2rem 0; }
+    a { border-bottom: none; }
+    a[href^="http"]::after {
+      content: " (" attr(href) ")";
+      font-size: 0.8em;
+      color: var(--text-muted);
+    }
+    .footer a::after { content: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+  <header class="header">
+    <div class="header-label">Coding with AI Bootcamp · Fundamentals</div>
+    <h1>Claude Code Fundamentals</h1>
+    <p class="intro">This is the core of Week 2: the ten things to know about Claude Code before anything else. Each one is short on purpose. Come back here whenever something on screen surprises you — the answer is probably on this page.</p>
+  </header>
+
+  <!-- ════════════════════════════════ 1. RUNS ON YOUR COMPUTER ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>It runs on your computer, for real</h2>
+    <p>Claude Code isn't a chat window that hands you code to paste somewhere. It runs in your terminal, inside your project, and it <em>acts</em>. It uses the tools you already have installed, asks permission to install the ones it needs, and writes ad-hoc code to investigate a problem the way a human operator would.</p>
+    <p>Ask it to look through a log file for signs of trouble and it reaches for <code>grep</code>, <code>awk</code>, <code>jq</code> and whatever else fits — the same tools a person would use, just faster and without getting bored. It also knows how to install software. It was trained on an enormous amount of Stack Overflow.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 2. SESSION IS A CONVERSATION ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>A session is a conversation</h2>
+    <div class="keys">
+      <span class="key">/context</span>
+      <span class="key">/compact</span>
+      <span class="key">/clear</span>
+      <span class="key">claude --resume</span>
+    </div>
+    <p>Everything in a session stays in its context: what you said, every file it read, every command it ran. That's what lets it "remember." Context is finite, though, and managing it is a skill we'll spend a whole session on later. For now, three commands:</p>
+<pre><code>/context    <span class="c"># what's filling the window right now</span>
+/compact    <span class="c"># summarize the conversation so far, keep going</span>
+/clear      <span class="c"># start fresh (your CLAUDE.md still loads)</span></code></pre>
+    <p>And two ways back into a session you've left:</p>
+<pre><code>claude --resume    <span class="c"># pick a previous session from a list</span>
+claude -c          <span class="c"># continue the most recent one</span></code></pre>
+    <p>Resuming is an essential skill. You will close your laptop mid-task. This is how you pick up where you left off.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 3. SCOPED TO YOUR DIRECTORY ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>It's scoped to your directory</h2>
+    <div class="keys">
+      <span class="key">/init</span>
+      <span class="key">/add-dir</span>
+    </div>
+    <p>Start <code>claude</code> inside your project folder and that folder is its world. It reads and analyzes what's there, and it asks before touching anything outside it. Two good opening moves in a codebase you don't know:</p>
+<pre><code>/init    <span class="c"># Claude reads the repo and writes a CLAUDE.md describing it</span></code></pre>
+    <p>Or just ask: <em>"What does this code do?"</em> It's a surprisingly good way to meet an unfamiliar repository.</p>
+    <p>Need a second folder mid-session? <code>/add-dir ../other-project</code> brings it into scope.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 4. PERMISSIONS ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>The permissions framework</h2>
+    <div class="keys">
+      <span class="key">Shift+Tab</span>
+      <span class="key">/permissions</span>
+    </div>
+    <p>Claude Code asks before it does things, and how often it asks is up to you. <kbd>Shift+Tab</kbd> cycles through the modes; the status bar at the bottom shows which one you're in.</p>
+
+    <div class="modes">
+      <div class="head">Mode</div>
+      <div class="head">Runs without asking</div>
+      <div class="head">Use it for</div>
+
+      <div class="name">Manual</div>
+      <div class="runs">Reads only. Every edit and every command gets a prompt.</div>
+      <div class="when">Learning. Unfamiliar code. Anything sensitive.</div>
+
+      <div class="name">Accept Edits</div>
+      <div class="runs">File edits and everyday filesystem commands. Shell commands still prompt.</div>
+      <div class="when">Iterating on code you're reviewing as it goes.</div>
+
+      <div class="name">Plan</div>
+      <div class="runs">Reads only. It won't change anything until you approve a plan.</div>
+      <div class="when">Anything non-trivial. See below.</div>
+
+      <div class="name">Auto</div>
+      <div class="runs">Everything. A second model checks each action against what you'd plausibly want and stops for the risky ones.</div>
+      <div class="when">Long tasks. Where you'll live once you trust it.</div>
+    </div>
+
+    <p>Manual used to be the default for everyone; Auto is now the starting mode on Pro, Max and Team plans. Spend your first sessions in Manual anyway — watching what it <em>wants</em> to do is the fastest way to learn what it does.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 5. PLAN MODE ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>Plan mode. Use it.</h2>
+    <div class="keys">
+      <span class="key">/plan</span>
+      <span class="key">Shift+Tab</span>
+    </div>
+    <p>For anything non-trivial, start in plan mode. In plan mode Claude Code refuses to change anything. It reads, it thinks, and it keeps asking you questions until it understands what you actually want. Then it writes a plan and asks to leave plan mode so it can execute. Approve the plan, or send it back.</p>
+<pre><code>/plan                        <span class="c"># switch into plan mode</span>
+/plan fix the login bug      <span class="c"># switch, and start on a task</span></code></pre>
+    <div class="callout">
+      <p><strong>Why this matters:</strong> the time you spend answering its questions up front is the time you'd otherwise spend undoing what it built from a guess.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ 6. INTERRUPT ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>Interrupt any time</h2>
+    <div class="keys">
+      <span class="key">Esc</span>
+      <span class="key">Esc Esc</span>
+      <span class="key">/rewind</span>
+    </div>
+    <p>Claude Code isn't a black box you have to wait out. Press <kbd>Esc</kbd> and it stops mid-turn, keeping whatever it's done so far. Tell it it's going down the wrong rabbit hole, or ask it a question. Then say "continue" or "carry on."</p>
+    <p>If you need to undo rather than redirect: press <kbd>Esc</kbd> twice on an empty prompt, or type <code>/rewind</code>. You get a list of checkpoints, and you can roll back the code, the conversation, or both.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 7. GIT ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>It's fantastic at version control</h2>
+    <div class="keys">
+      <span class="key">git</span>
+      <span class="key">/diff</span>
+    </div>
+    <p>The first time I watched it write a commit message, I thought it was cheating. It signs its name next to yours, and that feels wrong for about a week. Then you notice it writes better commit messages than most people, picks up your team's commit conventions on its own by reading <code>git log</code>, handles branches without drama, and is very good at merging.</p>
+    <p>Just ask in plain language: "commit this," "put this on a branch," "resolve the merge conflict." <code>/diff</code> shows you everything that's changed in the working tree before you commit.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 8. MODEL & EFFORT ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>Pick your model and your effort</h2>
+    <div class="keys">
+      <span class="key">/model</span>
+      <span class="key">/effort</span>
+      <span class="key">/usage</span>
+    </div>
+    <p><code>/model</code> is the trade-off between the size of the brain and how much you want to spend. In order of capability: <strong>Fable</strong>, then <strong>Opus</strong>, then <strong>Sonnet</strong>, then <strong>Haiku</strong>. Sonnet is a good everyday balance. Haiku is cheap and fast. Reach for Fable or Opus when the problem is hard. (Fable always thinks before it answers, and needs a plan that includes it.)</p>
+    <p><code>/effort</code> is the second dial: how much reasoning it applies to each turn, from <code>low</code> up through <code>xhigh</code> and <code>max</code>. <code>/usage</code> shows where you are against your plan's limits.</p>
+  </section>
+
+  <!-- ════════════════════════════════ 9. SHORTCUTS ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>Three shortcuts worth learning early</h2>
+    <div class="keys">
+      <span class="key">!</span>
+      <span class="key">@</span>
+      <span class="key">Ctrl+V</span>
+    </div>
+    <p><code>!</code> at the start of the prompt runs a shell command directly. The command and its output land in the conversation and Claude responds to them. <code>! npm test</code> followed by "why did that fail?" is a loop you'll use constantly.</p>
+    <p><code>@</code> followed by a path mentions a file, with autocomplete as you type. It's the cheapest way to point Claude at exactly the thing you mean: <em>"the date parsing in <code>@src/utils/dates.py</code> is off by one."</em></p>
+    <p><kbd>Ctrl+V</kbd> pastes an image from your clipboard (<kbd>Cmd+V</kbd> in iTerm2, <kbd>Alt+V</kbd> on Windows and WSL). Screenshot the broken layout, paste it, say "make it look like this."</p>
+  </section>
+
+  <!-- ════════════════════════════════ 10. CLAUDE.MD ════════════════════════════════ -->
+  <section class="fundamental">
+    <h2>CLAUDE.md is for memory</h2>
+    <div class="keys">
+      <span class="key">CLAUDE.md</span>
+      <span class="key">/init</span>
+      <span class="key">/memory</span>
+    </div>
+    <p>Every session starts with a fresh context window. Two things carry over between sessions:</p>
+    <p><strong>CLAUDE.md</strong> is instructions <em>you</em> write. Claude reads it at the start of every session. Put in it what you'd otherwise keep re-explaining: build and test commands, conventions, "always do X" rules. <code>/init</code> writes a first draft by reading your codebase. Keep it under 200 lines — it's context, not enforced configuration, and shorter files are followed more reliably.</p>
+    <p><strong>Auto memory</strong> is notes <em>Claude</em> writes for itself: your preferences, corrections you've given it, things it can't derive from the code. It's on by default. Say "remember that we use pnpm" and it saves a note. Say "add this to CLAUDE.md" and it goes in the shared file instead.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>File</th><th>Scope</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>./CLAUDE.md</td><td>The project. Commit it — the whole team shares it.</td></tr>
+          <tr><td>~/.claude/CLAUDE.md</td><td>You, in every project. Personal preferences.</td></tr>
+          <tr><td>./CLAUDE.local.md</td><td>You, in this project only. Add it to <code>.gitignore</code>.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p><code>/memory</code> opens any of these in your editor. <code>/context</code> shows which ones actually loaded into the current session.</p>
+  </section>
+
+  <!-- ════════════════════════════════ QUICK REFERENCE ════════════════════════════════ -->
+  <section class="reference">
+    <h2>Quick reference</h2>
+    <p class="lede">Everything on this page, on one screen.</p>
+    <div class="table-wrap">
+      <table>
+        <tbody>
+          <tr><td>/context</td><td>What's in the context window</td></tr>
+          <tr><td>/compact</td><td>Summarize the conversation, free up space</td></tr>
+          <tr><td>/clear</td><td>Start a fresh session</td></tr>
+          <tr><td>claude --resume</td><td>Pick a previous session to continue</td></tr>
+          <tr><td>claude -c</td><td>Continue the most recent session</td></tr>
+          <tr><td>/init</td><td>Generate a CLAUDE.md from your codebase</td></tr>
+          <tr><td>/memory</td><td>Edit CLAUDE.md and auto memory</td></tr>
+          <tr><td>/plan</td><td>Enter plan mode</td></tr>
+          <tr><td>Shift+Tab</td><td>Cycle permission modes: Manual → Accept Edits → Plan → Auto</td></tr>
+          <tr><td>Esc</td><td>Interrupt, keeping the work so far</td></tr>
+          <tr><td>Esc Esc</td><td>Rewind menu (on an empty prompt)</td></tr>
+          <tr><td>/rewind</td><td>Roll code and/or conversation back to a checkpoint</td></tr>
+          <tr><td>/diff</td><td>Review what's changed</td></tr>
+          <tr><td>/model</td><td>Switch model: Fable › Opus › Sonnet › Haiku</td></tr>
+          <tr><td>/effort</td><td>How hard it thinks, low through max</td></tr>
+          <tr><td>/usage</td><td>Where you are against your plan's limits</td></tr>
+          <tr><td>!</td><td>Run a shell command, output goes into the conversation</td></tr>
+          <tr><td>@</td><td>Mention a file</td></tr>
+          <tr><td>Ctrl+V</td><td>Paste an image from the clipboard</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout warn">
+      <p>Claude Code moves fast. When this page and your terminal disagree, trust the terminal, and check the official docs at <a href="https://code.claude.com/docs">code.claude.com/docs</a>.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════ FOOTER ════════════════════════════════ -->
+  <footer class="footer">
+    <p>Part of the <a href="https://v9n.us/just-do-ai/index.html">Just Do AI</a> bootcamp materials. Questions? <a href="mailto:trick@vanstaveren.us">trick@vanstaveren.us</a>.</p>
+    <p>Last Updated: September 10, 2026 · © 2026 <a href="https://v9n.us/">V9N Consulting</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
